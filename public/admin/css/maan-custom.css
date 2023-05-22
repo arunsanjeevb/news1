@@ -1,0 +1,32 @@
+/*!
+  MAAN-NEWS v1.0.0
+  Author: Maantheme
+
+  Website: news.maantheme.com <http://news.maantheme.com>
+
+   Copyright 2021 The Maantheme Authors
+
+
+*/
+
+.maantable thead th,.maantable td{
+    vertical-align: middle;
+    text-align: center;
+}
+.maantable td{
+    text-align: justify;
+    text-align-last: center;
+}
+.maanaction{
+    width: 10%;
+}
+#maanaction-in{
+    padding-left: 35%;
+    text-align: center;
+}
+#maanaction-in a{
+    padding-right: 3px;
+}
+.archiveItem a{
+    padding-left: 3px;
+}

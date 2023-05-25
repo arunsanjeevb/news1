@@ -142,6 +142,7 @@ h1 {
 h2 {
   font-size: 32px;
   line-height: 42px;
+  font-weight: 100;
 }
 
 h3 {
@@ -150,7 +151,7 @@ h3 {
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 30px;
 }
 
@@ -165,7 +166,7 @@ h6 {
 }
 
 p {
-  font-family: "Francois One", sans-serif;
+  font-family: "Tinos", sans-serif;
   font-size: 14px;
   font-weight: 400;
   margin: 0;
@@ -256,7 +257,7 @@ a.link-btn:hover,
 
 
 section {
-  padding: 50px 0px;
+  padding: 20px 0px;
 }
 section .maan-title,
 section .maan-title-border-none,
@@ -281,7 +282,7 @@ section .maan-title-center .maan-title-icon svg {
 section .maan-title .maan-title-text h2,
 section .maan-title-border-none .maan-title-text h2,
 section .maan-title-center .maan-title-text h2 {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 700;
   line-height: 34px;
   text-transform: capitalize;
@@ -363,7 +364,7 @@ section .maan-title-center.v2::after {
   transform: translateX(0%);
 }
 section.maan-slide-section .maan-title {
-  width: calc(100% - 101px);
+  /* width: calc(100% - 101px); */
 }
 section.maan-slide-section .maan-slide .slick-arrow,
 section.maan-slide-section .maan-card-slide .slick-arrow {
@@ -1298,7 +1299,7 @@ header.sticky-manu .maan-manu-bar.sticky {
   background: var(--maan-color-lblue);
 }
 .maan-top-categories-section .maan-card-img a span:first-child {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
   font-weight: 700;
 }
@@ -1424,7 +1425,7 @@ header.sticky-manu .maan-manu-bar.sticky {
   margin-bottom: 0px;
 }
 .politics-news .maan-news-list .maan-list-text h4 a {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
   color: var(--maan-color-white);
 }
@@ -1457,7 +1458,7 @@ header.sticky-manu .maan-manu-bar.sticky {
   margin: 24px 0px 0px 0px;
 }
 .maan-entertainment-news .maan-news-list h4 a {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
 }
 .maan-entertainment-news .maan-stay-connected .maan-s-follower {
@@ -1622,7 +1623,7 @@ header.sticky-manu .maan-manu-bar.sticky {
   margin: 24px 0px 0px 0px;
 }
 .maan-malti-news .maan-news-list h4 a {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
 }
 
@@ -1689,7 +1690,7 @@ header.sticky-manu .maan-manu-bar.sticky {
   padding: 24px;
 }
 .maan-don-t-miss-section .container-fluid .maan-card-body .maan-text h4 {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
 }
 .maan-don-t-miss-section .container-fluid .slick-list .slick-center .maan-card-body,
@@ -1760,7 +1761,7 @@ header.sticky-manu .maan-manu-bar.sticky {
   line-height: 30px;
 }
 .maan-info-footer .row.maan-link-footer .maan-news-list h4 {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
 }
 .maan-info-footer .row.maan-link-footer .maan-news-list h4 a {
@@ -1777,7 +1778,7 @@ header.sticky-manu .maan-manu-bar.sticky {
 }
 .maan-info-footer .row.maan-link-footer .maan-news-link li a {
   color: var(--maan-color-white);
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
 }
 .maan-info-footer .row.maan-link-footer .maan-news-link li a:hover {
@@ -1835,7 +1836,7 @@ header.sticky-manu .maan-manu-bar.sticky {
 }
 .maan-info-footer .row.maan-link-footer .maan-email button {
   padding: 18px 40px;
-  font-weight: 600;
+  font-weight: 100;
   margin-top: 24px;
 }
 .maan-info-footer .maan-main-footer {
@@ -1888,20 +1889,25 @@ header.sticky-manu .maan-manu-bar.sticky {
   background: #3868ce;
 }
 .blog-details-social li a i.fa-twitter{
-  background: #07acde;
+  background: #03a9f4;
 }
 .blog-details-social li a i.fa-linkedin-in{
-  background: #07acde;
+  background: #0078d4;
 }
+
+.blog-details-social li a i.fa-whatsapp{
+  background: #40c351;
+}
+
 .blog-details-social li a i.fa-instagram{
-  background: #c32aa3;
+  background: #ef4c5f;
 }
 .blog-details-social li a i.fa-youtube{
   background: red;
 }
 .blog-details-social li{
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 0px;
 }
 
 /*=============================
@@ -1917,7 +1923,7 @@ header.sticky-manu .maan-manu-bar.sticky {
 }
 .maan-breadcrumb ol li {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 28px;
 }
 .maan-breadcrumb ol li::before, .maan-breadcrumb ol li.active {
@@ -2158,7 +2164,7 @@ header.sticky-manu .maan-manu-bar.sticky {
   padding: 0;
 }
 .maan-archive-details .maan-default-post p {
-  margin: 24px 0px;
+  margin: 0px 0px;
 }
 .maan-archive-details .maan-default-post .tag {
   padding-top: 24px;
@@ -2560,7 +2566,7 @@ div .maan-widgets:last-child{
 }
 .maan-user-avatar .maan-login-header, .maan-user-avatar .maan-login-header {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 100;
   background: #eee;
   color: #000;
   padding: 5px 15px;
@@ -2736,7 +2742,7 @@ input[type=number] {
 
 @media screen and (min-width: 991px) and (max-width: 1200px){
   section .maan-title .maan-title-text h2, section .maan-title-border-none .maan-title-text h2, section .maan-title-center .maan-title-text h2 {
-    font-size: 18px;
+    font-size: 23px;
   }
 }
 @media(max-width: 991px){
@@ -2744,7 +2750,7 @@ input[type=number] {
     grid-template-columns: 30% auto !important;
   }
   section .maan-title .maan-title-text h2, section .maan-title-border-none .maan-title-text h2, section .maan-title-center .maan-title-text h2 {
-    font-size: 18px;
+    font-size: 23px;
   }
 }
 
@@ -2919,6 +2925,13 @@ input[type=number] {
 .card .maan-card-body .maan-text h4 a{
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.maan-don-t-miss-section .card .maan-card-body .maan-text h4 a{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3136,7 +3149,7 @@ img{
   height: 100px;
 }
 .maan-news-list li .maan-list-text h4{
-  font-weight: 500;
+  font-weight: 100;
 }
 .maan-stay-connected .card.maan-card-img img{
   height: 490px;
@@ -3148,7 +3161,7 @@ img{
   height: 495px;
 }
 .card .maan-card-body .maan-text h4 {
-  font-weight: 600;
+  font-weight: 100;
 }
 .maan-top-news-section .card .maan-card-body .maan-text h4 a:hover{
   color: #fff;
@@ -3160,7 +3173,7 @@ img{
 
 .maan-widgets .card .maan-card-body .maan-text h4{
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 100;
   line-height: 30px;
 }
 
@@ -3186,7 +3199,7 @@ img{
   line-height: 32px;
 }
 .maan-top-news-section .card .maan-card-body .maan-text h4 {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
   line-height: 26px;
@@ -3234,7 +3247,7 @@ img{
   margin-bottom: 0;
 }
 .maan-most-popular-section .news-tab .maan-news-list{
-  margin-top: -6px;
+  margin-top: 7px;
 }
 .maan-most-popular-section .maan-big-post.card .maan-card-body .maan-text ul{
   margin-bottom: -4px;
@@ -3277,13 +3290,13 @@ img{
 
 .politics-news-big-items .card .maan-card-body .maan-text h4{
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 100;
   line-height: 32px;
   margin-bottom: 10px;
 }
 .technologysmall-card-wrp .maan-card-body .maan-text h4{
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 100;
   line-height: 26px;
   margin-bottom: 10px;
 }
@@ -3306,7 +3319,7 @@ img{
   bottom: 0;
   height: 1px;
   width: 99%;
-  background: #C5C5C5;
+  background: #fff;
 }
 .politics-news-big-items:first-child::after{
   position: absolute;
@@ -3317,7 +3330,7 @@ img{
   bottom: 0;
   height: 1px;
   width: 99%;
-  background: #C5C5C5;
+  background: #fff;
 }
 @media(max-width: 991px){
 
@@ -3347,8 +3360,8 @@ img{
   margin-top: 0;
 }
 .maan-entertainmentslide .card .maan-card-body .maan-text h4{
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 100;
   line-height: 26px;
   margin-bottom: 10px;
 }
@@ -3360,7 +3373,7 @@ img{
 }
 
 .maan-entertainment-news .maan-news-list h4 a {
-  font-size: 17px;
+  font-size: 20px;
   line-height: 26px;
 }
 
@@ -3469,14 +3482,14 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
 }
 .maansports-big-card .maan-card-body .maan-text h4{
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 100;
   line-height: 32px;
   margin-bottom: 10px;
 }
 .maansports-small-card .maan-card-body .maan-text h4{
-  font-size: 17px;
+  font-size: 20px;
   line-height: 26px;
-  font-weight: 600;
+  font-weight: 100;
   margin-bottom: 10px;
 }
 .card.maan-default-post.maansports-small-card .maan-post-img img {
@@ -3495,8 +3508,8 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
   justify-content: center;
 }
 .maan-lifestyle-news .card .maan-card-body .maan-text h4{
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 100;
   line-height: 26px;
   margin-bottom: 10px;
 }
@@ -3509,8 +3522,8 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
   fill: #0389ff;
 }
 .maan-widgets .card .maan-card-body .maan-text h4{
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 100;
   line-height: 26px;
   margin-bottom: 10px;
 }
@@ -3698,7 +3711,7 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
   }
 }
 .maan-team-section .maan-team-item .maan-info-box .maan-name {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 16px;
   color: #3a3a3a;
   font-weight: 700;
@@ -3851,7 +3864,7 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
 }
 .maan-content .maan-blockqoute .maan-blockqoute-content .blockqoute {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 35px;
   color: #3a3a3a;
   margin-right: 0;
@@ -4122,7 +4135,7 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
     bottom: 0;
     opacity: 0;
     visibility: hidden;
-    background: #b3ecff !important;
+    background: #9ec5fe !important;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     transform: translateX(-49%);
@@ -4140,13 +4153,13 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
   color: #fff;
 }
 .enews-content{
-  background: #b3ecff;
-  padding: 11px;
-  color: #fff;
+  /* background: #9ec5fe; */
+  padding: 3px;
+  color: #000;
 }
 
 .e-btn{
-  padding: 10px 37px 10px 37px;
+  padding:7px 20px 10px 20px;
 }
 .maan-top-bar{
   padding: 0px !important;
@@ -4223,7 +4236,7 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
 }
 
 .tv-ticker-item-last__change-wrapper {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 18px;
   margin-left: 17px;
   margin-top: 4px;
@@ -4234,6 +4247,9 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
   color: #000 !important;
 }
 
+.maan-don-t-miss-section .card .maan-card-body .maan-text h4 a:hover{
+  color: #fff !important;
+}
 
 .card.maan-card-img .maan-tag-parpul, .card.maan-big-post .maan-post-img .maan-tag-parpul {
   background: #b3ecff !important;
@@ -4260,9 +4276,9 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
 
 .thumbnails-x {
   width: 100%;
-  height: 220px;
+  height: 205px;
   /* margin: 10px; */
-  border: 1px solid #ccc;
+  border: none;
   float: left;
   overflow: hidden;
 }
@@ -4280,9 +4296,19 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
 }
 
 
+.home-top .web-only{
+  display: block;
+}
+.home-top .mobile-only{
+  display: none;
+}
+
 @media (max-width: 600px){
   .maan-manu-bar .maan-main-manu li a{
     color: #fff !important;
+  }
+  .enews-content{
+    background-color: #fff;
   }
   .mobile-menus{
     display: block;
@@ -4319,6 +4345,24 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
     grid-template-columns: 64% auto !important;
   }
 
+  .home-top .web-only{
+    display: none !important;
+  }
+  .home-top .mobile-only{
+    display: block !important;
+  }
+
+  .live .maan-news-list li{
+    grid-template-columns: 65% auto !important;
+  }
+
+  .po-absolute{
+    position: relative !important;
+  }
+}
+
+.po-absolute{
+  position: absolute;
 }
 
 
@@ -4328,6 +4372,40 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
 
 
 .news-details-colm .maan-text h2{
-  font-size: 25px !important;
-  line-height: 1.2 !important;
+  font-size: 20px !important;
+  line-height: 1.5 !important;
+}
+
+.clm-warp h2 a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clm-warp p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.m-f-12{
+  margin-left: -12px;
+}
+
+.img-height{
+  height: 250px;
+}
+.footer-list ul li a {
+  color: #a1b8bf !important;
+}
+.a-footer{
+  color: #a1b8bf !important;
+}
+.a-footer:hover {
+  color: #a1b8bf !important;
+
 }

@@ -43,7 +43,18 @@ class LivenewsController extends Controller
             ->orderBy('news.id')
             ->limit(5)
             ->get();
-        return view('frontend.pages.livenews',compact('allnews','popularallnews','recentallnews'));
+
+        $latestnewscolumns = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
+            ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
+            ->join('users','news.reporter_id','=','users.id')
+            ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+            ->where('newscategories.name','Columns')
+            ->where('news.status',1)
+            ->latest()
+            ->take(5)
+            ->get();
+
+        return view('frontend.pages.livenews',compact('allnews','popularallnews','recentallnews','latestnewscolumns'));
 //        return view('frontend.pages.livenews',compact('getnews'));
     }
 }

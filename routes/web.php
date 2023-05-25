@@ -53,7 +53,7 @@ Route::get('/',[HomeController::class,'maanIndex'])->name('home');
 Route::get('/subscribe/ajax',[HomeController::class,'subscribeAjax'])->name('subscribe');
 //route search
 Route::get('/search',[SearchController::class,'maanSearch'])->name('search');
-Route::get('columns-news/columns',[\App\Http\Controllers\Frontend\LivenewsController::class,'maanNewsLivenews']);
+//Route::get('columns-news/columns',[\App\Http\Controllers\Frontend\LivenewsController::class,'maanNewsLivenews']);
 
 
 foreach (newscategories() as $newscategory){
@@ -69,6 +69,15 @@ Route::get('/special-stories/details/{id}/{slug?}',[\App\Http\Controllers\Fronte
 Route::get('/photogallery',[\App\Http\Controllers\Frontend\PhotogalleryController::class,'maanPhotogalleryIndex'])->name('photogallery');
 Route::get('/photogallery/details/{id}/{slug?}',[\App\Http\Controllers\Frontend\PhotogalleryController::class,'maanPhotogalleryDetails'])->name('photogallery.details');
 Route::get('/photogallerylist/details/{id}/{slug?}',[\App\Http\Controllers\Frontend\PhotogalleryController::class,'maanPhotogalleryList'])->name('photogallerylist');
+
+
+//video gallery
+Route::get('/videogallery',[\App\Http\Controllers\Frontend\VideogalleryController::class,'maanVideogalleryIndex'])->name('videogallery');
+Route::get('/videogallery/details/{id}/{slug?}',[\App\Http\Controllers\Frontend\VideogalleryController::class,'maanVideogalleryDetails'])->name('videogallery.details');
+Route::get('/videogallerylist/details/{id}/{slug?}',[\App\Http\Controllers\Frontend\VideogalleryController::class,'maanVideogalleryList'])->name('videogallerylist');
+//video gallery end
+
+
 
 // route news comments
 Route::post('news/comment/{id?}',[\App\Http\Controllers\Frontend\NewsController::class,'maanNewsComment'])->name('news.comment');

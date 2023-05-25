@@ -34,6 +34,7 @@ $(document).ready(function(){
     });
     // blog sub-category
     $("#blogcategory_id").on("change",function (){
+
         var blogcategory_id = $('#blogcategory_id').val();
         $('#blogsubcategory_id').empty();
         $.ajax({
@@ -52,7 +53,7 @@ $(document).ready(function(){
             });
             },
             error: function () {
-                alert(config.routes.blogcategory);
+                alert('Error occur fetch subcategory action.....!!');
             }
 
         })

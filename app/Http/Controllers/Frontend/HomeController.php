@@ -52,12 +52,21 @@ class HomeController extends Controller
             ->skip(2)
             ->limit(4)
             ->get();
+      
 
-
-        $epaper = DB::table('pdfs')->orderByDesc('id')->take(1)->get();
+        $epaper = DB::table('pdfs')->orderByDesc('id')->take(1)->get();    
 
         $newscategories = Newscategory::orderByDesc('post_counter')->get();
 
+        $latestnewscolumns = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
+            ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
+            ->join('users','news.reporter_id','=','users.id')
+            ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+            ->where('newscategories.name','Politics')
+            ->where('news.status',1)
+            ->latest()
+            ->take(3)
+            ->get();
 
         $popularsnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
@@ -129,7 +138,7 @@ class HomeController extends Controller
             ->latest()
             ->take(4)
             ->get();
-        $latestnewsworlds=$latestnewsworld = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
+        $latestnewsworld = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
             ->join('users','news.reporter_id','=','users.id')
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
@@ -166,6 +175,16 @@ class HomeController extends Controller
             ->latest()
             ->take(4)
             ->get();
+        
+        $latestnewsworlds = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
+            ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
+            ->join('users','news.reporter_id','=','users.id')
+            ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+            ->where('newscategories.name','International')
+            ->where('news.status',1)
+            ->latest()
+            ->take(4)
+            ->get();
 
         $latestnewsnational = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
@@ -174,7 +193,7 @@ class HomeController extends Controller
             ->where('newscategories.name','National')
             ->where('news.status',1)
             ->latest()
-            ->take(5)
+            ->take(4)
             ->get();
         $latestnewslifestyle = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
@@ -243,17 +262,6 @@ class HomeController extends Controller
         //     ->get();
 
 
-        $latestnewscolumns = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
-            ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
-            ->join('users','news.reporter_id','=','users.id')
-            ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
-            ->where('newscategories.name','Columns')
-            ->where('news.status',1)
-            ->latest()
-            ->take(5)
-            ->get();
-
-
 
             $date = now()->format('Y-m-d');
         $blogcategories=DB::table('blogs')
@@ -262,13 +270,13 @@ class HomeController extends Controller
             ->select('blogs.id','blogs.title','blogs.image','blogs.title','blogsubcategories.name')
             ->where('status',1)
             ->where('date','<=',$date)
-            ->limit(6)
+            ->limit(20)
             ->get();
 
 
         $this->sitemap();
 
-        return view('frontend.pages.home',compact('latestnews','liveNews', 'liveNews2','newscategories','popularsnews','popularsnewsall','popularsnewsworld','popularsnewslifestyle','popularsnewsentertainment','popularsnewssports','popularsnewstechnology','latestnewsnational','latestnewsworld','latestnewspolitics','latestnewslifestyle','latestphotogalleries','latestnewsentertainment','latestnewssports','latestnewstechnology','latestnewsbusiness','latestVideoGalleries', 'epaper', 'blogcategories', 'latestnewscity', 'latestnewsstate', 'latestnewsnational','latestnewsworlds','latestnewscolumns'));
+        return view('frontend.pages.home',compact('latestnews','liveNews', 'liveNews2','newscategories','popularsnews','popularsnewsall','popularsnewsworld','popularsnewslifestyle','popularsnewsentertainment','popularsnewssports','popularsnewstechnology','latestnewsnational','latestnewsworld','latestnewspolitics','latestnewslifestyle','latestphotogalleries','latestnewsentertainment','latestnewssports','latestnewstechnology','latestnewsbusiness','latestVideoGalleries', 'epaper', 'blogcategories', 'latestnewscity', 'latestnewsstate', 'latestnewsnational', 'latestnewsworlds', 'latestnewscolumns' ));
     }
 
     public function sitemap()

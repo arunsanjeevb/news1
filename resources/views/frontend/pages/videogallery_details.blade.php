@@ -7,13 +7,13 @@
             <div class="container">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ URL('/') }}">{{ __('Home') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ __('Photogallery Details') }}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('Video Gallery Details') }}</li>
                 </ol>
             </div>
         </nav>
         <!-- Maan Breadcrumb End -->
 
-        <style> 
+        <style>
             section .maan-title-border-none .maan-title-text h2{
                 font-size: 2rem !important;
             }
@@ -25,16 +25,12 @@
                     <div class="col-lg-8">
                         <div class="maan-title-border-none">
                             <div class="maan-title-text">
-                                <h2>{{ $photogallery->title }}</h2>
+                                <h2>{{ $videogallery->title }}</h2>
                             </div>
                         </div>
                         <div class="card maan-default-post">
                             <div class="maan-post-img">
-
-
-                            <img src="{{ asset($photogallery->image) }}" alt="top-news">
-
-
+                                <iframe src="{{ asset($videogallery->video) }}" alt="top-news" width="850" height="380"></iframe>
                             </div>
                             <div class="card-body maan-card-body">
                                 <div class="maan-text">
@@ -59,11 +55,11 @@
                                                     </svg>
 
                                                     </span>
-                                                    <span class="maan-item-text"><a href="#">{{ $photogallery->reporter_name }}</a></span>
+                                                    <span class="maan-item-text"><a href="#">{{ $videogallery->reporter_name }}</a></span>
                                                 </li>
                                                 <li>
                                                     <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                    <span class="maan-item-text">{{ $photogallery->created_at->format('d M, Y') }}</span>
+                                                    <span class="maan-item-text">{{ $videogallery->created_at->format('d M, Y') }}</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -91,20 +87,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p>{{ $photogallery->description }}  </p>
+                                    <p>{{ $videogallery->description }}  </p>
                                 </div>
                             </div>
                         </div>
-                        @if(1==2)
-                        <div class="maan-post-adds">
-                            <a href=" @if (advertisement()) {{advertisement()->leaderboard_url}} @else https://www.google.com/ @endif " target="_blank">
-                                <img src="
-@if (advertisement()) {{asset(advertisement()->leaderboard_image)}} @else {{ asset('public/frontend/img/post-add/add.jpg') }} @endif " alt="{{ asset('public/frontend/img/post-add/add.jpg') }}">
-                            </a>
-                        </div> @endif 
-
                     </div>
                     <div class="col-lg-4">
+                        @if (advertisement())
+                            {!! advertisement()->sidebar_ads !!}
+                        @else
+                            <a href="https://www.google.com/" target="_blank">
+                                <img src="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}" alt="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}">
+                            </a>
+                        @endif
+                            @if(1==2)
                     <div class="maan-title">
                             <div class="maan-title-text">
                                 <h2>{{ __('Gallery') }}</h2>
@@ -116,15 +112,17 @@
                                     @php
                                     $photogalleries = photogalleries();
                                     @endphp
-                                    @foreach($photogalleries as $photogallery)
+                                    @foreach($photogalleries as $videogallery)
                                     <li>
-                                        <a href="{{ route('photogallery.details',$photogallery->id) }}"><img src="{{ asset($photogallery->image) }}" alt="gallery"></a>
+                                        <a href="{{ route('videogallery.details',$videogallery->id) }}">
+                                            <iframe src="{{ asset($videogallery->video) }}" alt="top-news"></iframe>
+                                        </a>
                                     </li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
-
+                    @endif
                     @if(1==2)
                         <div class="maan-title">
                             <div class="maan-title-text">
@@ -139,7 +137,7 @@
                                 </div>
                             </form>
                         </div>
-                        @endif                
+                        @endif
                         @if(1==2)
                         <div class="maan-title">
                             <div class="maan-title-text">
@@ -176,15 +174,15 @@
                                     @php
                                     $photogalleries = photogalleries();
                                     @endphp
-                                    @foreach($photogalleries as $photogallery)
+                                    @foreach($photogalleries as $videogallery)
                                     <li>
-                                        <a href="{{ route('photogallery.details',$photogallery->id) }}"><img src="{{ asset($photogallery->image) }}" alt="gallery"></a>
+                                        <a href="{{ route('videogallery.details',$videogallery->id) }}"><img src="{{ asset($videogallery->image) }}" alt="gallery"></a>
                                     </li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="maan-title">
                             <div class="maan-title-text">
                                 <h2>{{ __('Tags') }}</h2>
@@ -216,7 +214,7 @@
                             </div>
                         </div>
                         @endif
-                       
+
                     </div>
                 </div>
             </div>
@@ -233,18 +231,18 @@
                     </div>
                 </div>
                 <div class="row maan-post-groop">
-                    @foreach($relatedphotogallery as $relatedphotogallery)
+                    @foreach($relatedvideogallery as $relatedvideogallery)
                         <div class="col-lg-4">
                             <div class="card maan-default-post">
                                 <div class="maan-post-img">
-                                    <a href="{{ route('photogallery.details',$relatedphotogallery->id) }}">
-                                        <img src="{{ asset($relatedphotogallery->image) }}" alt="top-news">
+                                    <a href="{{ route('videogallery.details',$relatedvideogallery->id) }}">
+                                        <img src="{{ asset($relatedvideogallery->image) }}" alt="top-news">
                                     </a>
 
                                 </div>
                                 <div class="card-body maan-card-body">
                                     <div class="maan-text">
-                                        <h4><a href="{{ route('photogallery.details',$relatedphotogallery->id) }}">{{ $relatedphotogallery->title }}</a></h4>
+                                        <h4><a href="{{ route('videogallery.details',$relatedvideogallery->id) }}">{{ $relatedvideogallery->title }}</a></h4>
                                         <ul>
                                             <!-- <li>
                                                 <span class="maan-icon">
@@ -264,11 +262,11 @@
                                                     </svg>
 
                                                 </span>
-                                                <span class="maan-item-text"><a href="#">{{ $relatedphotogallery->reporter_name }}</a></span>
+                                                <span class="maan-item-text"><a href="#">{{ $relatedvideogallery->reporter_name }}</a></span>
                                             </li> -->
                                             <!-- <li>
                                                 <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                <span class="maan-item-text">{{ $relatedphotogallery->created_at->format('d M, Y') }}</span>
+                                                <span class="maan-item-text">{{ $relatedvideogallery->created_at->format('d M, Y') }}</span>
                                             </li> -->
                                         </ul>
                                     </div>

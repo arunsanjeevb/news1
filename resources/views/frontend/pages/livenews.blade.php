@@ -28,7 +28,7 @@
     <section class="business maan-slide-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="maan-title">
                         <div class="maan-title-text">
                             <h2>{{ 'Columns' }}</h2>
@@ -152,7 +152,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <div class="maan-title">
                         <div class="maan-title-text">
                             <h2>{{ __('Related post') }}</h2>

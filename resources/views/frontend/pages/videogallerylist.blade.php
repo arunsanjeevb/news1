@@ -7,7 +7,7 @@
             <div class="container">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ URL('/') }}">{{ __('Home') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ __('Photogalleries') }}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('Videogalleries') }}</li>
                 </ol>
             </div>
         </nav>
@@ -24,54 +24,54 @@
 
                         <div class="maan-news-post">
                             <div class="maan-slide">
-                                @foreach($photogallerylist as $photogallery )
+                                @foreach($videogallerylist as $videogallery )
                                 @if($loop->iteration==1)
                                     <div class="card maan-default-post">
-                                    
+
                                         <div class="maan-post-img">
 
-                                                <a href="{{ route('photogallery.details',['id'=>$photogallery->id,'slug'=>\Illuminate\Support\Str::slug($photogallery->title)]) }}">
-                                                    <img src="{{ asset($photogallery->image) }}" alt="top-news">
+                                                <a href="{{ route('videogallery.details',['id'=>$videogallery->id,'slug'=>\Illuminate\Support\Str::slug($videogallery->title)]) }}">
+                                                    <iframe src="{{ asset($videogallery->video) }}" alt="top-news" width="850" height="380"></iframe>
                                                 </a>
-                                                
+
 
                                         </div>
-                                        
+
                                         <div class="card-body maan-card-body">
                                             <div class="maan-text">
-                                                    <h2><a href="{{ route('photogallery.details',['id'=>$photogallery->id,'slug'=>\Illuminate\Support\Str::slug($photogallery->title)]) }}">{{ $photogallery->title }}</a></h2>
+                                                    <h2><a href="{{ route('videogallery.details',['id'=>$videogallery->id,'slug'=>\Illuminate\Support\Str::slug($videogallery->title)]) }}">{{ $videogallery->title }}</a></h2>
                                                 </div>
                                             <div class="maan-text">
-                                                <p><a href="{{ route('photogallery.details',['id'=>$photogallery->id,'slug'=>\Illuminate\Support\Str::slug($photogallery->title)]) }}">{{ $photogallery->description }}</a></p>
+                                                <p><a href="{{ route('videogallery.details',['id'=>$videogallery->id,'slug'=>\Illuminate\Support\Str::slug($videogallery->title)]) }}">{{ $videogallery->description }}</a></p>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                     @endif
                                 @endforeach
 
                             </div>
 
-                            <div class="row col-md-12 news-details-colm clm-warp"> 
-                                @foreach($photogallerylist as $allnewsall )
+                            <div class="row col-md-12 news-details-colm clm-warp">
+                                @foreach($videogallerylist as $allnewsall )
                                 @if($loop->iteration!=1)
 
                                 <div class="col-md-4">
                                     <div class="card maan-default-post">
                                         <div class="maan-post-img">
                                             <div class="maan-text">
-                                            <a href="{{ route('photogallery.details',['id'=>$allnewsall->id,'slug'=>\Illuminate\Support\Str::slug($allnewsall->title)]) }}">
-                                                            <img src="{{ asset($allnewsall->image) }}" alt="top-news">
-                                                        </a>
+                                            <a href="{{ route('videogallery.details',['id'=>$allnewsall->id,'slug'=>\Illuminate\Support\Str::slug($allnewsall->title)]) }}">
+                                                <iframe src="{{ asset($videogallery->video) }}" alt="top-news"></iframe>
+                                            </a>
                                             </div>
 
                                         </div>
                                         <div class="card-body maan-card-body">
                                             <div class="maan-text">
-                                                <h2><a href="{{ route('photogallery.details',['id'=>$allnewsall->id,'slug'=>\Illuminate\Support\Str::slug($allnewsall->title)]) }}">{{ $allnewsall->title }}</a></h2>
+                                                <h2><a href="{{ route('videogallery.details',['id'=>$allnewsall->id,'slug'=>\Illuminate\Support\Str::slug($allnewsall->title)]) }}">{{ $allnewsall->title }}</a></h2>
                                                 <!-- <p class="mt-0">{{ $allnewsall->description }}</p> -->
                                                 <ul>
-                                                
+
                                                     <!-- <li>
                                                         <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
                                                         <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($allnewsall->date))->format('d M, Y') }}</span>
@@ -90,12 +90,12 @@
                     <div class="col-lg-4">
 
                     <div class="maan-post-adds" >
-                   
+
                                 @if (advertisement())
                                     {!! advertisement()->sidebar_ads !!}
                                 @else
                                     <a href="https://www.google.com/" target="_blank">
-                                        <img src="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}" alt="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}">
+                                        <video src="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}" alt="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}">
                                     </a>
                                 @endif
 
@@ -112,15 +112,15 @@
                                 @foreach($popularsnews as $popularnews)
                                     <div class="card maan-default-post">
                                         <div class="maan-post-img">
-                                            @if ($popularnews->image)
+                                            @if ($popularnews->video)
                                                 @php
-                                                    $images = json_decode($popularnews->image);
+                                                    $videos = json_decode($popularnews->video);
                                                 @endphp
-                                                @if($images!='')
-                                                    @foreach ($images as $image)
-                                                        @if (File::exists($image))
+                                                @if($videos!='')
+                                                    @foreach ($videos as $video)
+                                                        @if (File::exists($video))
                                                             <a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">
-                                                                <img src="{{ asset($image) }}" alt="top-news">
+                                                                <iframe src="{{ asset($videogallery->video) }}" alt="top-"></iframe>
                                                             </a>
                                                         @endif
                                                     @endforeach
@@ -157,15 +157,15 @@
                                     @foreach($recentallnews as $recentallnews)
                                         <li>
                                             <div class="maan-list-img">
-                                                @if ($recentallnews->image)
+                                                @if ($recentallnews->video)
                                                     @php
-                                                        $images = json_decode($recentallnews->image);
+                                                        $images = json_decode($recentallnews->video);
                                                     @endphp
                                                     @if($images!='')
                                                         @foreach ($images as $image)
                                                             @if (File::exists($image))
                                                                 <a href="{{ route($recentallnews->news_categoryslug.'.details',['id'=>$recentallnews->id,'slug'=>\Illuminate\Support\Str::slug($recentallnews->title)]) }}">
-                                                                    <img src="{{ asset($image) }}" alt="list-news-img">
+                                                                    <video src="{{ asset($image) }}" alt="list-news-img">
                                                                 </a>
                                                             @endif
                                                         @endforeach
@@ -189,7 +189,7 @@
                                 </ul>
                             </div>
                         </div>
-                       
+
                         <div class="maan-title">
                             <div class="maan-title-text">
                                 <h2>{{ __('Social Media') }}</h2>
@@ -213,7 +213,7 @@
         </section>
 
         <!-- test end -->
-        
+
         <!-- Maan Related Posts Start -->
         <section class="maan-related-posts" style="display: none;">
             <div class="container">
@@ -223,18 +223,18 @@
                     </div>
                 </div>
                 <div class="row maan-post-groop">
-                    @foreach($relatedphotogallery as $relatedphotogallery)
+                    @foreach($relatedvideogallery as $relatedvideogallery)
                         <div class="col-lg-4">
                             <div class="card maan-default-post">
                                 <div class="maan-post-img">
-                                    <a href="{{ route('photogallery.details',$relatedphotogallery->id) }}">
-                                        <img src="{{ asset($relatedphotogallery->image) }}" alt="top-news">
+                                    <a href="{{ route('videogallery.details',$relatedvideogallery->id) }}">
+                                        <video src="{{ asset($relatedvideogallery->video) }}" alt="top-news">
                                     </a>
 
                                 </div>
                                 <div class="card-body maan-card-body">
                                     <div class="maan-text">
-                                        <h4><a href="{{ route('photogallery.details',$relatedphotogallery->id) }}">{{ $relatedphotogallery->title }}</a></h4>
+                                        <h4><a href="{{ route('videogallery.details',$relatedvideogallery->id) }}">{{ $relatedvideogallery->title }}</a></h4>
                                         <ul>
                                             <li>
                                                 <span class="maan-icon">
@@ -254,11 +254,11 @@
                                                     </svg>
 
                                                 </span>
-                                                <span class="maan-item-text"><a href="#">{{ $relatedphotogallery->reporter_name }}</a></span>
+                                                <span class="maan-item-text"><a href="#">{{ $relatedvideogallery->reporter_name }}</a></span>
                                             </li>
                                             <li>
                                                 <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                <span class="maan-item-text">{{ $relatedphotogallery->created_at->format('d M, Y') }}</span>
+                                                <span class="maan-item-text">{{ $relatedvideogallery->created_at->format('d M, Y') }}</span>
                                             </li>
                                         </ul>
                                     </div>

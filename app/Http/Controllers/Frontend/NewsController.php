@@ -50,17 +50,35 @@ class NewsController extends Controller
             ->get();
         $recentallnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
-            ->select('news.id','news.title','news.image','news.date','newscategories.slug as news_categoryslug')
+            ->select('news.id','news.title','news.image','news.date','newscategories.slug as news_categoryslug','news.summary')
             ->where('newscategories.id',$newscategorysingle->id)
             ->where('news.status',1)
             ->orderByDesc('news.id')
             ->limit(5)
             ->get();
-        return view('frontend.pages.news',compact('allnews','popularallnews','recentallnews','newscategorysingle'));
+
+        //related news
+        $relatedgetsnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
+            ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
+            ->join('users','news.reporter_id','=','users.id')
+            ->select('news.id','news.title','news.summary','news.image','news.date','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"),
+                DB::raw("users.image AS reporter_pic"))
+            ->where('news.status',1)
+            ->where('newscategories.id','=',$newscategorysingle->id)
+            ->orderByDesc('news.id')
+            ->limit(4)
+            ->get();
+
+        if ($newscategory!='columns'){
+            return view('frontend.pages.news',compact('allnews','popularallnews','recentallnews','newscategorysingle','relatedgetsnews'));
+        }else{
+            return view('frontend.pages.livenews',compact('allnews','popularallnews','recentallnews','newscategorysingle','relatedgetsnews'));
+        }
     }
 
     public function maanNewsDetails($id,$slug=null)
     {
+//        return $slug;
         $viewers = News::where('id',$id)->value('viewers');
         $data['viewers'] = $viewers +1 ;
         //update
@@ -71,7 +89,8 @@ class NewsController extends Controller
         $getnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
             ->join('users','news.reporter_id','=','users.id')
-            ->select('news.id','news.title','news.summary','news.description','news.meta_keyword','news.meta_description','news.image','news.date','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug' ,'news.hide_commends',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+            ->select('news.id','news.title','news.summary','news.description','news.meta_keyword','news.meta_description','news.image','news.date','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug' ,'news.hide_commends',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"),
+                DB::raw("users.image AS reporter_pic"))
             ->where('news.id',$id)
             ->where('news.status',1)
             ->first();
@@ -79,12 +98,13 @@ class NewsController extends Controller
         $relatedgetsnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
             ->join('users','news.reporter_id','=','users.id')
-            ->select('news.id','news.title','news.summary','news.image','news.date','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+            ->select('news.id','news.title','news.summary','news.image','news.date','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"),
+                DB::raw("users.image AS reporter_pic"))
             ->where('news.id','!=',$id)
             ->where('news.status',1)
             ->where('newscategories.name',$getnews->news_category)
             ->orderByDesc('news.id')
-            ->limit(3)
+            ->limit(4)
             ->get();
         $socials = Socialshare::all();
 

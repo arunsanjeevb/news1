@@ -159,12 +159,12 @@
                 <div class="col-lg-4">
                     <div class="maan-title">
                         <div class="maan-title-text">
-                            <h2>{{ __('Popular post') }}</h2>
+                            <h2>{{ __('Related post') }}</h2>
                         </div>
                     </div>
                     <div class="maan-widgets maan-bg-tr">
                         <div class="popular-post">
-                            @foreach($popularallnews as $popularnews)
+                            @foreach($relatedgetsnews as $popularnews)
                                 <div class="card maan-default-post">
                                     <div class="maan-post-img">
                                         @if ($popularnews->image)

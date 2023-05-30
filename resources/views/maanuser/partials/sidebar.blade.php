@@ -54,14 +54,6 @@
                                 <p>{{ __('Post list') }}</p>
                             </a>
                         </li>
-                        @if(1==2)
-                        <li class="nav-item">
-                            <a href="{{ route('maanuser.blog') }}" class="nav-link {{ Request::routeIs('maanuser.blog') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __(' Blog List') }}</p>
-                            </a>
-                        </li>
-                        @endif
 
                     </ul>
                 </li>

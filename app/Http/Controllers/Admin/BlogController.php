@@ -8,6 +8,7 @@ use App\Models\Blogcategory;
 use App\Models\Blogsubcategory;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -15,9 +16,12 @@ class BlogController extends Controller
 {
     public function maanBlogIndex()
     {
+        $query = "SELECT * FROM blogs join users on blogs.user_id=users.id limit 10";
+//        $blogs = Blog::paginate(10);
+        $blogs = DB::select($query);
+//        return $blogs;
 
-        $blogs = Blog::paginate(10);
-       return view('admin.pages.blog.blog.index',compact('blogs'));
+        return view('admin.pages.blog.blog.index',compact('blogs'));
     }
     public function maanBlogCreate(Request $request)
     {

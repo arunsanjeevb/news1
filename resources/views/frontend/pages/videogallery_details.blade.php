@@ -91,16 +91,16 @@
                                 </div>
                             </div>
                         </div>
+                        @if(1==2)
+                        <div class="maan-post-adds">
+                            <a href=" @if (advertisement()) {{advertisement()->leaderboard_url}} @else https://www.google.com/ @endif " target="_blank">
+                                <img src="
+@if (advertisement()) {{asset(advertisement()->leaderboard_image)}} @else {{ asset('public/frontend/img/post-add/add.jpg') }} @endif " alt="{{ asset('public/frontend/img/post-add/add.jpg') }}">
+                            </a>
+                        </div> @endif
+
                     </div>
                     <div class="col-lg-4">
-                        @if (advertisement())
-                            {!! advertisement()->sidebar_ads !!}
-                        @else
-                            <a href="https://www.google.com/" target="_blank">
-                                <img src="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}" alt="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}">
-                            </a>
-                        @endif
-                            @if(1==2)
                     <div class="maan-title">
                             <div class="maan-title-text">
                                 <h2>{{ __('Gallery') }}</h2>
@@ -122,7 +122,7 @@
                                 </ul>
                             </div>
                         </div>
-                    @endif
+
                     @if(1==2)
                         <div class="maan-title">
                             <div class="maan-title-text">

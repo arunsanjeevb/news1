@@ -19,10 +19,14 @@
 @section('main_content')
 <style>
     section .maan-title-border-none .maan-title-text h2{
-        font-size: 2.75rem !important;
-        line-height: 1.5 !important;
+        font-size: 1.75rem !important;
+        line-height:    1.5 !important;
     }
 
+    .maan-archive-details  .for-right .card.maan-default-post .maan-post-img img{
+        height: 120px; 
+      
+    }
      @media (max-width: 600px){
         section .maan-title-border-none .maan-title-text h2{
             font-size: 17px !important;
@@ -50,16 +54,16 @@
                     <div class="col-lg-8">
                         <div class="maan-title-border-none">
                             <div class="maan-title-text">
-                                <h2>{{ $getnews->title }} </h2>
-                                @if(stripos($url,'columns-news'))
+                                <h3 >{{ $getnews->title }} </h3>
                                 <p>{{ $getnews->summary }}</p>
-                                @endif
                             </div>
                         </div>
                         @if(stripos($url,'columns-news'))
                         <div class="row">
                             <div class="col-md-1">
-                                <img src="{{ asset($getnews->reporter_pic) }}" alt="top-news">
+                                <img src="{{ asset($getnews->reporter_pic) }}" alt="top-news" style="    border-radius: 50%;
+    width: 41px !important;
+    height: 41px !important;">
                             </div>
                             <div class="col-md-3">
                                 <span>{{ $getnews->reporter_name }}</span>
@@ -88,7 +92,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <ul>
-                                                <li> <p>{{ $getnews->summary }}</p>  </li>
+                                                <!-- <li> <p>{{ $getnews->summary }}</p>  </li> -->
+                                                <li> <p><i>{{ $getnews->caption }}</i></p>  </li>
                                                 <li>
                                                     <span class="maan-icon" style="display: none">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
@@ -134,7 +139,7 @@
                             </div>
                         </div>
 
-                        @if(1==2)
+                        <!-- @if(1==2) -->
                             <div class="maan-post-adds" >
                                 @if (advertisement())
                                     {!! advertisement()->after_post_ads !!}
@@ -146,12 +151,12 @@
 
 
                             </div>
-                        @endif
+                        <!-- @endif -->
 
                         <div class="social-media blog-details-social">
                             <h6>Share Now</h6>
                             <ul>
-                                <li>
+                              
 
                                 <li>
                                     <a href="https://www.facebook.com/sharer/sharer.php?u= {{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/fb.png') }} " alt="{{ asset('public/uploads/images/logo/fb.png') }}" style="width: 35px !important;"></a>
@@ -228,51 +233,93 @@
                         </div>
                         @endif
                     </div>
-
-                    <div class="col-lg-4">
-                        <div class="maan-title">
-                            <div class="maan-title-text">
-                                <h2>{{ __('Related Post') }}</h2>
-                            </div>
+                    
+                    <div class="col-lg-4 for-right">
+                    <div class="maan-title">
+                        <div class="maan-title-text">
+                            <h2>{{ __('Related Stories') }}</h2>
                         </div>
-                        <div class="maan-widgets maan-bg-tr">
-                            <div class="popular-post">
-                                @foreach($relatedgetsnews as $popularnews)
-                                    <div class="card maan-default-post">
-                                        <div class="maan-card-img">
-                                            @if ($popularnews->image)
-                                                @php
-                                                    $images = json_decode($popularnews->image);
-                                                @endphp
-                                                @if($images!='')
-                                                    @foreach ($images as $image)
-                                                        @if (File::exists($image))
-                                                            <a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">
-                                                                <img src="{{ asset($image) }}" alt="top-news">
-                                                            </a>
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-
+                    </div>
+                    
+                    <div class="maan-widgets maan-bg-tr">
+                        <div class="maan-news-list recent-post">
+                            <ul>
+                            @foreach($relatedgetsnews as $popularnews)
+                                    <li>
+                                        <div class="maan-list-img">
+                                        @if ($popularnews->image)
+                                            @php
+                                                $images = json_decode($popularnews->image);
+                                            @endphp
+                                            @if($images!='')
+                                                @foreach ($images as $image)
+                                                    @if (File::exists($image))
+                                                        <a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">
+                                                            <img src="{{ asset($image) }}" alt="top-news">
+                                                        </a>
+                                                    @endif
+                                                @endforeach
                                             @endif
+
+                                        @endif
+
                                         </div>
-                                        <div class="card-body maan-card-body">
-                                            <div class="maan-text">
-                                                <h4><a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">{{ $popularnews->title }}</a></h4>
-                                                <ul>
-                                                    <!-- <li>
+                                        <div class="maan-list-text">
+                                        <h4><a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">{{ $popularnews->title }}</a></h4>
+                                            <ul>
+                                               
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                  
+
+                    <div class="maan-widgets maan-bg-tr">
+                        <div class="popular-post">
+                            @foreach($relatedgetsnews as $popularnews)
+                                <div class="card maan-default-post">
+                                    <div class="maan-post-img">
+                                        @if ($popularnews->image)
+                                            @php
+                                                $images = json_decode($popularnews->image);
+                                            @endphp
+                                            @if($images!='')
+                                                @foreach ($images as $image)
+                                                    @if (File::exists($image))
+                                                        <a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">
+                                                            <img src="{{ asset($image) }}" alt="top-news">
+                                                        </a>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+
+                                        @endif
+                                    </div>
+                                    <div class="card-body maan-card-body">
+                                        <div class="maan-text">
+                                            <h4><a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">{{ $popularnews->title }}</a></h4>
+                                            <ul>
+                                                <!-- <li>
                                                     <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
                                                     <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnews->date))->format('d M, Y') }}</span>
                                                 </li> -->
-                                                </ul>
-                                            </div>
+                                            </ul>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
+                            @endforeach
 
-                            </div>
                         </div>
-
+                    </div>
+                    
+                       
                         @if(1==2)
                             <div class="maan-title">
                                 <div class="maan-title-text">
@@ -301,7 +348,7 @@
             <div class="container">
                 <div class="maan-title">
                     <div class="maan-title-text">
-                        <h2>{{ __('Related Posts') }}</h2>
+                        <h2>{{ __('Related Stories') }}</h2>
                     </div>
                 </div>
                 <div class="row maan-post-groop">

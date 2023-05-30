@@ -236,6 +236,10 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function (){
 
 Route::group(['middleware'=>['role:super-admin,admin,editor,reporter,accountent']],function (){
 
+    //new show
+    Route::get('/reporter/show/{userid?}',[NewsreporterController::class,'maanReporterList'])->name('reporter.show');
+    //end
+
 //Route blog category
     Route::get('/blog/category',[BlogcategoryController::class,'maanBlogCategoryIndex'])->name('blog.category');
     //Route blog category store
@@ -294,17 +298,17 @@ Route::prefix('maanuser')->name('maanuser.')->group(function (){
 
 
     //Route blog
-    Route::get('/blog',[MaanuserController::class,'maanuserIndex'])->name('blog');
+//    Route::get('/blog',[MaanuserController::class,'maanuserIndex'])->name('blog');
     //Route blog create
-    Route::get('/blog/create',[MaanuserController::class,'maanuserBlogCreate'])->name('blog.create');
+//    Route::get('/blog/create',[MaanuserController::class,'maanuserBlogCreate'])->name('blog.create');
     //Route blog store
-    Route::post('/blog',[MaanuserController::class,'maanuserBlogStore']);
+//    Route::post('/blog',[MaanuserController::class,'maanuserBlogStore']);
     //Route blog edit
-    Route::get('/blog/edit/{blog?}',[MaanuserController::class,'maanuserBlogEdit'])->name('blog.edit');
+//    Route::get('/blog/edit/{blog?}',[MaanuserController::class,'maanuserBlogEdit'])->name('blog.edit');
     //Route blog update
-    Route::match(['put','patch'],'/blog/update/{blog}',[MaanuserController::class,'maanuserBlogUpdate'])->name('blog.update');
+//    Route::match(['put','patch'],'/blog/update/{blog}',[MaanuserController::class,'maanuserBlogUpdate'])->name('blog.update');
     //Route blog delete
-    Route::delete('/blog/destroy/{blog}',[MaanuserController::class,'maanuserBlogDestroy'])->name('blog.destroy');
+//    Route::delete('/blog/destroy/{blog}',[MaanuserController::class,'maanuserBlogDestroy'])->name('blog.destroy');
 
 });
 Route::get('/sitemap',function (){

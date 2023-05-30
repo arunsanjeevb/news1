@@ -1,7 +1,7 @@
 <div class="maan-mid-bar">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-sm-8">
+            <div class="col-sm-12">
                 <div class="maan-header-adds">
                     
                     @if (advertisement())
@@ -15,7 +15,7 @@
 
                 </div>
             </div>
-           @if(1==2)
+          @if(1==2)
             <div class="col-sm-3 col-lg-2">
 
                 <?php
@@ -30,7 +30,7 @@
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => "GET",
                     CURLOPT_HTTPHEADER => [
-                        "x-access-token: goldapi-34nkqrlh1bvc39-io",
+                        "x-access-token: goldapi-ln5cmrlhiverw3-io",
                     ],
                 ]);
                 $response = curl_exec($curl);
@@ -84,7 +84,7 @@
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => "GET",
                     CURLOPT_HTTPHEADER => [
-                        "x-rapidapi-key: 8fe159f834msh38c85cf0cd1fec6p1bf688jsnc86788ec2601",
+                        "x-rapidapi-key: c513d8410dmsh2032afb40c5520ap1d5dc1jsncb0314b42f57",
                         "x-rapidapi-host: apidojo-yahoo-finance-v1.p.rapidapi.com",
                     ],
                 ]);
@@ -94,11 +94,10 @@
                 if ($err) {
                     echo "cURL Error #:" . $err;
                 } else {
-                    $data = json_decode($response);
-                
-                    $sensex_value = $data->quoteResponse->result[0]->regularMarketPrice;
-                    echo 'BSE Sensex Value: ' . $sensex_value  ;
-                    // " - ". $data->quoteResponse->result[0]->regularMarketChange. " - ".$data->quoteResponse->result[0]->regularMarketChangePercent
+                    // $data = json_decode($response);
+
+                    // $sensex_value = $data->quoteResponse->result[0]->regularMarketPrice;
+                    echo 'BSE Sensex Value: 0.9872'   ;
                 } ?>
                 </div>
                 <div class="row">
@@ -114,7 +113,7 @@
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => "GET",
                     CURLOPT_HTTPHEADER => [
-                        "x-access-token: goldapi-34nkqrlh1bvc39-io",
+                        "x-access-token: goldapi-ln5cmrlhiverw3-io",
                     ],
                 ]);
                 $response = curl_exec($curl);
@@ -130,8 +129,9 @@
 
                 } ?>
                 </div>
+               
             </div>
-          @endif
+            @endif
         </div>
     </div>
 </div>

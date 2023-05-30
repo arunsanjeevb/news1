@@ -1,6 +1,7 @@
 <footer>
     <section class="maan-info-footer maan-data-background" data-background="{{ asset('/frontend/img/footer/footer.jpg') }}">
         <div class="container">
+            @if(1==2)
             <div class="row maan-link-footer">
                 <div class="col-lg-4 col-md-6">
                     <div class="maan-title">
@@ -83,8 +84,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4">
+            @endif
+            <div class="row ">
+                <div class="col-lg-3">
                     <div class="logo">
                         <a href="{{ URL('/') }}"><img src="{{ asset(settings()->logo_footer) }}" alt="footer-logo"></a>
                     </div>
@@ -100,10 +102,10 @@
                             Our Location</li>
                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i>
                             Contact Us</li>
-                       <li><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                            Archive Template</li>
-                       <li><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                            Our Company</li>
+                       <li><a class="a-footer" href="{{ URL('/videogallery') }}" > <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            Video Gallery</a></li>
+                        <li><a class="a-footer" href="{{ URL('/photogallerylist/details/1') }}" > <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            Image Gallery</a></li>
                    </ul>
                 </div>
                 <div class="col-lg-2 footer-list">
@@ -121,31 +123,31 @@
                              Community Reports</li>
                     </ul>
                 </div>
-                <div class="col-lg-2 footer-list">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                             Community Heath & Wellness</li>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Community Relations</li>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Community Services</li>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Resources</li>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Community Reports</li>
-                    </ul>
+                <div class="col-lg-3 footer-list">
+                    <h4>Subscribe to Our Newsletter!</h4>
+                    <form>
+                            @csrf
+                            <div class="input-group">
+                                <label class="maan-icon m-f-12" for="maanEmail">
+                                    <svg viewBox="0 0 512 512"><path d="M505.168,111.894L328.124,246.77l177.408,152.64c4.122-7.792,6.468-16.661,6.468-26.073V138.662 C512,128.971,509.521,119.85,505.168,111.894z"></path><path d="M456.049,82.711H55.95c-11.013,0-21.286,3.211-29.953,8.729l220.786,165.473c5.532,4.06,12.944,4.068,18.485,0.027 l218.79-166.682C475.815,85.468,466.251,82.711,456.049,82.711z"></path><path d="M303.725,265.359l-20.561,15.665c-8.109,5.987-17.616,8.981-27.119,8.981c-9.505,0-19.007-2.993-27.119-8.981 l-0.087-0.064l-20.533-15.389L27.253,421.346c8.396,5.039,18.213,7.943,28.697,7.943h400.1c10.552,0,20.43-2.939,28.862-8.038 L303.725,265.359z"></path><path d="M5.835,113.824C2.107,121.313,0,129.743,0,138.662v234.677c0,9.477,2.376,18.407,6.553,26.237l177.166-152.433 L5.835,113.824z"></path></svg>
+                                </label>
+                                <input type="email" class="form-control" placeholder="Enter Your Email Address" name="email" id="maanEmail" style="margin-bottom: 10px;">
+                            </div>
+                            <button type="button" class="d-btn subscribe">{{ __('Subscribe Now') }}</button>
+                        </form>
                 </div>
                 <div class="col-lg-2 footer-list">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Community Heath & Wellness</li>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Community Relations</li>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Community Services</li>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Resources</li>
-                        <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> Community Reports</li>
-                    </ul>
+                    <h4>{{ __("Download App") }}</h4>
+                    <div class=""> 
+                        <!-- footer-app-download -->
+                        <a href="@if (!empty(settings()->play_store_url)){{url(settings()->play_store_url)}}@endif" target="_blank" class="app-store"><img src="{{ asset('/public/frontend/img/footer/playstore.png') }}" alt="" class="opo opo1"></a>
+                        <a href="@if (!empty(settings()->app_store_url)){{url(settings()->app_store_url)}}@endif"  target="_blank" class="app-store"><img src="{{ asset('/public/frontend/img/footer/apple.png') }}"  alt="" class="opo"></a>
+                    </div>
                 </div>
             </div>
             <div class="maan-main-footer">
                 <!-- <h6>{{ date('Y') }} © {{ __('All rights reserved by') }} <a href="">{{ __('Salar News') }}</a></h6> -->
-                <h6>Copyright © {{ date('Y') }} <a href="">{{ __('Salar News') }}</a>. All rights reserved. | Developed By DigiDev Technology Ventures</h6>
+                <h6>Copyright © {{ date('Y') }} <a href="">{{ __('Salar News') }}</a>. All rights reserved. | Technology Ventures</h6>
 
                 
             </div>

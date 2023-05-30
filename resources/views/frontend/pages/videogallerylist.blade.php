@@ -31,7 +31,7 @@
                                         <div class="maan-post-img">
 
                                                 <a href="{{ route('videogallery.details',['id'=>$videogallery->id,'slug'=>\Illuminate\Support\Str::slug($videogallery->title)]) }}">
-                                                    <iframe src="{{ asset($videogallery->video) }}" alt="top-news" width="850" height="380"></iframe>
+                                                    <iframe src="{{ asset($videogallery->video) }}" alt="top-news"></iframe>
                                                 </a>
 
 

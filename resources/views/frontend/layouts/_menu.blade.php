@@ -10,12 +10,12 @@
 <div class="maan-manu-bar">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-2 ">
+            <div class="col-3">
                 <div class="maan-logo">
                     <a href="{{ URL('/') }}"><img src="{{ asset(settings()->logo) }}" alt="logo"></a>
                 </div>
             </div>
-            <div class="col-7 order-lg-2 col-lg-2 menu-for-mobile">
+            <div class="col-7 order-lg-2 col-lg-1 menu-for-mobile">
                 <ul class="maan-right-btns">
                     <li>
                         <button class="maan-search-btn" data-bs-toggle="modal" data-bs-target="#popupSearch1">
@@ -52,14 +52,14 @@
                                     <form action="{{ route('search') }}" method="GET"  style="display: flex;">
                                         @csrf
                                         <input type="search" name="search" placeholder="Search...">
-                                        <button type="submit" style="    width: auto; margin-left: 10px;">{{ __('Search') }}</button>
+                                        <button type="submit" style="width: auto; margin-left: 10px; background: #9ec5fe !important;">{{ __('Search') }}</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </li>
                     
-                    <li>
+                    <li class="po-absolute">
                         <div class="maan-profile-btn" data-bs-toggle="modal" data-bs-target="#signInModal">
                             <span class="icon" ><svg viewBox="0 0 512 512"><path d="M333.187,237.405c32.761-23.893,54.095-62.561,54.095-106.123C387.282,58.893,328.389,0,256,0 S124.718,58.893,124.718,131.282c0,43.562,21.333,82.23,54.095,106.123C97.373,268.57,39.385,347.531,39.385,439.795 c0,39.814,32.391,72.205,72.205,72.205H400.41c39.814,0,72.205-32.391,72.205-72.205 C472.615,347.531,414.627,268.57,333.187,237.405z M164.103,131.282c0-50.672,41.225-91.897,91.897-91.897 s91.897,41.225,91.897,91.897S306.672,223.18,256,223.18S164.103,181.954,164.103,131.282z M400.41,472.615H111.59 c-18.097,0-32.82-14.723-32.82-32.821c0-97.726,79.504-177.231,177.231-177.231s177.231,79.504,177.231,177.231 C433.231,457.892,418.508,472.615,400.41,472.615z"></path></svg></span>
                         </div>
@@ -178,7 +178,7 @@
         <div class="container">
             <div class="row">
                 <ul style="display: inline-flex;">
-                    <li class="sub-menu"><a href="{{ URL('/') }}">Home</a></li>
+                    <li class="sub-menu"><a href="{{ URL('/city-news/city') }}">City</a></li>
                     <li class="sub-menu"><a href="{{ URL('/state-news/state') }}">State</a></li>
                     <li class="sub-menu"><a href="{{ URL('/national-news/state') }}">National</a></li>
                     <li class="sub-menu"><a href="{{ URL('/world-news/state') }}">Trending</a></li>

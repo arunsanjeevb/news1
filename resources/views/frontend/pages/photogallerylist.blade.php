@@ -25,7 +25,6 @@
                         <div class="maan-news-post">
                             <div class="maan-slide">
                                 @foreach($photogallerylist as $photogallery )
-                                @if($loop->iteration==1)
                                     <div class="card maan-default-post">
                                     
                                         <div class="maan-post-img">
@@ -47,7 +46,6 @@
                                         </div>
                                        
                                     </div>
-                                    @endif
                                 @endforeach
 
                             </div>

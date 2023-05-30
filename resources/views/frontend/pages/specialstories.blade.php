@@ -215,7 +215,7 @@
             <div class="container">
                 <div class="maan-title">
                     <div class="maan-title-text">
-                        <h2>{{ __('Related Posts') }}</h2>
+                        <h2>{{ __('Related Stories') }}</h2>
                     </div>
                 </div>
 {{--                @if(1!=1)--}}

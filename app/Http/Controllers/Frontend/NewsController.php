@@ -31,20 +31,25 @@ class NewsController extends Controller
     public function maanNews($newscategory)
     {
         $newscategorysingle = Newscategory::where('name',ucfirst($newscategory))->first();
+        DB::enableQueryLog(); // Enable query log
         $allnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
             ->join('users','news.reporter_id','=','users.id')
             ->select('news.id','news.title','news.summary','news.description','news.image','news.date','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.id',$newscategorysingle->id)
             ->where('news.status',1)
+            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('curdate()'))
             ->orderByDesc('news.id')
             ->paginate(10);
+//        return dd(\DB::getQueryLog());
 
         $popularallnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
             ->select('news.id','news.title','news.image','news.date','newscategories.slug as news_categoryslug')
             ->where('newscategories.id',$newscategorysingle->id)
             ->where('news.status',1)
+            ->where('news.date', '<=', DB::raw('curdate()'))
             ->orderByDesc('news.viewers')
             ->limit(4)
             ->get();
@@ -53,6 +58,7 @@ class NewsController extends Controller
             ->select('news.id','news.title','news.image','news.date','newscategories.slug as news_categoryslug','news.summary')
             ->where('newscategories.id',$newscategorysingle->id)
             ->where('news.status',1)
+            ->where('news.date', '<=', DB::raw('curdate()'))
             ->orderByDesc('news.id')
             ->limit(5)
             ->get();
@@ -65,6 +71,7 @@ class NewsController extends Controller
                 DB::raw("users.image AS reporter_pic"))
             ->where('news.status',1)
             ->where('newscategories.id','=',$newscategorysingle->id)
+            ->where('news.date', '<=', DB::raw('curdate()'))
             ->orderByDesc('news.id')
             ->limit(4)
             ->get();
@@ -90,9 +97,10 @@ class NewsController extends Controller
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
             ->join('users','news.reporter_id','=','users.id')
             ->select('news.id','news.title','news.summary','news.description','news.meta_keyword','news.meta_description','news.image','news.date','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug' ,'news.hide_commends',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"),
-                DB::raw("users.image AS reporter_pic"))
+                DB::raw("users.image AS reporter_pic"),'news.caption','news.video_link')
             ->where('news.id',$id)
             ->where('news.status',1)
+            ->where('news.date', '<=', DB::raw('curdate()'))
             ->first();
         //related news
         $relatedgetsnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
@@ -103,6 +111,7 @@ class NewsController extends Controller
             ->where('news.id','!=',$id)
             ->where('news.status',1)
             ->where('newscategories.name',$getnews->news_category)
+            ->where('news.date', '<=', DB::raw('curdate()'))
             ->orderByDesc('news.id')
             ->limit(4)
             ->get();

@@ -75,6 +75,12 @@ class NewsController extends Controller
         $data['reporter_id']    = $request->reporter_id;
         $data['meta_keyword']    = $request->meta_keyword;
         $data['meta_description']    = $request->meta_description;
+
+        //new col added start
+        $data['caption']    = $request->caption;
+        $data['video_link']    = $request->video_link;
+        //new col added end
+
         if($request->status){
             $data['status']     = 1 ;
         }else{
@@ -182,6 +188,12 @@ class NewsController extends Controller
         $data['reporter_id']        = $request->reporter_id;
         $data['meta_keyword']       = $request->meta_keyword;
         $data['meta_description']   = $request->meta_description;
+
+        //new col added start
+        $data['caption']    = $request->caption;
+        $data['video_link']    = $request->video_link;
+        //new col added end
+
         if($request->status){
             $data['status']         = 1 ;
         }else{
@@ -211,7 +223,7 @@ class NewsController extends Controller
         }else{
             $data['hide_commends']         = 0 ;
         }
-        
+
 //        return $request->live_news;
         $data['image']          = $news_image_urls;
         $data['user_id']        = Auth::user()->id;

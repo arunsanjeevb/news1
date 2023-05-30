@@ -22,6 +22,7 @@
                     <li><a href="#" class=""><img src="{{ asset('public/uploads/images/logo/insta.png') }} " alt="{{ asset('public/uploads/images/logo/insta.png') }}">  </a></li>
                     <li><a href="#" class=""><img src="{{ asset('public/uploads/images/logo/fb.png') }} " alt="{{ asset('public/uploads/images/logo/fb.png') }}">  </a></li>
                     <li><a href="#" class=""><img src="{{ asset('public/uploads/images/logo/twitter.png') }} " alt="{{ asset('public/uploads/images/logo/twitter.png') }}">  </a></li>
+                    <li><a href="#" class=""><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}">  </a></li>
                     <li><a href="#" class=""><img src="{{ asset('public/uploads/images/logo/youtube.png') }} " alt="{{ asset('public/uploads/images/logo/youtube.png') }}">  </a></li>
 
                         <!-- @foreach(socials() as $social)

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,6 +26,18 @@ class NewsreporterController extends Controller
 
         return view('admin.pages.reporter.index',compact('reporters'));
     }
+
+
+    public function maanReporterList($reporter)
+    {
+        $blogs = Blog::where('user_id',$reporter)->paginate(10);
+        DB::enableQueryLog(); // Enable query log
+        $reporters = User::where('id',$reporter)->first();
+//        return $reporters;
+//                return dd(\DB::getQueryLog());
+        return view('admin.pages.blog.blog.reporter',compact('blogs','reporters'));
+    }
+
     /**
      *
      * Create a Reporter .

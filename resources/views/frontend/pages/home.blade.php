@@ -18,13 +18,13 @@
         .live h4 a {
             display: -webkit-box;
             -webkit-line-clamp: 3 !important;
-            font-size: 15px;
+            font-size: 18px;
             line-height: 1.5;
         }
         .live h4 .fir {
             display: -webkit-box;
             -webkit-line-clamp: 2 !important;
-            font-size: 15px;
+            font-size: 20px;
             line-height: 1.5;
         }
         .live .maan-news-list li .maan-list-img img{
@@ -88,13 +88,28 @@
             transition: opacity 0.3s ease;
         }
 
-        .image-container:hover .overlay {
+        .image-container .overlay {
             opacity: 1;
         }
 
         .description {
             text-align: center;
         }
+
+        
+.pictures-tag {
+    background: #fff !important;
+    color: #0276c1 !important;
+    margin-top: 11px;
+    position: absolute;
+    left: 20px;
+    padding: 2px 12px;
+    border-radius: 50px;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--maan-color-white);
+    z-index: 2;
+}
 
     </style>
 @endsection
@@ -144,7 +159,7 @@
                                 @endif
 
                             @endif
-                            <span class="maan-tag-@if($loop->iteration==1)parpul @elseif($loop->iteration==2)green @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)red  @endif" style="background: #fff !important; color:red !important; font-size: 18px;">BREAKING NEWS</span> <!-- {{ $lastnews->news_category }} -->
+                            <span class="maan-tag-@if($loop->iteration==1)parpul @elseif($loop->iteration==2)green @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)red  @endif" style="background: #fff !important; color:red !important; font-size: 22px;">BREAKING NEWS</span> <!-- {{ $lastnews->news_category }} -->
 
                         </div>
                         <div class="maan-card-body">
@@ -196,10 +211,10 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="col-lg-5 live">
+                <div class="col-lg-7 live">
                     <div class="row">
                         @foreach($liveNews2 as $lastnewsentertainment)
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="card maan-default-post">
                                     <div class="maan-post-img">
                                         @if($lastnewsentertainment->image)
@@ -256,49 +271,38 @@
 
                         @foreach($latestphotogalleries as $lastnewsentertainment)
                             @if($loop->first)
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
 
                                     <div class="image-container" style="margin-bottom: 10px;">
                                         <!-- <h3 class="title">PICTURES</h3> -->
-                                        <span class="maan-tag-parpul " style="background: #fff !important;
-    color: #0276c1 !important;
-    margin-top: 11px;
-    position: absolute;
-    left: 20px;
-    padding: 2px 12px;
-    border-radius: 50px;
-    font-size: 14px;
-    line-height: 24px;
-    color: var(--maan-color-white);
-    z-index: 2;">PICTURES</span>
+                                        <span class="maan-tag-parpul pictures-tag">PICTURES</span>
 
 
                                         <a href="{{ route('photogallerylist',['id'=>$lastnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($lastnewsentertainment->title)]) }}">
                                             <img src="{{ asset($lastnewsentertainment->image) }}" alt="top-news" style="height: 250px; border-radius: 5px;">
                                         </a>
                                         <div class="overlay">
-                                            <p class="description" style="color: #fff;">{{ $lastnewsentertainment->title }}</p>
+                                            <p class="description" style="color: #fff; font-size: 18px;">{{ $lastnewsentertainment->title }}</p>
                                         </div>
 
                                     </div>
 
-
-                                    <!-- <div class="card maan-default-post">
-                                        <div class="maan-post-img">
-                                                <a href="{{ route('photogallerylist',['id'=>$lastnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($lastnewsentertainment->title)]) }}">
-                                                    <img src="{{ asset($lastnewsentertainment->image) }}" alt="top-news">
-                                                </a>
-                                        </div>
-
-                                        <div class="card-body maan-card-body">
-                                            <div class="maan-text">
-                                                <h4 style="font-weight: 100 !important;"><a href="{{ route('photogallerylist',['id'=>$lastnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($lastnewsentertainment->title)]) }}">{{ $lastnewsentertainment->title }}</a></h4>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
                             @endif
                         @endforeach
+
+                        <div class="col-md-3" style="text-align: center;">
+                            @foreach($epaper as $pdf)
+                                <a href="https://megaatradingcompany.in/news-1/{{ $pdf->image }}" download ><button class="btn enews-button e-btn">Today’s Paper <i class="fa fa-arrow-down"></i> </button></a>
+                                <div class="enews-content">
+                                    <input type="hidden" value="https://megaatradingcompany.in/news-1/{{ $pdf->image }}" name="pdfName" id="pdfName" >
+                                    <a href="https://megaatradingcompany.in/news-1/{{ $pdf->image }}" download > <div id="thumbnails" class="thumbnails-x"></div> </a>
+                                    <!-- <embed src="{{ $pdf->image }}#page=1&view=FitH" width="100" height="100" /> -->
+                                    <!-- {{ $pdf->title }} -->
+                                </div>
+                            @endforeach
+
+                        </div>
 
                         <!-- end gallery -->
 
@@ -374,60 +378,11 @@
                         @endforeach
 
 
-
-
-                        <!-- photo galary -->
-
-                        @foreach($latestphotogalleries as $lastnewsentertainment)
-                            <div class="col-lg-6" style="display: none;">
-                                <div class="maan-news-list">
-                                    <ul>
-                                        <li>
-                                            <div class="maan-list-img">
-                                                <a href="{{ route('photogallery.details',['id'=>$lastnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($lastnewsentertainment->title)]) }}">
-                                                    <img src="{{ asset($lastnewsentertainment->image) }}" alt="top-news">
-                                                </a>
-                                            </div>
-                                            <div class="maan-list-text">
-                                                <h4><a href="{{ route('photogallery.details',['id'=>$lastnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($lastnewsentertainment->title)]) }}">{{ $lastnewsentertainment->title }}</a></h4>
-                                                <ul>
-                                                    <li>
-                                                        <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                        <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewsentertainment->date))->format('d M, Y') }}</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        @endforeach
-
                     </div>
                 </div>
 
 
-                <div class="col-md-2" style="text-align: center;">
-                    @foreach($epaper as $pdf)
-
-                        <a href="https://megaatradingcompany.in/news-1/{{ $pdf->image }}" download ><button class="btn enews-button e-btn">Today’s Paper <i class="fa fa-arrow-down"></i> </button></a>
-                        <div class="enews-content">
-                            <input type="hidden" value="https://megaatradingcompany.in/news-1/{{ $pdf->image }}" name="pdfName" id="pdfName" >
-                            <a href="https://megaatradingcompany.in/news-1/{{ $pdf->image }}" download > <div id="thumbnails" class="thumbnails-x"></div> </a>
-
-
-
-                            <!-- <embed src="{{ $pdf->image }}#page=1&view=FitH" width="100" height="100" /> -->
-
-                            <!-- {{ $pdf->title }} -->
-                        </div>
-
-                    @endforeach
-
-
-
-                </div>
+                
 
 
 
@@ -437,470 +392,7 @@
         </div>
     </section>
     <!-- Maan Top News End -->
-    <!-- Maan Most Popular Start -->
-    <section class="maan-most-popular-section maan-slide-section" style="display: none">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="maan-title">
-                        <div class="maan-title-text">
-                            <h2>{{ __('Most Popular') }}</h2>
-                        </div>
-                    </div>
-                    <div class="maan-slide">
-                        @foreach($popularsnews as $popularnews)
-                            <div class="card maan-big-post">
-                                <div class="maan-post-img">
-                                    @if ($popularnews->image)
-                                        @php
-                                            $images = json_decode($popularnews->image);
-                                        @endphp
-                                        @if($images!='')
-                                            @foreach ($images as $image)
-                                                @if (File::exists($image))
-                                                    <a href="@if($popularnews->news_categoryslug){{ route( strtolower($popularnews->news_categoryslug).'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }} @endif">
-                                                        <img src="{{ asset($image) }}" alt="top-news">
-                                                    </a>
-                                                @endif
-                                            @endforeach
-                                        @endif
 
-                                    @endif
-
-                                    <span class="maan-tag-@if($loop->iteration==1)parpul @elseif($loop->iteration==2)green @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)red  @endif">{{ $popularnews->news_category }}</span>
-                                </div>
-                                <div class="card-body maan-card-body pb-0">
-                                    <div class="maan-text">
-                                        <h4><a href="@if($popularnews->news_categoryslug){{ route( strtolower($popularnews->news_categoryslug).'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }} @endif">{{ $popularnews->title }}</a></h4>
-                                        <ul>
-                                            <li class="author">
-                                            <span class="maan-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
-                                            <g  transform="translate(-24.165)">
-                                                <g   data-name="Group 466" transform="translate(26.687)">
-                                                <g   data-name="Group 465" transform="translate(0)">
-                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
-                                                </g>
-                                                </g>
-                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
-                                                <g   data-name="Group 467" transform="translate(0)">
-                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
-                                                </g>
-                                                </g>
-                                            </g>
-                                            </svg>
-
-                                            </span>
-                                                <span class="maan-item-text"><a href="#">{{ $popularnews->reporter_name }}</a></span>
-                                            </li>
-                                            <li class=author-date>
-                                                <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnews->date))->format('d M, Y') }}</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="news-tab">
-                        <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="all-news-tab" data-bs-toggle="pill" data-bs-target="#all-news" type="button">{{ __('All') }}</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="food-news-tab" data-bs-toggle="pill" data-bs-target="#world-news" type="button" >{{ __('World') }}</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="life-style-news-tab" data-bs-toggle="pill" data-bs-target="#life-style-news" type="button">{{ __('Life Style') }}</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="racing-news-tab" data-bs-toggle="pill" data-bs-target="#entertainment-news" type="button" >{{ __('Entertainment') }}</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="sports-news-tab" data-bs-toggle="pill" data-bs-target="#sports-news" type="button" >{{ __('Sports') }}</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="technology-news-tab" data-bs-toggle="pill" data-bs-target="#technology-news" type="button" >{{ __('Technology') }}</button>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="all-news">
-                                <div class="maan-news-list">
-                                    <ul>
-                                        @foreach($popularsnewsall as $popularnewsall)
-                                            @if($loop->iteration<=3)
-                                                <li>
-                                                    <div class="maan-list-img">
-                                                        @if ($popularnewsall->image)
-                                                            @php
-                                                                $images = json_decode($popularnewsall->image);
-                                                            @endphp
-                                                            @if($images!='')
-                                                                @foreach ($images as $image)
-                                                                    @if (File::exists($image))
-                                                                        <a href="@if($popularnewsall->news_categoryslug){{ route(strtolower($popularnewsall->news_categoryslug).'.details',['id'=>$popularnewsall->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsall->title)]) }}@endif">
-                                                                            <img src="{{ asset($image) }}" alt="{{ asset($image) }}">
-                                                                        </a>
-                                                                    @endif
-                                                                @endforeach
-                                                            @endif
-
-                                                        @endif
-
-                                                    </div>
-                                                    <div class="maan-list-text">
-                                                        <span class="maan-tag-@if($loop->iteration==1)green @elseif($loop->iteration==2)red @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)parpul  @endif">{{ $popularnewsall->news_category }}</span>
-                                                        <h4><a href="@if($popularnewsall->news_categoryslug){{ route(strtolower($popularnewsall->news_categoryslug).'.details',['id'=>$popularnewsall->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsall->title)]) }}@endif">{{ $popularnewsall->title }}</a></h4>
-                                                        <ul>
-                                                            <li class="author">
-                                                        <span class="maan-icon">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
-                                                            <g  transform="translate(-24.165)">
-                                                                <g   data-name="Group 466" transform="translate(26.687)">
-                                                                <g   data-name="Group 465" transform="translate(0)">
-                                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
-                                                                <g   data-name="Group 467" transform="translate(0)">
-                                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                            </g>
-                                                            </svg>
-
-                                                        </span>
-                                                                <span class="maan-item-text"><a href="#">{{ $popularnewsall->reporter_name }}</a></span>
-                                                            </li>
-                                                            <li class="author-date">
-                                                                <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                                <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewsall->date))->format('d M, Y') }}</span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            @endif
-                                        @endforeach
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="world-news" >
-                                <div class="maan-news-list">
-                                    <ul>
-                                        @foreach($popularsnewsworld as $popularnewsworld)
-
-                                            <li>
-                                                <div class="maan-list-img">
-                                                    @if($popularnewsworld->image)
-                                                        @php
-                                                            $images = json_decode($popularnewsworld->image);
-                                                        @endphp
-                                                        @if($images!='')
-                                                            @foreach ($images as $image)
-                                                                @if (File::exists($image))
-                                                                    <a href="@if($popularnewsworld->news_categoryslug){{ route(strtolower($popularnewsworld->news_categoryslug).'.details',['id'=>$popularnewsworld->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsworld->title)]) }}@endif">
-                                                                        <img src="{{ asset($image) }}" alt="list-news-img">
-                                                                    </a>
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
-                                                    @endif
-
-                                                </div>
-                                                <div class="maan-list-text">
-                                                    <span class="maan-tag-@if($loop->iteration==1)green @elseif($loop->iteration==2)red @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)parpul  @endif">{{ $popularnewsworld->news_category }}</span>
-                                                    <h4><a href="@if($popularnewsworld->news_categoryslug){{ route(strtolower($popularnewsworld->news_categoryslug).'.details',['id'=>$popularnewsworld->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsworld->title)]) }}@endif">{{ $popularnewsworld->title }}</a></h4>
-                                                    <ul>
-                                                        <li class="author">
-                                                        <span class="maan-icon">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
-                                                            <g  transform="translate(-24.165)">
-                                                                <g   data-name="Group 466" transform="translate(26.687)">
-                                                                <g   data-name="Group 465" transform="translate(0)">
-                                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
-                                                                <g   data-name="Group 467" transform="translate(0)">
-                                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                            </g>
-                                                            </svg>
-
-
-                                                        </span>
-                                                            <span class="maan-item-text"><a href="#">{{ $popularnewsworld->reporter_name }}</a></span>
-                                                        </li>
-                                                        <li class="author-date">
-                                                            <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                            <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewsworld->date))->format('d M, Y') }}</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-
-                                        @endforeach
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="life-style-news">
-                                <div class="maan-news-list">
-                                    <ul>
-                                        @foreach($popularsnewslifestyle as $popularnewslifestyle)
-
-                                            <li>
-                                                <div class="maan-list-img">
-                                                    @if($popularnewslifestyle->image)
-                                                        @php
-                                                            $images = json_decode($popularnewslifestyle->image);
-                                                        @endphp
-                                                        @if($images!='')
-                                                            @foreach ($images as $image)
-                                                                @if (File::exists($image))
-                                                                    <a href="@if($popularnewslifestyle->news_categoryslug){{ route(strtolower($popularnewslifestyle->news_categoryslug).'.details',['id'=>$popularnewslifestyle->id,'slug'=>\Illuminate\Support\Str::slug($popularnewslifestyle->title)]) }}@endif">
-                                                                        <img src="{{ asset($image) }}" alt="list-news-img">
-                                                                    </a>
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
-                                                    @endif
-
-                                                </div>
-                                                <div class="maan-list-text">
-                                                    <span class="maan-tag-@if($loop->iteration==1)green @elseif($loop->iteration==2)red @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)parpul  @endif">{{ $popularnewslifestyle->news_category }}</span>
-                                                    <h4><a href="@if($popularnewslifestyle->news_categoryslug){{ route(strtolower($popularnewslifestyle->news_categoryslug).'.details',['id'=>$popularnewslifestyle->id,'slug'=>\Illuminate\Support\Str::slug($popularnewslifestyle->title)]) }}@endif">{{ $popularnewslifestyle->title }}</a></h4>
-                                                    <ul>
-                                                        <li class="author">
-                                                            <span class="maan-icon">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
-                                                            <g  transform="translate(-24.165)">
-                                                                <g   data-name="Group 466" transform="translate(26.687)">
-                                                                <g   data-name="Group 465" transform="translate(0)">
-                                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
-                                                                <g   data-name="Group 467" transform="translate(0)">
-                                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                            </g>
-                                                            </svg>
-
-
-                                                            </span>
-                                                            <span class="maan-item-text"><a href="#">{{ $popularnewslifestyle->reporter_name }}</a></span>
-                                                        </li>
-                                                        <li class=author-date>
-                                                            <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                            <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewslifestyle->date))->format('d M, Y') }}</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="entertainment-news" >
-                                <div class="maan-news-list">
-                                    <ul>
-                                        @foreach($popularsnewsentertainment as $popularnewsentertainment)
-
-                                            <li>
-                                                <div class="maan-list-img">
-                                                    @if($popularnewsentertainment->image)
-                                                        @php
-                                                            $images = json_decode($popularnewsentertainment->image);
-                                                        @endphp
-                                                        @if($images!='')
-                                                            @foreach ($images as $image)
-                                                                @if (File::exists($image))
-
-                                                                    <a href="@if($popularnewsentertainment->news_categoryslug){{ route(strtolower($popularnewsentertainment->news_categoryslug).'.details',['id'=>$popularnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsentertainment->title)]) }}@endif">
-
-                                                                        <img src="{{ asset($image) }}" alt="list-news-img">
-                                                                    </a>
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
-                                                    @endif
-
-                                                </div>
-                                                <div class="maan-list-text">
-                                                    <span class="maan-tag-@if($loop->iteration==1)green @elseif($loop->iteration==2)red @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)parpul  @endif">{{ $popularnewsentertainment->news_category }}</span>
-                                                    <h4><a href="@if($popularnewsentertainment->news_categoryslug){{ route(strtolower($popularnewsentertainment->news_categoryslug).'.details',['id'=>$popularnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsentertainment->title)]) }}@endif">{{ $popularnewsentertainment->title }}</a></h4>
-                                                    <ul>
-                                                        <li class="author">
-                                                            <span class="maan-icon">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
-                                                            <g   transform="translate(-24.165)">
-                                                                <g   data-name="Group 466" transform="translate(26.687)">
-                                                                <g   data-name="Group 465" transform="translate(0)">
-                                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
-                                                                <g   data-name="Group 467" transform="translate(0)">
-                                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                            </g>
-                                                            </svg>
-
-
-                                                            </span>
-                                                            <span class="maan-item-text"><a href="#">{{ $popularnewsentertainment->reporter_name }}</a></span>
-                                                        </li>
-                                                        <li class="author-date">
-                                                            <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                            <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewsentertainment->date))->format('d M, Y') }}</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="sports-news" >
-                                <div class="maan-news-list">
-                                    <ul>
-                                        @foreach($popularsnewssports as $popularnewssports)
-
-                                            <li>
-                                                <div class="maan-list-img">
-                                                    @if($popularnewssports->image)
-                                                        @php
-                                                            $images = json_decode($popularnewssports->image);
-                                                        @endphp
-                                                        @if($images!='')
-                                                            @foreach ($images as $image)
-                                                                @if (File::exists($image))
-                                                                    <a href="@if($popularnewssports->news_categoryslug){{ route(strtolower($popularnewssports->news_categoryslug).'.details',['id'=>$popularnewssports->id,'slug'=>\Illuminate\Support\Str::slug($popularnewssports->title)]) }}@endif">
-
-                                                                        <img src="{{ asset($image) }}" alt="list-news-img">
-                                                                    </a>
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
-                                                    @endif
-
-                                                </div>
-                                                <div class="maan-list-text">
-                                                    <span class="maan-tag-@if($loop->iteration==1)green @elseif($loop->iteration==2)red @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)parpul  @endif">{{ $popularnewssports->news_category }}</span>
-                                                    <h4><a href="@if($popularnewssports->news_categoryslug){{ route(strtolower($popularnewssports->news_categoryslug).'.details',['id'=>$popularnewssports->id,'slug'=>\Illuminate\Support\Str::slug($popularnewssports->title)]) }}@endif">{{ $popularnewssports->title }}</a></h4>
-                                                    <ul>
-                                                        <li class="author">
-                                                            <span class="maan-icon">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
-                                                            <g  transform="translate(-24.165)">
-                                                                <g   data-name="Group 466" transform="translate(26.687)">
-                                                                <g   data-name="Group 465" transform="translate(0)">
-                                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
-                                                                <g   data-name="Group 467" transform="translate(0)">
-                                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                            </g>
-                                                            </svg>
-
-
-                                                            </span>
-                                                            <span class="maan-item-text"><a href="#">{{ $popularnewssports->reporter_name }}</a></span>
-                                                        </li>
-                                                        <li class="author-date">
-                                                            <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                            <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewssports->date))->format('d M, Y') }}</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="technology-news" >
-                                <div class="maan-news-list">
-                                    <ul>
-                                        @foreach($popularsnewstechnology as $popularnewstechnology)
-
-                                            <li>
-                                                <div class="maan-list-img">
-                                                    @if($popularnewstechnology->image)
-                                                        @php
-                                                            $images = json_decode($popularnewstechnology->image);
-                                                        @endphp
-                                                        @if($images!='')
-                                                            @foreach ($images as $image)
-                                                                @if (File::exists($image))
-                                                                    <a href="@if($popularnewstechnology->news_categoryslug){{ route(strtolower($popularnewstechnology->news_categoryslug).'.details',['id'=>$popularnewstechnology->id,'slug'=>\Illuminate\Support\Str::slug($popularnewstechnology->title)]) }}@endif">
-
-                                                                        <img src="{{ asset($image) }}" alt="list-news-img">
-                                                                    </a>
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
-                                                    @endif
-
-                                                </div>
-                                                <div class="maan-list-text">
-                                                    <span class="maan-tag-@if($loop->iteration==1)green @elseif($loop->iteration==2)red @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)parpul  @endif">{{ $popularnewstechnology->news_category }}</span>
-                                                    <h4><a href="@if($popularnewstechnology->news_categoryslug){{ route(strtolower($popularnewstechnology->news_categoryslug).'.details',['id'=>$popularnewstechnology->id,'slug'=>\Illuminate\Support\Str::slug($popularnewstechnology->title)]) }}@endif">{{ $popularnewstechnology->title }}</a></h4>
-                                                    <ul>
-                                                        <li class="author">
-                                                            <span class="maan-icon">
-
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
-                                                            <g   transform="translate(-24.165)">
-                                                                <g   data-name="Group 466" transform="translate(26.687)">
-                                                                <g   data-name="Group 465" transform="translate(0)">
-                                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
-                                                                <g   data-name="Group 467" transform="translate(0)">
-                                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
-                                                                </g>
-                                                                </g>
-                                                            </g>
-                                                            </svg>
-
-                                                            </span>
-                                                            <span class="maan-item-text"><a href="#">{{ $popularnewstechnology->reporter_name }}</a></span>
-                                                        </li>
-                                                        <li class="author-date">
-                                                            <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                            <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewstechnology->date))->format('d M, Y') }}</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Maan Most Popular End -->
     <!-- Maan Top Categories Start -->
     <!-- Maan Don't Miss Start -->
     <section class="maan-don-t-miss-section">
@@ -998,7 +490,7 @@
         <div class="container">
             <div class="maan-title justify-content-center">
                 <div class="maan-title-text">
-                    <h2>{{ __('City') }}</h2>
+                    <h2><a href="{{ URL('/city-news/city') }}">{{ __('City') }}</a></h2>
                 </div>
             </div>
             <div class="row">
@@ -1067,79 +559,11 @@
         <div class="container">
             <div class="maan-title justify-content-center">
                 <div class="maan-title-text">
-                    <h2>{{ __('State') }}</h2>
+                    <h2><a href="{{ URL('/state-news/state') }}">{{ __('State') }}</a></h2>
                 </div>
             </div>
             <div class="row">
                 @foreach($latestnewsstate as $lastnewspolitics)
-                    <div class=" col-lg-3 politics-news-big-items">
-                        <div class="card maan-default-post">
-                            <div class="maan-post-img">
-                                @if($lastnewspolitics->image)
-                                    @php
-                                        $images = json_decode($lastnewspolitics->image)
-                                    @endphp
-                                    @if($images !='')
-                                        @foreach($images as $image)
-                                            <a href="@if($lastnewspolitics->news_categoryslug) {{ route(strtolower($lastnewspolitics->news_categoryslug).'.details',['id'=>$lastnewspolitics->id,'slug'=>\Illuminate\Support\Str::slug($lastnewspolitics->title)]) }} @endif">
-                                                <img src="{{ asset($image) }}" style="height: 200px !important;" alt="top-news">
-                                            </a>
-                                        @endforeach
-                                    @endif
-                                @endif
-                            </div>
-                            <div class="card-body maan-card-body">
-                                <div class="maan-text">
-                                    <h4><a href="@if($lastnewspolitics->news_categoryslug) {{ route(strtolower($lastnewspolitics->news_categoryslug).'.details',['id'=>$lastnewspolitics->id,'slug'=>\Illuminate\Support\Str::slug($lastnewspolitics->title)]) }} @endif">{{ $lastnewspolitics->title }}</a></h4>
-                                    <ul>
-                                        @if($lastnewspolitics->special_stories)
-                                            <li>
-                                            <span class="maan-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="14.485" height="16.182" viewBox="0 0 14.485 16.182">
-                                            <g  transform="translate(-24.165)">
-                                                <g   data-name="Group 466" transform="translate(27.207)">
-                                                <g   data-name="Group 465" transform="translate(0)">
-                                                    <path   data-name="Path 845" d="M114.993,0a4.2,4.2,0,1,0,4.2,4.2A4.213,4.213,0,0,0,114.993,0Z" transform="translate(-110.791)" fill="#888"/>
-                                                </g>
-                                                </g>
-                                                <g    data-name="Group 468" transform="translate(24.165 8.704)">
-                                                <g   data-name="Group 467" transform="translate(0)">
-                                                    <path   data-name="Path 846" d="M38.619,250.9a3.918,3.918,0,0,0-.422-.771,5.222,5.222,0,0,0-3.614-2.275.773.773,0,0,0-.532.128,4.478,4.478,0,0,1-5.284,0,.688.688,0,0,0-.532-.128,5.185,5.185,0,0,0-3.614,2.275,4.516,4.516,0,0,0-.422.771.39.39,0,0,0,.018.349,7.318,7.318,0,0,0,.5.734,6.97,6.97,0,0,0,.844.954,11,11,0,0,0,.844.734,8.367,8.367,0,0,0,9.981,0,8.065,8.065,0,0,0,.844-.734,8.47,8.47,0,0,0,.844-.954,6.429,6.429,0,0,0,.5-.734A.313.313,0,0,0,38.619,250.9Z" transform="translate(-24.165 -247.841)" fill="#888"/>
-                                                </g>
-                                                </g>
-                                            </g>
-                                            </svg>
-
-                                            </span>
-                                                <span class="maan-item-text"><a href="#">{{ $lastnewspolitics->reporter_name }}</a></span>
-                                            </li>
-                                        @endif
-                                        <!-- <li>
-                                            <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                            <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewspolitics->date))->format('d M, Y') }}</span>
-                                        </li> -->
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-        </div>
-    </section>
-    <!-- Maan State News End -->
-
-    <!-- Maan Columns News Start -->
-    <section class="maan-technology-news-section maan-politics-section" >
-        <div class="container">
-            <div class="maan-title justify-content-center">
-                <div class="maan-title-text">
-                    <h2>{{ __('Column') }}</h2>
-                </div>
-            </div>
-            <div class="row">
-                @foreach($latestnewscolumns as $lastnewspolitics)
                     <div class=" col-lg-3 politics-news-big-items">
                         <div class="card maan-default-post">
                             <div class="maan-post-img">
@@ -1203,7 +627,7 @@
         <div class="container">
             <div class="maan-title justify-content-center">
                 <div class="maan-title-text">
-                    <h2>{{ __('National') }}</h2>
+                    <h2><a href="{{ URL('/national-news/national') }}">{{ __('National') }}</a></h2>
                 </div>
             </div>
             <div class="row">
@@ -1271,7 +695,7 @@
         <div class="container">
             <div class="maan-title justify-content-center">
                 <div class="maan-title-text">
-                    <h2>{{ __('International') }}</h2>
+                    <h2><a href="{{ URL('/world-news/international') }}">{{ __('International') }}</a></h2>
                 </div>
             </div>
             <div class="row">
@@ -1340,7 +764,7 @@
         <div class="container">
             <div class="maan-title justify-content-center">
                 <div class="maan-title-text">
-                    <h2>{{ __('Business') }}</h2>
+                    <h2><a href="{{ URL('/business-news/business') }}">{{ __('Business') }}</a></h2>
                 </div>
             </div>
             <div class="row">
@@ -1409,7 +833,7 @@
                 <div class="col-lg-8">
                     <div class="maan-title">
                         <div class="maan-title-text">
-                            <h2>{{ __('Entertainment News') }}</h2>
+                            <h2><a href="{{ URL('/entertainment-news/entertainment') }}">{{ __('Entertainment') }}</a></h2>
                         </div>
                     </div>
 
@@ -1709,7 +1133,7 @@
             <div class="maan-title-center v2">
                 <div class="maan-title-icon"></div>
                 <div class="maan-title-text">
-                    <h2>{{ __('Technology News') }}</h2>
+                    <h2><a href="{{ URL('/technology-news/technology') }}">{{ __('Technology') }}</a></h2>
                 </div>
                 <div class="maan-title-icon"></div>
             </div>
@@ -1828,13 +1252,82 @@
         </div>
     </section>
     <!-- Maan Don't Miss End -->
+    
+     <!-- Maan Columns News Start -->
+     <section class="maan-technology-news-section maan-politics-section" >
+        <div class="container">
+            <div class="maan-title justify-content-center">
+                <div class="maan-title-text">
+                    <h2><a href="{{ URL('/columns-news/columns') }}">{{ __('Columns') }}</a></h2>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($latestnewscolumns as $lastnewspolitics)
+                    <div class=" col-lg-4 politics-news-big-items">
+                        <div class="card maan-default-post">
+                            <div class="maan-post-img">
+                                @if($lastnewspolitics->image)
+                                    @php
+                                        $images = json_decode($lastnewspolitics->image)
+                                    @endphp
+                                    @if($images !='')
+                                        @foreach($images as $image)
+                                            <a href="@if($lastnewspolitics->news_categoryslug) {{ route(strtolower($lastnewspolitics->news_categoryslug).'.details',['id'=>$lastnewspolitics->id,'slug'=>\Illuminate\Support\Str::slug($lastnewspolitics->title)]) }} @endif">
+                                                <img src="{{ asset($image) }}" style="height: 200px !important;" alt="top-news">
+                                            </a>
+                                        @endforeach
+                                    @endif
+                                @endif
+                            </div>
+                            <div class="card-body maan-card-body">
+                                <div class="maan-text">
+                                    <h4><a href="@if($lastnewspolitics->news_categoryslug) {{ route(strtolower($lastnewspolitics->news_categoryslug).'.details',['id'=>$lastnewspolitics->id,'slug'=>\Illuminate\Support\Str::slug($lastnewspolitics->title)]) }} @endif">{{ $lastnewspolitics->title }}</a></h4>
+                                    <ul>
+                                        @if($lastnewspolitics->special_stories)
+                                            <li>
+                                            <span class="maan-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14.485" height="16.182" viewBox="0 0 14.485 16.182">
+                                            <g  transform="translate(-24.165)">
+                                                <g   data-name="Group 466" transform="translate(27.207)">
+                                                <g   data-name="Group 465" transform="translate(0)">
+                                                    <path   data-name="Path 845" d="M114.993,0a4.2,4.2,0,1,0,4.2,4.2A4.213,4.213,0,0,0,114.993,0Z" transform="translate(-110.791)" fill="#888"/>
+                                                </g>
+                                                </g>
+                                                <g    data-name="Group 468" transform="translate(24.165 8.704)">
+                                                <g   data-name="Group 467" transform="translate(0)">
+                                                    <path   data-name="Path 846" d="M38.619,250.9a3.918,3.918,0,0,0-.422-.771,5.222,5.222,0,0,0-3.614-2.275.773.773,0,0,0-.532.128,4.478,4.478,0,0,1-5.284,0,.688.688,0,0,0-.532-.128,5.185,5.185,0,0,0-3.614,2.275,4.516,4.516,0,0,0-.422.771.39.39,0,0,0,.018.349,7.318,7.318,0,0,0,.5.734,6.97,6.97,0,0,0,.844.954,11,11,0,0,0,.844.734,8.367,8.367,0,0,0,9.981,0,8.065,8.065,0,0,0,.844-.734,8.47,8.47,0,0,0,.844-.954,6.429,6.429,0,0,0,.5-.734A.313.313,0,0,0,38.619,250.9Z" transform="translate(-24.165 -247.841)" fill="#888"/>
+                                                </g>
+                                                </g>
+                                            </g>
+                                            </svg>
+
+                                            </span>
+                                                <span class="maan-item-text"><a href="#">{{ $lastnewspolitics->reporter_name }}</a></span>
+                                            </li>
+                                        @endif
+                                        <!-- <li>
+                                            <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
+                                            <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewspolitics->date))->format('d M, Y') }}</span>
+                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+        </div>
+    </section>
+    <!-- Maan Columns News End -->
+
 
     <!-- Maan Sports News Start -->
     <section class="maan-sports-news-section">
         <div class="container">
             <div class="maan-title justify-content-center">
                 <div class="maan-title-text">
-                    <h2>{{ __('Sports') }}</h2>
+                    <h2><a href="{{ URL('/sports-news/sports') }}">{{ __('Sports') }}</a></h2>
                 </div>
             </div>
             <div class="row maan-slide-section">
@@ -2018,8 +1511,343 @@
     <!-- Maan Sports News End -->
 
 
+        <!-- Maan Most Popular Start -->
+        <section class="maan-most-popular-section maan-slide-section maan-lifestyle-news" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="maan-title">
+                        <div class="maan-title-text">
+                            <h2><a href="{{ URL('/lifestyle-news/lifestyle') }}">{{ __('Miscellaneous') }}</a></h2>
+                        </div>
+                    </div>
+                </div>
+                   <div class="col-md-12 news-tab">
+                        <ul class="news-tab nav nav-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="all-news-tab" data-bs-toggle="pill" data-bs-target="#all-news" type="button">{{ __('All') }}</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="food-news-tab" data-bs-toggle="pill" data-bs-target="#world-news" type="button" >{{ __('Science') }}</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="life-style-news-tab" data-bs-toggle="pill" data-bs-target="#life-style-news" type="button">{{ __('Environment') }}</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="racing-news-tab" data-bs-toggle="pill" data-bs-target="#entertainment-news" type="button" >{{ __('Lifestyle') }}</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="sports-news-tab" data-bs-toggle="pill" data-bs-target="#sports-news" type="button" >{{ __('Music') }}</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="technology-news-tab" data-bs-toggle="pill" data-bs-target="#technology-news" type="button" >{{ __('Automobile') }}</button>
+                            </li>
+                        </ul>
+                    <div class="news-tab">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="all-news">
+                                <div class="maan-news-list">
+                                    <div class="row">
+                                        @foreach($popularsnewsall as $popularnewsall)
+                                            @if($loop->iteration<=3)
+                                                <div class="col-md-4">
+                                                    <div class="maan-list-img">
+                                                        @if ($popularnewsall->image)
+                                                            @php
+                                                                $images = json_decode($popularnewsall->image);
+                                                            @endphp
+                                                            @if($images!='')
+                                                                @foreach ($images as $image)
+                                                                    @if (File::exists($image))
+                                                                        <a href="@if($popularnewsall->news_categoryslug){{ route(strtolower($popularnewsall->news_categoryslug).'.details',['id'=>$popularnewsall->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsall->title)]) }}@endif">
+                                                                            <img src="{{ asset($image) }}" alt="{{ asset($image) }}" class="img-height">
+                                                                        </a>
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
+
+                                                        @endif
+
+                                                    </div>
+                                                    <div class="maan-list-text">
+                                                        <!-- <span class="maan-tag-@if($loop->iteration==1)green @elseif($loop->iteration==2)red @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)parpul  @endif">{{ $popularnewsall->news_category }}</span> -->
+                                                        <h4><a href="@if($popularnewsall->news_categoryslug){{ route(strtolower($popularnewsall->news_categoryslug).'.details',['id'=>$popularnewsall->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsall->title)]) }}@endif">{{ $popularnewsall->title }}</a></h4>
+                                                        <!-- <ul>
+                                                            <li class="author">
+                                                        <span class="maan-icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
+                                                            <g  transform="translate(-24.165)">
+                                                                <g   data-name="Group 466" transform="translate(26.687)">
+                                                                <g   data-name="Group 465" transform="translate(0)">
+                                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
+                                                                </g>
+                                                                </g>
+                                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
+                                                                <g   data-name="Group 467" transform="translate(0)">
+                                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
+                                                                </g>
+                                                                </g>
+                                                            </g>
+                                                            </svg>
+
+                                                        </span>
+                                                                <span class="maan-item-text"><a href="#">{{ $popularnewsall->reporter_name }}</a></span>
+                                                            </li>
+                                                            <li class="author-date">
+                                                                <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
+                                                                <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewsall->date))->format('d M, Y') }}</span>
+                                                            </li>
+                                                        </ul> -->
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="world-news" >
+                                <div class="maan-news-list">
+                                        <div class="row">
+                                            @foreach($popularsnewsworld as $popularnewsworld)
+                                                @if($loop->iteration<=3)
+                                                    <div class="col-md-4">
+                                                        <div class="maan-list-img">
+                                                            @if ($popularnewsworld->image)
+                                                                @php
+                                                                    $images = json_decode($popularnewsworld->image);
+                                                                @endphp
+                                                                @if($images!='')
+                                                                    @foreach ($images as $image)
+                                                                        @if (File::exists($image))
+                                                                            <a href="@if($popularnewsworld->news_categoryslug){{ route(strtolower($popularnewsworld->news_categoryslug).'.details',['id'=>$popularnewsworld->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsworld->title)]) }}@endif">
+                                                                                <img src="{{ asset($image) }}" alt="{{ asset($image) }}" class="img-height">
+                                                                            </a>
+                                                                        @endif
+                                                                    @endforeach
+                                                                @endif
+
+                                                            @endif
+
+                                                        </div>
+                                                        <div class="maan-list-text">
+                                                            <h4><a href="@if($popularnewsworld->news_categoryslug){{ route(strtolower($popularnewsworld->news_categoryslug).'.details',['id'=>$popularnewsworld->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsworld->title)]) }}@endif">{{ $popularnewsworld->title }}</a></h4>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                            </div>
+                                    </div>
+
+                                    
+                                </div>
+                            <div class="tab-pane fade" id="life-style-news">
+                            <div class="maan-news-list">
+                                    <div class="row">
+                                        @foreach($popularsnewslifestyle as $popularnewslifestyle)
+                                            @if($loop->iteration<=3)
+                                                <div class="col-md-4">
+                                                    <div class="maan-list-img">
+                                                        @if ($popularnewslifestyle->image)
+                                                            @php
+                                                                $images = json_decode($popularnewslifestyle->image);
+                                                            @endphp
+                                                            @if($images!='')
+                                                                @foreach ($images as $image)
+                                                                    @if (File::exists($image))
+                                                                        <a href="@if($popularnewslifestyle->news_categoryslug){{ route(strtolower($popularnewslifestyle->news_categoryslug).'.details',['id'=>$popularnewslifestyle->id,'slug'=>\Illuminate\Support\Str::slug($popularnewslifestyle->title)]) }}@endif">
+                                                                            <img src="{{ asset($image) }}" alt="{{ asset($image) }}" class="img-height">
+                                                                        </a>
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
+
+                                                        @endif
+
+                                                    </div>
+                                                    <div class="maan-list-text">
+                                                        <h4><a href="@if($popularnewslifestyle->news_categoryslug){{ route(strtolower($popularnewslifestyle->news_categoryslug).'.details',['id'=>$popularnewslifestyle->id,'slug'=>\Illuminate\Support\Str::slug($popularnewslifestyle->title)]) }}@endif">{{ $popularnewslifestyle->title }}</a></h4>
+                                                       
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        </div>
+                                </div>
+                               
+                            </div>
+                            <div class="tab-pane fade" id="entertainment-news" >
+                            <div class="maan-news-list">
+                                    <div class="row">
+                                        @foreach($popularsnewsentertainment as $popularnewsentertainment)
+                                            @if($loop->iteration<=3)
+                                                <div class="col-md-4">
+                                                    <div class="maan-list-img">
+                                                        @if ($popularnewsentertainment->image)
+                                                            @php
+                                                                $images = json_decode($popularnewsentertainment->image);
+                                                            @endphp
+                                                            @if($images!='')
+                                                                @foreach ($images as $image)
+                                                                    @if (File::exists($image))
+                                                                        <a href="@if($popularnewsentertainment->news_categoryslug){{ route(strtolower($popularnewsentertainment->news_categoryslug).'.details',['id'=>$popularnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsentertainment->title)]) }}@endif">
+                                                                            <img src="{{ asset($image) }}" alt="{{ asset($image) }}" class="img-height">
+                                                                        </a>
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
+
+                                                        @endif
+
+                                                    </div>
+                                                    <div class="maan-list-text">
+                                                        <h4><a href="@if($popularnewsentertainment->news_categoryslug){{ route(strtolower($popularnewsentertainment->news_categoryslug).'.details',['id'=>$popularnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsentertainment->title)]) }}@endif">{{ $popularnewsentertainment->title }}</a></h4>
+                                                       
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        </div>
+                                </div>
+
+                              
+                            </div>
+                            <div class="tab-pane fade" id="sports-news" >
+                            <div class="maan-news-list">
+                                    <div class="row">
+                                        @foreach($popularsnewssports as $popularnewssports)
+                                            @if($loop->iteration<=3)
+                                                <div class="col-md-4">
+                                                    <div class="maan-list-img">
+                                                        @if ($popularnewssports->image)
+                                                            @php
+                                                                $images = json_decode($popularnewssports->image);
+                                                            @endphp
+                                                            @if($images!='')
+                                                                @foreach ($images as $image)
+                                                                    @if (File::exists($image))
+                                                                        <a href="@if($popularnewssports->news_categoryslug){{ route(strtolower($popularnewssports->news_categoryslug).'.details',['id'=>$popularnewssports->id,'slug'=>\Illuminate\Support\Str::slug($popularnewssports->title)]) }}@endif">
+                                                                            <img src="{{ asset($image) }}" alt="{{ asset($image) }}" class="img-height">
+                                                                        </a>
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
+
+                                                        @endif
+
+                                                    </div>
+                                                    <div class="maan-list-text">
+                                                        <h4><a href="@if($popularnewssports->news_categoryslug){{ route(strtolower($popularnewssports->news_categoryslug).'.details',['id'=>$popularnewssports->id,'slug'=>\Illuminate\Support\Str::slug($popularnewssports->title)]) }}@endif">{{ $popularnewssports->title }}</a></h4>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        </div>
+                                </div>
+                               
+                            </div>
+                            <div class="tab-pane fade" id="technology-news" >
+                            <div class="maan-news-list">
+                                    <div class="row">
+                                        @foreach($popularsnewstechnology as $popularnewstechnology)
+                                            @if($loop->iteration<=3)
+                                                <div class="col-md-4">
+                                                    <div class="maan-list-img">
+                                                        @if ($popularnewstechnology->image)
+                                                            @php
+                                                                $images = json_decode($popularnewstechnology->image);
+                                                            @endphp
+                                                            @if($images!='')
+                                                                @foreach ($images as $image)
+                                                                    @if (File::exists($image))
+                                                                        <a href="@if($popularnewstechnology->news_categoryslug){{ route(strtolower($popularnewstechnology->news_categoryslug).'.details',['id'=>$popularnewstechnology->id,'slug'=>\Illuminate\Support\Str::slug($popularnewstechnology->title)]) }}@endif">
+                                                                            <img src="{{ asset($image) }}" alt="{{ asset($image) }}" class="img-height">
+                                                                        </a>
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
+
+                                                        @endif
+
+                                                    </div>
+                                                    <div class="maan-list-text">
+                                                        <h4><a href="@if($popularnewstechnology->news_categoryslug){{ route(strtolower($popularnewstechnology->news_categoryslug).'.details',['id'=>$popularnewstechnology->id,'slug'=>\Illuminate\Support\Str::slug($popularnewstechnology->title)]) }}@endif">{{ $popularnewstechnology->title }}</a></h4>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        </div>
+                                </div>
+                                <!-- <div class="maan-news-list">
+                                    <ul>
+                                        @foreach($popularsnewstechnology as $popularnewstechnology)
+
+                                            <li>
+                                                <div class="maan-list-img">
+                                                    @if($popularnewstechnology->image)
+                                                        @php
+                                                            $images = json_decode($popularnewstechnology->image);
+                                                        @endphp
+                                                        @if($images!='')
+                                                            @foreach ($images as $image)
+                                                                @if (File::exists($image))
+                                                                    <a href="@if($popularnewstechnology->news_categoryslug){{ route(strtolower($popularnewstechnology->news_categoryslug).'.details',['id'=>$popularnewstechnology->id,'slug'=>\Illuminate\Support\Str::slug($popularnewstechnology->title)]) }}@endif">
+
+                                                                        <img src="{{ asset($image) }}" alt="list-news-img">
+                                                                    </a>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    @endif
+
+                                                </div>
+                                                <div class="maan-list-text">
+                                                    <span class="maan-tag-@if($loop->iteration==1)green @elseif($loop->iteration==2)red @elseif($loop->iteration==3)blue @elseif($loop->iteration==4)parpul  @endif">{{ $popularnewstechnology->news_category }}</span>
+                                                    <h4><a href="@if($popularnewstechnology->news_categoryslug){{ route(strtolower($popularnewstechnology->news_categoryslug).'.details',['id'=>$popularnewstechnology->id,'slug'=>\Illuminate\Support\Str::slug($popularnewstechnology->title)]) }}@endif">{{ $popularnewstechnology->title }}</a></h4>
+                                                    <ul>
+                                                        <li class="author">
+                                                            <span class="maan-icon">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
+                                                            <g   transform="translate(-24.165)">
+                                                                <g   data-name="Group 466" transform="translate(26.687)">
+                                                                <g   data-name="Group 465" transform="translate(0)">
+                                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
+                                                                </g>
+                                                                </g>
+                                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
+                                                                <g   data-name="Group 467" transform="translate(0)">
+                                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
+                                                                </g>
+                                                                </g>
+                                                            </g>
+                                                            </svg>
+
+                                                            </span>
+                                                            <span class="maan-item-text"><a href="#">{{ $popularnewstechnology->reporter_name }}</a></span>
+                                                        </li>
+                                                        <li class="author-date">
+                                                            <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
+                                                            <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewstechnology->date))->format('d M, Y') }}</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                        @endforeach
+                                    </ul>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Maan Most Popular End -->
+
+
     <!-- Maan Lifestyle News Start -->
-    <section class="maan-lifestyle-news">
+    <section class="maan-lifestyle-news" style="display: none;">
         <div class="container">
             <div class="maan-title">
                 <div class="maan-title-text">

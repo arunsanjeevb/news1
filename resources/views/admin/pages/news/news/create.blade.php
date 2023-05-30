@@ -131,7 +131,7 @@
                                             </div>
                                             <!-- Date -->
                                             <div class="form-group">
-                                                <label for="exampleInputDate">{{ __('Date:') }}</label>
+                                                <label for="exampleInputDate">{{ __('Schedule Date:') }}</label>
                                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
                                                     <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" name="date"/>
                                                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
@@ -233,6 +233,25 @@
                                                 <input type="file" name="image[]" id="image" multiple>
                                             </div>
                                             <div class="form-group">
+                                                <label for="meta_keyword">{{ __('Caption') }}</label>
+                                                <input type="text" class="form-control" name="caption" id="caption"  value="{{old('caption')}}">
+                                                @error('caption')
+                                                <span class="text-danger">
+                                                        {{$message}}
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="meta_keyword">{{ __('Video Link (Embed Video)') }}</label>
+                                                <input type="text" class="form-control" name="video_link" id="video_link"  value="{{old('video_link')}}">
+                                                @error('video_link')
+                                                <span class="text-danger">
+                                                        {{$message}}
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="meta_keyword">{{ __('Meta keyword') }}</label>
                                                 <input type="text" class="form-control" name="meta_keyword" id="meta_keyword"  value="{{old('meta_keyword')}}">
                                                 @error('meta_keyword')
@@ -256,8 +275,7 @@
 
                                     </div>
                                     <div class="modal-footer justify-content-between">
-
-                                        <button type="submit" class="btn btn-primary" id="submit">{{ __('Save') }}</button>
+                                        <button type="submit" class="btn btn-primary" name="save" id="submit" value="save">{{ __('Save') }}</button>
                                     </div>
                                 </form>
 

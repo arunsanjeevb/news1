@@ -14,6 +14,18 @@
 @endsection
 @section('main_content')
 
+
+<style>
+
+.clm-warp p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+</style>
     <!-- Maan Breadcrumb Start -->
     <nav aria-label="breadcrumb" class="maan-breadcrumb">
         <div class="container">
@@ -116,7 +128,11 @@
                                         </div>
                                         <div class="card-body maan-card-body">
                                             <div class="maan-text">
-                                                <h2><a href="{{ route(strtolower($allnewsall->news_categoryslug).'.details',['id'=>$allnewsall->id,'slug'=>\Illuminate\Support\Str::slug($allnewsall->title)]) }}">{{ $allnewsall->title }}</a></h2>
+                                                <h2><a href="{{ route(strtolower($allnewsall->news_categoryslug).'.details',['id'=>$allnewsall->id,'slug'=>\Illuminate\Support\Str::slug($allnewsall->title)]) }}" style="display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;">{{ $allnewsall->title }}</a></h2>
 {{--                                                <p class="mt-0">{{ $allnewsall->summary }}</p>--}}
                                                 <ul>
                                                     <!-- <li>
@@ -155,16 +171,17 @@
                 <div class="col-lg-4">
                     <div class="maan-title">
                         <div class="maan-title-text">
-                            <h2>{{ __('Related post') }}</h2>
+                            <h2>{{ __('Related Stories') }}</h2>
                         </div>
                     </div>
+
                     <div class="maan-widgets maan-bg-tr">
                         <div class="maan-news-list recent-post">
                             <ul>
                                 @foreach($recentallnews as $recentallnews)
                                     <li>
-                                        <div class="maan-card-img">
-                                            @if ($recentallnews->image)
+                                        <div class="maan-list-img">
+                                        @if ($recentallnews->image)
                                                 @php
                                                     $images = json_decode($recentallnews->image);
                                                 @endphp
@@ -181,15 +198,15 @@
                                             @endif
 
                                         </div>
-                                        <div class="maan-list-text">
+                                        <div class="maan-list-text clm-warp">
                                             <h4><a href="{{ route($recentallnews->news_categoryslug.'.details',['id'=>$recentallnews->id,'slug'=>\Illuminate\Support\Str::slug($recentallnews->title)]) }}">{{ $recentallnews->title }}</a></h4>
                                             <p class="mt-0">{{ $recentallnews->summary }}</p>
-                                            <ul>
+                                            <!-- <ul>
                                                 <li>
                                                     <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
                                                     <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($recentallnews->date))->format('d M, Y') }}</span>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                         </div>
                                     </li>
                                 @endforeach
@@ -197,6 +214,10 @@
                             </ul>
                         </div>
                     </div>
+
+                    <!-- ss -->
+                    
+                  
                 </div>
             </div>
         </div>

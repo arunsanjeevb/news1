@@ -53,8 +53,8 @@
                                             <th>{{ __('#') }}</th>
                                             <th>{{ __('Title') }}</th>
                                             <th>{{ __('Summary') }}</th>
+                                            <th>{{ __('Reporter Name') }}</th>
                                             <th>{{ __('Publish Status') }}</th>
-
                                             <th class="maanaction">{{ __('Action') }}</th>
                                         </tr>
                                         </thead>
@@ -65,13 +65,16 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $blog->title }}</td>
                                                 <td>{{ $blog->summary }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.reporter.show',$blog->user_id) }}"  class="edit-item" id="edit-item_{{$blog->user_id}}" >
+                                                        {{ $blog->first_name }}
+                                                    </a>
+                                                </td>
                                                 <td><div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success ">
                                                         <input type="checkbox" class="custom-control-input status-item" name="status_{{$blog->id}}" id="status_{{$blog->id}}" data-id ="{{$blog->id}}" data-status-text="Blog" @if($blog->status) checked @endif >
                                                         <label class="custom-control-label" for="status_{{$blog->id}}"></label>
                                                     </div>
                                                 </td>
-
-
                                                 <td class="maanaction">
                                                     <div class="row" id="maanaction-in">
                                                         {{--edit opiton--}}
@@ -105,10 +108,10 @@
 
                             </div>
                             <!-- /.card-body -->
-                            <div class="card-footer clearfix">
-                                {{ $blogs->links() }}
+{{--                            <div class="card-footer clearfix">--}}
+{{--                                {{ $blogs->links() }}--}}
 
-                            </div>
+{{--                            </div>--}}
                         </div>
                         <!-- /.card -->
 

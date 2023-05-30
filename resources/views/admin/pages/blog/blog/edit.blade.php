@@ -1,4 +1,4 @@
-@extends('maanuser.master')
+@extends('admin.master')
 
 @section('main_content')
     <style>
@@ -114,7 +114,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                                   
                                             <div class="form-group">
                                                 <label for="exampleInputDescription">{{ __('Tags') }}</label>
 

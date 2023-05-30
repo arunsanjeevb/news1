@@ -105,26 +105,19 @@
 
                     </div>
                     <div class="col-lg-4">
-                    <div class="maan-title">
-                            <div class="maan-title-text">
-                                <h2>{{ __('Gallery') }}</h2>
-                            </div>
-                        </div>
-                        <div class="maan-widgets">
-                            <div class="widgets-gallery">
-                                <ul>
-                                    @php
-                                    $photogalleries = photogalleries();
-                                    @endphp
-                                    @foreach($photogalleries as $photogallery)
-                                    <li>
-                                        <a href="{{ route('photogallery.details',$photogallery->id) }}"><img src="{{ asset($photogallery->image) }}" alt="gallery"></a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
+                    
+                    <div class="maan-post-adds" >
+                   
+                   @if (advertisement())
+                       {!! advertisement()->sidebar_ads !!}
+                   @else
+                       <a href="https://www.google.com/" target="_blank">
+                           <img src="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}" alt="{{ asset('public/frontend/img/entertainment/slide-card/slide-img-1.jpg') }}">
+                       </a>
+                   @endif
 
+
+               </div>
                     @if(1==2)
                         <div class="maan-title">
                             <div class="maan-title-text">
@@ -225,7 +218,7 @@
         <!-- Maan Related Posts Start -->
         <br>
         <br>
-        <section class="maan-related-posts" style="display: none;">
+        <section class="maan-related-posts" >
             <div class="container">
                 <div class="maan-title">
                     <div class="maan-title-text">

@@ -26,16 +26,16 @@
                             <div class="maan-slide">
                                 @foreach($photogallerylist as $photogallery )
                                     <div class="card maan-default-post">
-                                    
+
                                         <div class="maan-post-img">
 
                                                 <a href="{{ route('photogallery.details',['id'=>$photogallery->id,'slug'=>\Illuminate\Support\Str::slug($photogallery->title)]) }}">
                                                     <img src="{{ asset($photogallery->image) }}" alt="top-news">
                                                 </a>
-                                                
+
 
                                         </div>
-                                        
+
                                         <div class="card-body maan-card-body">
                                             <div class="maan-text">
                                                     <h2><a href="{{ route('photogallery.details',['id'=>$photogallery->id,'slug'=>\Illuminate\Support\Str::slug($photogallery->title)]) }}">{{ $photogallery->title }}</a></h2>
@@ -44,13 +44,13 @@
                                                 <p><a href="{{ route('photogallery.details',['id'=>$photogallery->id,'slug'=>\Illuminate\Support\Str::slug($photogallery->title)]) }}">{{ $photogallery->description }}</a></p>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 @endforeach
 
                             </div>
 
-                            <div class="row col-md-12 news-details-colm clm-warp"> 
+                            <div class="row col-md-12 news-details-colm clm-warp">
                                 @foreach($photogallerylist as $allnewsall )
                                 @if($loop->iteration!=1)
 
@@ -69,7 +69,7 @@
                                                 <h2><a href="{{ route('photogallery.details',['id'=>$allnewsall->id,'slug'=>\Illuminate\Support\Str::slug($allnewsall->title)]) }}">{{ $allnewsall->title }}</a></h2>
                                                 <!-- <p class="mt-0">{{ $allnewsall->description }}</p> -->
                                                 <ul>
-                                                
+
                                                     <!-- <li>
                                                         <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
                                                         <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($allnewsall->date))->format('d M, Y') }}</span>
@@ -88,7 +88,7 @@
                     <div class="col-lg-4">
 
                     <div class="maan-post-adds" >
-                   
+
                                 @if (advertisement())
                                     {!! advertisement()->sidebar_ads !!}
                                 @else
@@ -98,7 +98,37 @@
                                 @endif
 
 
+                            </div><br>
+                        <div class="maan-title">
+                            <div class="maan-title-text">
+                                <h2>{{ __('Popular Video') }}</h2>
                             </div>
+                        </div>
+                        <div class="maan-widgets maan-bg-tr">
+                            <div class="maan-news-list recent-post">
+                                <ul>
+                                    @foreach($popularvideogalleries as $recentnewsvideogallery)
+                                        <li>
+                                            <div class="maan-list-img">
+                                                <a href="{{ route('videogallery.details',$recentnewsvideogallery->id) }}">
+                                                    <img src="{{ asset($recentnewsvideogallery->image) }}" alt="list-news-img">
+                                                </a>
+                                            </div>
+                                            <div class="maan-list-text">
+                                                <h4><a href="{{ route('videogallery.details',$recentnewsvideogallery->id) }}">{{ $recentnewsvideogallery->title }}</a></h4>
+                                                <ul>
+                                                    <li>
+                                                        <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
+                                                        <span class="maan-item-text">{{ $recentnewsvideogallery->created_at->format('d M, Y') }}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    @endforeach
+
+                                </ul>
+                            </div>
+                        </div>
                             @if(1==2)
                     <div class="maan-title">
                             <div class="maan-title-text">
@@ -142,52 +172,6 @@
 
                             </div>
                         </div>
-
-
-                        <div class="maan-title">
-                            <div class="maan-title-text">
-                                <h2>{{ __('Recent post') }}</h2>
-                            </div>
-                        </div>
-                        <div class="maan-widgets maan-bg-tr">
-                            <div class="maan-news-list recent-post">
-                                <ul>
-                                    @foreach($recentallnews as $recentallnews)
-                                        <li>
-                                            <div class="maan-list-img">
-                                                @if ($recentallnews->image)
-                                                    @php
-                                                        $images = json_decode($recentallnews->image);
-                                                    @endphp
-                                                    @if($images!='')
-                                                        @foreach ($images as $image)
-                                                            @if (File::exists($image))
-                                                                <a href="{{ route($recentallnews->news_categoryslug.'.details',['id'=>$recentallnews->id,'slug'=>\Illuminate\Support\Str::slug($recentallnews->title)]) }}">
-                                                                    <img src="{{ asset($image) }}" alt="list-news-img">
-                                                                </a>
-                                                            @endif
-                                                        @endforeach
-                                                    @endif
-
-                                                @endif
-
-                                            </div>
-                                            <div class="maan-list-text">
-                                                <h4><a href="{{ route($recentallnews->news_categoryslug.'.details',['id'=>$recentallnews->id,'slug'=>\Illuminate\Support\Str::slug($recentallnews->title)]) }}">{{ $recentallnews->title }}</a></h4>
-                                                <ul>
-                                                    <!-- <li>
-                                                    <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                                    <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($recentallnews->date))->format('d M, Y') }}</span>
-                                                </li> -->
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    @endforeach
-
-                                </ul>
-                            </div>
-                        </div>
-                       
                         <div class="maan-title">
                             <div class="maan-title-text">
                                 <h2>{{ __('Social Media') }}</h2>
@@ -204,14 +188,12 @@
                         </div>
                         @endif
                     </div>
-
-
                 </div>
             </div>
         </section>
 
         <!-- test end -->
-        
+
         <!-- Maan Related Posts Start -->
         <section class="maan-related-posts" style="display: none;">
             <div class="container">

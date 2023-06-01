@@ -96,7 +96,7 @@
             text-align: center;
         }
 
-        
+
 .pictures-tag {
     background: #fff !important;
     color: #0276c1 !important;
@@ -137,7 +137,13 @@
                 @foreach($latestnews as $lastnews)
                     <div class="@if($loop->first) col-lg-5 topnews-big-card  @else col-lg-3 @endif">
                         <div class="card maan-card-img">
-                            @if ($lastnews->image)
+                            @if($lastnews->video_link)
+                                {{--                                                @php echo "dfsd";exit; @endphp--}}
+                                <a href="{{ route(strtolower($lastnews->news_categoryslug).'.details',['id'=>$lastnews->id,'slug'=>\Illuminate\Support\Str::slug($lastnews->title)]) }}">
+                                    <iframe src="{{ asset($lastnews->video_link) }}" alt="top-news" width="850" height="380"></iframe>
+                                    <a/>
+
+                                    @elseif ($lastnews->image)
                                 @php
                                     $images = json_decode($lastnews->image);
                                 @endphp
@@ -382,7 +388,7 @@
                 </div>
 
 
-                
+
 
 
 
@@ -1252,7 +1258,7 @@
         </div>
     </section>
     <!-- Maan Don't Miss End -->
-    
+
      <!-- Maan Columns News Start -->
      <section class="maan-technology-news-section maan-politics-section" >
         <div class="container">
@@ -1638,7 +1644,7 @@
                                             </div>
                                     </div>
 
-                                    
+
                                 </div>
                             <div class="tab-pane fade" id="life-style-news">
                             <div class="maan-news-list">
@@ -1666,14 +1672,14 @@
                                                     </div>
                                                     <div class="maan-list-text">
                                                         <h4><a href="@if($popularnewslifestyle->news_categoryslug){{ route(strtolower($popularnewslifestyle->news_categoryslug).'.details',['id'=>$popularnewslifestyle->id,'slug'=>\Illuminate\Support\Str::slug($popularnewslifestyle->title)]) }}@endif">{{ $popularnewslifestyle->title }}</a></h4>
-                                                       
+
                                                     </div>
                                                 </div>
                                             @endif
                                         @endforeach
                                         </div>
                                 </div>
-                               
+
                             </div>
                             <div class="tab-pane fade" id="entertainment-news" >
                             <div class="maan-news-list">
@@ -1701,7 +1707,7 @@
                                                     </div>
                                                     <div class="maan-list-text">
                                                         <h4><a href="@if($popularnewsentertainment->news_categoryslug){{ route(strtolower($popularnewsentertainment->news_categoryslug).'.details',['id'=>$popularnewsentertainment->id,'slug'=>\Illuminate\Support\Str::slug($popularnewsentertainment->title)]) }}@endif">{{ $popularnewsentertainment->title }}</a></h4>
-                                                       
+
                                                     </div>
                                                 </div>
                                             @endif
@@ -1709,7 +1715,7 @@
                                         </div>
                                 </div>
 
-                              
+
                             </div>
                             <div class="tab-pane fade" id="sports-news" >
                             <div class="maan-news-list">
@@ -1743,7 +1749,7 @@
                                         @endforeach
                                         </div>
                                 </div>
-                               
+
                             </div>
                             <div class="tab-pane fade" id="technology-news" >
                             <div class="maan-news-list">

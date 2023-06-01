@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Photogallery;
 use App\Models\Socialshare;
+use App\Models\Videogallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\News;
@@ -121,10 +122,14 @@ class PhotogalleryController extends Controller
             ->orderByDesc('news.id')
             ->limit(5)
             ->get();
+        $popularvideogalleries = Videogallery::where('status',1)
+//            ->orderByDesc('viewers')
+            ->limit(4)
+            ->get();
 
         $socials = Socialshare::all();
 
 
-        return view('frontend.pages.photogallerylist',compact('photogallery','relatedphotogallery','socials','allnews','photogallerylist', 'popularsnews', 'recentallnews'));
+        return view('frontend.pages.photogallerylist',compact('photogallery','relatedphotogallery','socials','allnews','photogallerylist', 'popularsnews', 'recentallnews','popularvideogalleries'));
     }
 }

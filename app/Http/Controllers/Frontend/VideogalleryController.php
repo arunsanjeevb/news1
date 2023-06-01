@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Photogallery;
 use App\Models\Videogallery;
 use App\Models\Socialshare;
 use Illuminate\Http\Request;
@@ -29,8 +30,13 @@ class VideogalleryController extends Controller
             ->limit(5)
             ->get();
 
+        $popularphotogalleries = Photogallery::where('status',1)
+            ->orderByDesc('viewers')
+            ->limit(4)
+            ->get();
 
-        return view('frontend.pages.videogallery',compact('videogalleries','popularvideogalleries','recentvideogalleries'));
+
+        return view('frontend.pages.videogallery',compact('videogalleries','popularvideogalleries','recentvideogalleries','popularphotogalleries'));
     }
 
     public function maanVideogalleryDetails($id)
@@ -131,7 +137,6 @@ class VideogalleryController extends Controller
             ->orderByDesc('news.id')
             ->limit(5)
             ->get();
-
         $socials = Socialshare::all();
 
 

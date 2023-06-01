@@ -24,7 +24,7 @@ class HomeController extends Controller
         $latestnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
             ->join('users','news.reporter_id','=','users.id')
-            ->select('news.id','news.title','news.image','news.date','news.created_at','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug', 'news.summary',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+            ->select('news.id','news.title','news.image','news.video_link as video_link','news.date','news.created_at','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug', 'news.summary',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('news.status',1)
             ->where('news.date', '<=', DB::raw('curdate()'))
             // ->where('news.live_news',1)
@@ -55,7 +55,7 @@ class HomeController extends Controller
             ->skip(2)
             ->limit(4)
             ->get();
-
+//    return $latestnews;
 
         $epaper = DB::table('pdfs')->orderByDesc('id')->take(1)->get();
 

@@ -83,7 +83,7 @@
                                             @endif
 
                                         </div>
-                                       
+
                                     </div>
                                     @endif
                                 @endforeach
@@ -92,7 +92,7 @@
                             @foreach($allnews as $allnewsvalue )
                                 @if($loop->first)
                                     <div class="card maan-default-post">
-                                       
+
                                         <div class="card-body maan-card-body">
                                             <div class="maan-text">
                                                 <h2 class="left-h2"><a href="{{ route(strtolower($allnewsvalue->news_categoryslug).'.details',['id'=>$allnewsvalue->id,'slug'=>\Illuminate\Support\Str::slug($allnewsvalue->title)]) }}">{{ $allnewsvalue->title }}</a></h2>
@@ -190,10 +190,10 @@
                                 </div>
                             @endforeach
                         </div> -->
-                       
+
 
                         <div class="row col-md-12 news-details-colm clm-warp">
-                            
+
                             @foreach($allnews as $allnewsall )
                                 <div class="card maan-default-post col-md-4 ">
                                     <div class="maan-post-img">
@@ -258,7 +258,7 @@
                             <h2>{{ __('Related Stories') }}</h2>
                         </div>
                     </div>
-                    
+
                     <div class="maan-widgets maan-bg-tr">
                         <div class="maan-news-list recent-post">
                             <ul>
@@ -358,7 +358,7 @@
                             <h2>{{ __('Recent post') }}</h2>
                         </div>
                     </div>
-                   
+
 
                     @if(1==2)
                     <div class="maan-widgets maan-bg-tr" style="display: none;">

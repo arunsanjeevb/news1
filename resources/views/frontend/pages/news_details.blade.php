@@ -24,8 +24,8 @@
     }
 
     .maan-archive-details  .for-right .card.maan-default-post .maan-post-img img{
-        height: 120px; 
-      
+        height: 120px;
+
     }
      @media (max-width: 600px){
         section .maan-title-border-none .maan-title-text h2{
@@ -61,12 +61,13 @@
                         @if(stripos($url,'columns-news'))
                         <div class="row">
                             <div class="col-md-1">
-                                <img src="{{ asset($getnews->reporter_pic) }}" alt="top-news" style="    border-radius: 50%;
-    width: 41px !important;
-    height: 41px !important;">
+                                <img src="{{ asset($getnews->reporter_pic) }}" alt="top-news" style="border-radius: 50%;width: 41px !important;height: 41px !important;">
                             </div>
                             <div class="col-md-3">
-                                <span>{{ $getnews->reporter_name }}</span>
+                                <a href="{{ route('reporter', ['id' => $getnews->reporter_id]) }}" target="_blank">
+                                <span>{{ $getnews->reporter_name }}</span><br>
+                                <span>{{ $getnews->email }}</span>
+                                </a>
                             </div>
                         </div><br>
                         @endif
@@ -156,7 +157,7 @@
                         <div class="social-media blog-details-social">
                             <h6>Share Now</h6>
                             <ul>
-                              
+
 
                                 <li>
                                     <a href="https://www.facebook.com/sharer/sharer.php?u= {{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/fb.png') }} " alt="{{ asset('public/uploads/images/logo/fb.png') }}" style="width: 35px !important;"></a>
@@ -233,14 +234,14 @@
                         </div>
                         @endif
                     </div>
-                    
+
                     <div class="col-lg-4 for-right">
                     <div class="maan-title">
                         <div class="maan-title-text">
                             <h2>{{ __('Related Stories') }}</h2>
                         </div>
                     </div>
-                    
+
                     <div class="maan-widgets maan-bg-tr">
                         <div class="maan-news-list recent-post">
                             <ul>
@@ -267,7 +268,7 @@
                                         <div class="maan-list-text">
                                         <h4><a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">{{ $popularnews->title }}</a></h4>
                                             <ul>
-                                               
+
                                             </ul>
                                         </div>
                                     </li>
@@ -279,7 +280,7 @@
 
 
 
-                  
+
 
                     <div class="maan-widgets maan-bg-tr">
                         <div class="popular-post">
@@ -318,8 +319,8 @@
 
                         </div>
                     </div>
-                    
-                       
+
+
                         @if(1==2)
                             <div class="maan-title">
                                 <div class="maan-title-text">

@@ -77,11 +77,11 @@
                                                     </li>
 
                                                     <li>
-                                                        <a href="http://www.instagram.com/shareArticle?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/insta.png') }} " alt="{{ asset('public/uploads/images/logo/insta.png') }}" style="width: 35px !important;"> </a>
+                                                        <a href="http://www.instagram.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/insta.png') }} " alt="{{ asset('public/uploads/images/logo/insta.png') }}" style="width: 35px !important;"> </a>
                                                     </li>
 
                                                     <li>
-                                                        <a href="http://www.whatsapp.com/shareArticle?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}" style="width: 35px !important;"></a>
+                                                        <a href="http://www.whatsapp.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}" style="width: 35px !important;"></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -99,6 +99,8 @@
                             </a>
                         </div> @endif
 
+
+
                     </div>
                     <div class="col-lg-4">
                     <div class="maan-title">
@@ -106,6 +108,8 @@
                                 <h2>{{ __('Gallery') }}</h2>
                             </div>
                         </div>
+
+
                         <div class="maan-widgets">
                             <div class="widgets-gallery">
                                 <ul>
@@ -115,7 +119,7 @@
                                     @foreach($photogalleries as $videogallery)
                                     <li>
                                         <a href="{{ route('videogallery.details',$videogallery->id) }}">
-                                            <iframe src="{{ asset($videogallery->video) }}" alt="top-news"></iframe>
+                                            <img src="{{ asset($videogallery->image) }}" alt="top-news"></iframe>
                                         </a>
                                     </li>
                                     @endforeach

@@ -69,7 +69,7 @@ class NewsController extends Controller
         $data['summary']        = trim($request->summary);
         $data['description']    = trim($request->description);
         $data['subcategory_id'] = $request->subcategory_id;
-        $data['date']           = date('Y-m-d', strtotime($request->date));
+        $data['date']           = date('Y-m-d h:i:s', strtotime($request->date));
         $data['tags']           = $request->tags;
         $data['speciality_id']  = $request->speciality_id;
         $data['reporter_id']    = $request->reporter_id;
@@ -182,7 +182,7 @@ class NewsController extends Controller
         $data['summary']            = trim($request->summary);
         $data['description']        = trim($request->description);
         $data['subcategory_id']     = $request->subcategory_id;
-        $data['date']               = date('Y-m-d', strtotime($request->date));
+        $data['date']               = date('Y-m-d h:i:s', strtotime($request->date));
         $data['tags']               = $request->tags;
         $data['speciality_id']      = $request->speciality_id;
         $data['reporter_id']        = $request->reporter_id;

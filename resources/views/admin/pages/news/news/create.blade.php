@@ -201,7 +201,7 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <label  class="col-md-3" for="hide_commends">{{ __('Hide Commends') }}</label>
+                                                <label  class="col-md-3" for="hide_commends">{{ __('Hide Comments') }}</label>
                                                 <div class="col-md-6 custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                                     <input type="checkbox" class="custom-control-input" name="hide_commends" id="hide_commends">
                                                     <label class="custom-control-label" for="hide_commends"></label>

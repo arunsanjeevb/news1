@@ -13,7 +13,7 @@
         </nav>
         <!-- Maan Breadcrumb End -->
 
-        <style> 
+        <style>
             section .maan-title-border-none .maan-title-text h2{
                 font-size: 2rem !important;
             }
@@ -81,11 +81,11 @@
                                                     </li>
 
                                                     <li>
-                                                        <a href="http://www.instagram.com/shareArticle?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/insta.png') }} " alt="{{ asset('public/uploads/images/logo/insta.png') }}" style="width: 35px !important;"> </a>
+                                                        <a href="http://www.instagram.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/insta.png') }} " alt="{{ asset('public/uploads/images/logo/insta.png') }}" style="width: 35px !important;"> </a>
                                                     </li>
 
                                                     <li>
-                                                        <a href="http://www.whatsapp.com/shareArticle?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}" style="width: 35px !important;"></a>
+                                                        <a href="http://www.whatsapp.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}" style="width: 35px !important;"></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -101,13 +101,13 @@
                                 <img src="
 @if (advertisement()) {{asset(advertisement()->leaderboard_image)}} @else {{ asset('public/frontend/img/post-add/add.jpg') }} @endif " alt="{{ asset('public/frontend/img/post-add/add.jpg') }}">
                             </a>
-                        </div> @endif 
+                        </div> @endif
 
                     </div>
                     <div class="col-lg-4">
-                    
+
                     <div class="maan-post-adds" >
-                   
+
                    @if (advertisement())
                        {!! advertisement()->sidebar_ads !!}
                    @else
@@ -132,7 +132,7 @@
                                 </div>
                             </form>
                         </div>
-                        @endif                
+                        @endif
                         @if(1==2)
                         <div class="maan-title">
                             <div class="maan-title-text">
@@ -177,7 +177,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="maan-title">
                             <div class="maan-title-text">
                                 <h2>{{ __('Tags') }}</h2>
@@ -209,7 +209,7 @@
                             </div>
                         </div>
                         @endif
-                       
+
                     </div>
                 </div>
             </div>

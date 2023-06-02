@@ -141,7 +141,7 @@
                                 {{--                                                @php echo "dfsd";exit; @endphp--}}
                                 <a href="{{ route(strtolower($lastnews->news_categoryslug).'.details',['id'=>$lastnews->id,'slug'=>\Illuminate\Support\Str::slug($lastnews->title)]) }}">
                                     <iframe src="{{ asset($lastnews->video_link) }}" alt="top-news" width="850" height="380"></iframe>
-                                    <a/>
+</a>
 
                                     @elseif ($lastnews->image)
                                 @php

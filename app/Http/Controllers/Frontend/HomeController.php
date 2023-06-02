@@ -26,8 +26,8 @@ class HomeController extends Controller
             ->join('users','news.reporter_id','=','users.id')
             ->select('news.id','news.title','news.image','news.video_link as video_link','news.date','news.created_at','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug', 'news.summary',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
-            // ->where('news.live_news',1)
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
+             ->where('news.breaking_news',1)
             ->latest()
             ->take(1)
             ->get();
@@ -37,7 +37,7 @@ class HomeController extends Controller
             ->join('users','news.reporter_id','=','users.id')
             ->select('news.id','news.title','news.image','news.date','news.created_at','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             // ->where('news.live_news',1)
             ->latest()
             ->skip(1)
@@ -49,7 +49,7 @@ class HomeController extends Controller
             ->join('users','news.reporter_id','=','users.id')
             ->select('news.id','news.title','news.image','news.date','news.created_at','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             // ->where('news.live_news',1)
             ->latest()
             ->skip(2)
@@ -67,7 +67,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Politics')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(3)
             ->get();
@@ -77,7 +77,7 @@ class HomeController extends Controller
             ->join('users','news.reporter_id','=','users.id')
             ->select('news.id','news.title','news.image','news.date','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->orderByDesc('news.viewers')
             ->limit(3)
             ->get();
@@ -86,7 +86,7 @@ class HomeController extends Controller
             ->join('users','news.reporter_id','=','users.id')
             ->select('news.id','news.title','news.image','news.date','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->orderByDesc('news.viewers')
             ->limit(3)
             ->get();
@@ -96,7 +96,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','World')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->orderByDesc('news.viewers')
             ->limit(3)
             ->get();
@@ -106,7 +106,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Lifestyle')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->orderByDesc('news.viewers')
             ->limit(3)
             ->get();
@@ -116,7 +116,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Entertainment')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->orderByDesc('news.viewers')
             ->limit(3)
             ->get();
@@ -126,7 +126,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Sports')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->orderByDesc('news.viewers')
             ->limit(3)
             ->get();
@@ -136,7 +136,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Technology')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->orderByDesc('news.viewers')
             ->limit(3)
             ->get();
@@ -146,7 +146,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','National')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(4)
             ->get();
@@ -156,7 +156,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','World')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(3)
             ->get();
@@ -166,7 +166,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Politics')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(5)
             ->get();
@@ -176,7 +176,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','City')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(4)
             ->get();
@@ -187,7 +187,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','State')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(4)
             ->get();
@@ -198,7 +198,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','International')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(4)
             ->get();
@@ -209,7 +209,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','National')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(4)
             ->get();
@@ -219,7 +219,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Lifestyle')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(5)
             ->get();
@@ -230,7 +230,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Entertainment')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(4)
             ->get();
@@ -240,7 +240,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Sports')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(5)
             ->get();
@@ -250,7 +250,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Technology')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(6)
             ->get();
@@ -260,7 +260,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('newscategories.name','Business')
             ->where('news.status',1)
-            ->where('news.date', '<=', DB::raw('curdate()'))
+            ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
             ->latest()
             ->take(5)
             ->get();

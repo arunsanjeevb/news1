@@ -191,7 +191,7 @@
         });
         //Date picker
         $('#reservationdate').datetimepicker({
-            format: 'L'
+            format: 'L LT'
         });
 
         $("input[data-bootstrap-switch]").each(function(){

@@ -54,14 +54,14 @@
                     <div class="col-lg-8">
                         <div class="maan-title-border-none">
                             <div class="maan-title-text">
-                                <h3 >{{ $getnews->title }} </h3>
+                                <h3 class="h-35">{{ $getnews->title }} </h3>
                                 <p>{{ $getnews->summary }}</p>
                             </div>
                         </div>
-                        @if(stripos($url,'columns-news'))
+{{--                        @if(stripos($url,'columns-news'))--}}
                         <div class="row">
                             <div class="col-md-1">
-                                <img src="{{ asset($getnews->reporter_pic) }}" alt="top-news" style="border-radius: 50%;width: 41px !important;height: 41px !important;">
+                                <img src="{{ asset($getnews->reporter_pic) }}" alt="{{ asset($getnews->reporter_pic) }}" style="border-radius: 50%;width: 41px !important;height: 41px !important;">
                             </div>
                             <div class="col-md-3">
                                 <a href="{{ route('reporter', ['id' => $getnews->reporter_id]) }}" target="_blank">
@@ -70,10 +70,14 @@
                                 </a>
                             </div>
                         </div><br>
-                        @endif
+{{--                        @endif--}}
                         <div class="card maan-default-post">
                             <div class="maan-post-img">
-                                @if ($getnews->image)
+                                @if($getnews->video_link)
+                                <a href="{{ route(strtolower($getnews->news_categoryslug).'.details',['id'=>$getnews->id,'slug'=>\Illuminate\Support\Str::slug($getnews->title)]) }}">
+                                    <iframe src="{{ asset($getnews->video_link) }}" alt="top-news" width="850" height="380"></iframe>
+                                </a>
+                                @elseif ($getnews->image)
                                     @php
                                         $images = json_decode($getnews->image);
                                     @endphp
@@ -81,7 +85,7 @@
                                         @foreach ($images as $image)
                                             @if (File::exists($image))
 
-                                                <img src="{{ asset($image) }}" alt="top-news">
+                                                <img src="{{ asset($image) }}" alt="{{ asset($image) }}">
                                             @endif
                                         @endforeach
                                     @endif
@@ -156,7 +160,7 @@
 
                         <div class="social-media blog-details-social">
                             <h6>Share Now</h6>
-                            <ul>
+                            <ul style="margin-left: 20px;">
 
 
                                 <li>
@@ -170,11 +174,11 @@
                                 </li>
 
                                 <li>
-                                    <a href="http://www.instagram.com/shareArticle?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/insta.png') }} " alt="{{ asset('public/uploads/images/logo/insta.png') }}" style="width: 35px !important;"> </a>
+                                    <a href="http://www.instagram.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/insta.png') }} " alt="{{ asset('public/uploads/images/logo/insta.png') }}" style="width: 35px !important;"> </a>
                                 </li>
 
                                 <li>
-                                    <a href="http://www.whatsapp.com/shareArticle?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}" style="width: 35px !important;"></a>
+                                    <a href="http://www.whatsapp.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}" style="width: 35px !important;"></a>
                                 </li>
 
                             </ul>
@@ -256,7 +260,7 @@
                                                 @foreach ($images as $image)
                                                     @if (File::exists($image))
                                                         <a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">
-                                                            <img src="{{ asset($image) }}" alt="top-news">
+                                                            <img src="{{ asset($image) }}" alt="{{ asset($image) }}">
                                                         </a>
                                                     @endif
                                                 @endforeach
@@ -279,10 +283,20 @@
                     </div>
 
 
+                            <div class="maan-post-adds" >
+                                @if (advertisement())
+                                    {!! advertisement()->sidebar_ads !!}
+                                @else
+                                    <a href="https://www.google.com/" target="_blank">
+                                        <img src="{{ asset('public/frontend/img/post-add/add.jpg') }}" alt="{{ asset('public/frontend/img/post-add/add.jpg') }}">
+                                    </a>
+                                @endif
 
 
+                            </div>
 
-                    <div class="maan-widgets maan-bg-tr">
+
+                    <div class="maan-widgets maan-bg-tr" style="display: none;">
                         <div class="popular-post">
                             @foreach($relatedgetsnews as $popularnews)
                                 <div class="card maan-default-post">
@@ -295,7 +309,7 @@
                                                 @foreach ($images as $image)
                                                     @if (File::exists($image))
                                                         <a href="{{ route($popularnews->news_categoryslug.'.details',['id'=>$popularnews->id,'slug'=>\Illuminate\Support\Str::slug($popularnews->title)]) }}">
-                                                            <img src="{{ asset($image) }}" alt="top-news">
+                                                            <img src="{{ asset($image) }}" alt="{{ asset($image) }}">
                                                         </a>
                                                     @endif
                                                 @endforeach
@@ -365,7 +379,7 @@
                                         @foreach ($images as $image)
                                             @if (File::exists($image))
                                                 <a href="{{ route($relatednews->news_categoryslug.'.details',['id'=>$relatednews->id,'slug'=>\Illuminate\Support\Str::slug($relatednews->title)]) }}">
-                                                    <img src="{{ asset($image) }}" alt="top-news">
+                                                    <img src="{{ asset($image) }}" alt="{{ asset($image) }}">
                                                 </a>
                                             @endif
                                         @endforeach

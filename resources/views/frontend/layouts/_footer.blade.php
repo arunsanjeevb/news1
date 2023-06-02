@@ -147,7 +147,7 @@
             </div>
             <div class="maan-main-footer">
                 <!-- <h6>{{ date('Y') }} © {{ __('All rights reserved by') }} <a href="">{{ __('Salar News') }}</a></h6> -->
-                <h6>Copyright © {{ date('Y') }} <a href="">{{ __('Salar News') }}</a>. All rights reserved. | Technology Ventures</h6>
+                <h6>Copyright © {{ date('Y') }} <a href="">{{ __('Salar News') }}</a>. All rights reserved.</h6>
 
                 
             </div>

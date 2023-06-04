@@ -173,7 +173,10 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function (){
         Route::get('/news/epaper',[PdfController::class,'maanNewsEpaperIndex'])->name('news.epaper');
         //Route epaper store
         Route::post('/news/epaper',[PdfController::class,'maanNewsPdfStore']);
-
+        //Route epaper edit
+        Route::match(['put', 'patch'],'/news/epaper/update/{epaperid?}',[PdfController::class,'maanNewsPdfUpdate'])->name('epaper.update');
+//Route news category delete
+        Route::delete('/news/epaper/destroy/{epaperid}',[PdfController::class,'maanNewsPdfDestroy'])->name('epaper.destroy');
         //Route news category
         Route::get('/news/category',[NewscategoryController::class,'maanNewsCategoryIndex'])->name('news.category');
         //Route news category store

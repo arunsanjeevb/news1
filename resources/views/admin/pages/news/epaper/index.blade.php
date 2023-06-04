@@ -63,7 +63,7 @@
                                             <th>{{ __('Title') }}</th>
                                         {{--<th>{{ __('Slug') }}</th>--}}
                                             <th>{{ __('File') }}</th>
-                                            <th>{{ __('PDF Publish') }}</th>
+{{--                                            <th>{{ __('PDF Publish') }}</th>--}}
                                             <th class="maanaction">{{ __('Action') }}</th>
                                         </tr>
                                         </thead>
@@ -75,18 +75,18 @@
                                                 <td>{{ $category->title }}</td>
 {{--                                                <td>{{ $category->id }}</td>--}}
                                                 <td> <a href="{{ asset($category->image) }}" download=""><i class="fa fa-download"></i> </a> </td>
-                                                <td>
-                                                    <div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                        <input type="checkbox" class="custom-control-input status-item" name="pdf_publish_{{$category->id}}" id="pdf_publish_{{$category->is_publish}}" data-id ="{{$category->id}}" data-status-text="News Category" @if(! $category->is_publish) checked @endif>
-                                                        <label class="custom-control-label" for="pdf_publish_{{$category->id}}"></label>
-                                                    </div>
-                                                </td>
+{{--                                                <td>--}}
+{{--                                                    <div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">--}}
+{{--                                                        <input type="checkbox" class="custom-control-input status-item" name="pdf_publish_{{$category->id}}" id="pdf_publish_{{$category->is_publish}}" data-id ="{{$category->id}}" data-status-text="News Category" @if(! $category->is_publish) checked @endif>--}}
+{{--                                                        <label class="custom-control-label" for="pdf_publish_{{$category->id}}"></label>--}}
+{{--                                                    </div>--}}
+{{--                                                </td>--}}
                                                 <td class="maanaction">
                                                     <div class="row" id="maanaction-in">
 
 {{--                                                        edit opiton--}}
                                                         @if(Auth::user()->permissions->contains('slug','edit'))
-                                                            <a href=""  class="edit-item" id="edit-item_{{$category->id}}" data-toggle="modal" data-target="#modal-edit" data-id ="{{$category->id}}"  data-name ="{{$category->title}}" data-slug ="{{$category->id}}" data-type ="{{$category->id}}" >
+                                                            <a class="edit-item" id="edit-item_{{$category->id}}" data-toggle="modal" data-target="#modal-edit" data-id="{{$category->id}}"  data-title="{{$category->title}}">
                                                                 <i class="fa fa-edit text-info"></i>
                                                             </a>
 
@@ -94,7 +94,7 @@
 {{--                                                         delete option--}}
                                                         @if(Auth::user()->permissions->contains('slug','delete'))
 
-                                                            <form class="archiveItem" action="{{ route('admin.news.category.destroy',$category->id) }}" method="post" >
+                                                            <form class="archiveItem" action="{{ route('admin.epaper.destroy',$category->id) }}" method="post" >
                                                                 @csrf
                                                                 @method('delete')
                                                                 <a onclick="onSubmitDelete(this)"
@@ -147,15 +147,15 @@
                     <div class="modal-body">
 
                         <div class="card-body">
-{{--                            <div class="form-group">--}}
-{{--                                <label for="name">{{ __('Title') }}</label>--}}
-{{--                                <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{old('title')}}">--}}
-{{--                                @error('title')--}}
-{{--                                <span class="text-danger">--}}
-{{--                            {{$message}}--}}
-{{--                        </span>--}}
-{{--                                @enderror--}}
-{{--                            </div>--}}
+                            <div class="form-group">
+                                <label for="name">{{ __('Title') }}</label>
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{old('title')}}">
+                                @error('title')
+                                <span class="text-danger">
+                            {{$message}}
+                        </span>
+                                @enderror
+                            </div>
                             <div class="form-group">
                                 <label for="image">{{ __('PDF File') }}</label> <span class="image-size-alert">{{ __('') }}</span>
                                 <input type="file" class="form-control" name="epaper" id="epaper"  value="{{old('epaper')}}" >
@@ -185,7 +185,7 @@
                     </button>
                 </div>
                 <!-- form start -->
-                <form  id="editform" method="POST" action="" enctype="multipart/form-data">
+                <form id="editform" method="POST" action="" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
@@ -193,7 +193,8 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="">{{ __('Title') }}</label>
-                                <input type="text" class="form-control" name="title" id="title_name" placeholder="Enter Title" value="{{old('title')}}" required>
+                                <input type="text" class="form-control" name="title" id="edit_title" placeholder="Enter Title"
+                                       value="{{old('title')}}" required>
                                 @error('name')
                                 <span class="text-danger">
                             {{$message}}
@@ -228,16 +229,16 @@
                 var container = $(this);
                 var service = container.data('id');
                 $('#edit-item_'+service).on('click',function () {
-                    var categoryid = $('#edit-item_'+service).data('id');
-                    var categoryname = $('#edit-item_'+service).data('name');
-                    var categoryslug = $('#edit-item_'+service).data('slug');
-                    var categorytype = $('#edit-item_'+service).data('type');
-                    $('#edit_name').val(categoryname);
-                    $('#edit_slug').val(categoryslug);
-                    $('#edit_type').val(categorytype);
+                    var epaperid = $('#edit-item_'+service).data('id');
+                    var title = $('#edit-item_'+service).data('title');
+                    // var categoryslug = $('#edit-item_'+service).data('slug');
+                    // var categorytype = $('#edit-item_'+service).data('type');
+                    $('#edit_name').val(title);
+                    // $('#edit_slug').val(categoryslug);
+                    // $('#edit_type').val(categorytype);
 
-                    var editactionroute = "{{ URL::to('admin/news/category/update') }}"
-                    $('#editform').attr('action', editactionroute+'/'+categoryid);
+                    var editactionroute = "{{ URL::to('admin/news/epaper/update') }}"
+                    $('#editform').attr('action', editactionroute+'/'+epaperid);
 
                 })
 

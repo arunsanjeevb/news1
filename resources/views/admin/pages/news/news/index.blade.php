@@ -59,8 +59,8 @@
                                             <th>{{ __('Image') }}</th>
                                             <th>{{ __('Title') }}</th>
                                             <th>{{ __('Summary') }}</th>
-                                            <th>{{ __('Publish Status') }}</th>
-                                            <th>{{ __('Breaking news') }}</th>
+{{--                                            <th>{{ __('Publish Status') }}</th>--}}
+{{--                                            <th>{{ __('Breaking news') }}</th>--}}
                                             <th class="maanaction">{{ __('Action') }}</th>
                                         </tr>
                                         </thead>
@@ -84,17 +84,17 @@
                                                 </td>
                                                 <td>{{ $news->title }}</td>
                                                 <td>{{ $news->summary }}</td>
-                                                <td><div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                        <input type="checkbox" class="custom-control-input status-item" name="status_{{$news->id}}" id="status_{{$news->id}}" data-id ="{{$news->id}}" data-status-text="News" @if($news->status) checked @endif>
-                                                        <label class="custom-control-label" for="status_{{$news->id}}"></label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                        <input type="checkbox" class="custom-control-input status-item" name="status_{{$news->id}}" id="breakingnews_{{$news->id}}" data-idbreaking ="{{$news->id}}" data-status-textbreaking="Breaking News" @if($news->breaking_news) checked @endif>
-                                                        <label class="custom-control-label" for="breakingnews_{{$news->id}}"></label>
-                                                    </div>
-                                                </td>
+{{--                                                <td><div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">--}}
+{{--                                                        <input type="checkbox" class="custom-control-input status-item" name="status_{{$news->id}}" id="status_{{$news->id}}" data-id ="{{$news->id}}" data-status-text="News" @if($news->status) checked @endif>--}}
+{{--                                                        <label class="custom-control-label" for="status_{{$news->id}}"></label>--}}
+{{--                                                    </div>--}}
+{{--                                                </td>--}}
+{{--                                                <td>--}}
+{{--                                                    <div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">--}}
+{{--                                                        <input type="checkbox" class="custom-control-input status-item" name="status_{{$news->id}}" id="breakingnews_{{$news->id}}" data-idbreaking ="{{$news->id}}" data-status-textbreaking="Breaking News" @if($news->breaking_news) checked @endif>--}}
+{{--                                                        <label class="custom-control-label" for="breakingnews_{{$news->id}}"></label>--}}
+{{--                                                    </div>--}}
+{{--                                                </td>--}}
 
                                                 <td class="maanaction">
                                                     <div class="row" id="maanaction-in">

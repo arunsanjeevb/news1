@@ -50,12 +50,6 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8080/news/city</loc>
-		<priority>1</priority>
-		<lastmod>2021-10-23T15:20:10+00:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
 	<loc>http://127.0.0.1:8080/news/politics</loc>
 		<priority>1</priority>
 		<lastmod>2021-10-23T14:58:51+00:00</lastmod>
@@ -218,18 +212,6 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8080/news/city</loc>
-		<priority>1</priority>
-		<lastmod>2021-09-21T09:17:54+00:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8080/news/state</loc>
-		<priority>1</priority>
-		<lastmod>2021-09-21T09:01:28+00:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
 	<loc>http://127.0.0.1:8080/news/entertainment</loc>
 		<priority>1</priority>
 		<lastmod>2021-09-21T08:54:12+00:00</lastmod>
@@ -269,18 +251,6 @@
 	<loc>http://127.0.0.1:8080/news/lifestyle</loc>
 		<priority>1</priority>
 		<lastmod>2021-09-21T06:43:46+00:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8080/news/state</loc>
-		<priority>1</priority>
-		<lastmod>2021-09-21T05:30:28+00:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8080/news/city</loc>
-		<priority>1</priority>
-		<lastmod>2021-09-21T05:17:22+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>

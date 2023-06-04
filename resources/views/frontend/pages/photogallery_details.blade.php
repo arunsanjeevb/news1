@@ -79,11 +79,6 @@
                                                     <li>
                                                         <a href="http://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/ln.png') }} " alt="{{ asset('public/uploads/images/logo/ln.png') }}" style="width: 35px !important;"> </a>
                                                     </li>
-
-                                                    <li>
-                                                        <a href="http://www.instagram.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/insta.png') }} " alt="{{ asset('public/uploads/images/logo/insta.png') }}" style="width: 35px !important;"> </a>
-                                                    </li>
-
                                                     <li>
                                                         <a href="http://www.whatsapp.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}" style="width: 35px !important;"></a>
                                                     </li>

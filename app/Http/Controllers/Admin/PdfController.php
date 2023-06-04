@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Photogallery;
+use App\Models\Seooptimization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +24,7 @@ class PdfController extends Controller
 
     public function maanNewsPdfStore(Request $request)
     {
+//        return $request;
 //        return $request->epaper->getClientOriginalName();
 //        if ($request->hasFile('epaper')) {
 //            return $request->file('epaper')->getClientOriginalName();
@@ -76,7 +79,7 @@ class PdfController extends Controller
 //            $image_urls         = '' ;
 //        }
         }
-        $data['title']="";
+        $data['title']=$request->title;
         $data['image']=$image_urls;
         DB::table('pdfs')->insert($data);
 //        return $image_urls;
@@ -89,6 +92,54 @@ class PdfController extends Controller
         //redirect route
         return redirect()->route('admin.news.epaper');
 
+    }
+
+    public function maanNewsPdfUpdate(Request $request,$epaperid)
+    {
+//        return $epaperid;
+//        return $request->epaper->getClientOriginalName();
+//        if ($request->hasFile('epaper')) {
+//            return $request->file('epaper')->getClientOriginalName();
+//        } else {
+//            return 'no file!';
+//        }
+        //image validation..
+        if ($request->hasFile('epaper')){
+//            $request->validate([
+//                'image'=> 'required',
+//            ]);
+
+        }
+
+        // image..
+        if ($request->hasFile('epaper')){
+            $image            = trim(str_replace(' ', '_', strtolower($request->epaper->getClientOriginalName())));
+
+            // image path
+            $image_url          = 'public/uploads/images/epaper/' . $request->epaper->getClientOriginalName();
+            //image base path
+            $destinationPath    = base_path() . '/public/uploads/images/epaper/';
+            $success            = $request->epaper->move($destinationPath, $image);
+            if ($success){
+                $image_urls     = $image_url ;
+            }
+            $data['image']=$image_urls;
+//        }else{
+//            $image_urls         = '' ;
+//        }
+        }
+        $data['title']=$request->title;
+        DB::table('pdfs')->where('id', $epaperid)->update($data);
+        $this->setSuccess('Updated');
+        //redirect route
+        return redirect()->route('admin.news.epaper');
+
+    }
+
+    public function maanNewsPdfDestroy($epaperid)
+    {
+        DB::table('pdfs')->where('id', $epaperid)->delete();
+        return redirect()->route('admin.news.epaper');
     }
 
 }

@@ -164,21 +164,16 @@
 
 
                                 <li>
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u= {{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/fb.png') }} " alt="{{ asset('public/uploads/images/logo/fb.png') }}" style="width: 35px !important;"></a>
+                                    <a href="https://www.facebook.com/sharer.php?u= {{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/fb.png') }} " alt="{{ asset('public/uploads/images/logo/fb.png') }}" style="width: 35px !important;"></a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/intent/tweet?url= {{url()->current()}}"><img src="{{ asset('public/uploads/images/logo/twitter.png') }} " alt="{{ asset('public/uploads/images/logo/twitter.png') }}" style="width: 35px !important;"></a>
+                                    <a href="https://twitter.com/share?url= {{url()->current()}}"><img src="{{ asset('public/uploads/images/logo/twitter.png') }} " alt="{{ asset('public/uploads/images/logo/twitter.png') }}" style="width: 35px !important;"></a>
                                 </li>
                                 <li>
                                     <a href="http://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/ln.png') }} " alt="{{ asset('public/uploads/images/logo/ln.png') }}" style="width: 35px !important;"> </a>
                                 </li>
-
                                 <li>
-                                    <a href="http://www.instagram.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/insta.png') }} " alt="{{ asset('public/uploads/images/logo/insta.png') }}" style="width: 35px !important;"> </a>
-                                </li>
-
-                                <li>
-                                    <a href="http://www.whatsapp.com/?mini=true&url={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}" style="width: 35px !important;"></a>
+                                    <a href="http://www.wa.me/?text={{url()->current()}}" target="_blank"><img src="{{ asset('public/uploads/images/logo/whatsapp.png') }} " alt="{{ asset('public/uploads/images/logo/whatsapp.png') }}" style="width: 35px !important;"></a>
                                 </li>
 
                             </ul>

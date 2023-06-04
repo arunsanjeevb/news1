@@ -64,7 +64,7 @@
                                             <th>{{ __('#') }}</th>
                                             <th>{{ __('Video') }}</th>
                                             <th>{{ __('Title') }}</th>
-                                            <th>{{ __('Publish Status') }}</th>
+{{--                                            <th>{{ __('Publish Status') }}</th>--}}
                                             <th class="maanaction">{{ __('Action') }}</th>
                                         </tr>
                                         </thead>
@@ -89,11 +89,11 @@
 
                                                 </td>
                                                 <td>{{ $videogallery->title }}</td>
-                                                <td><div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                        <input type="checkbox" class="custom-control-input status-item" name="status_{{$videogallery->id}}" id="status_{{$videogallery->id}}" data-id ="{{$videogallery->id}}" data-status-text="Video" @if($videogallery->status) checked @endif>
-                                                        <label class="custom-control-label" for="status_{{$videogallery->id}}"></label>
-                                                    </div>
-                                                </td>
+{{--                                                <td><div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">--}}
+{{--                                                        <input type="checkbox" class="custom-control-input status-item" name="status_{{$videogallery->id}}" id="status_{{$videogallery->id}}" data-id ="{{$videogallery->id}}" data-status-text="Video" @if($videogallery->status) checked @endif>--}}
+{{--                                                        <label class="custom-control-label" for="status_{{$videogallery->id}}"></label>--}}
+{{--                                                    </div>--}}
+{{--                                                </td>--}}
 
                                                 <td class="maanaction">
                                                     <div class="row" id="maanaction-in">

@@ -63,7 +63,7 @@
                                             <th>{{ __('Name') }}</th>
                                             <th>{{ __('Slug') }}</th>
                                             <th>{{ __('Image') }}</th>
-                                            <th>{{ __('Menu Publish') }}</th>
+{{--                                            <th>{{ __('Menu Publish') }}</th>--}}
                                             <th class="maanaction">{{ __('Action') }}</th>
                                         </tr>
                                         </thead>
@@ -75,12 +75,12 @@
                                                 <td>{{ $category->name }}</td>
                                                 <td>{{ $category->slug }}</td>
                                                 <td><img src="{{ asset($category->image) }}"></td>
-                                                <td>
-                                                    <div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                        <input type="checkbox" class="custom-control-input status-item" name="menu_publish_{{$category->id}}" id="menu_publish_{{$category->id}}" data-id ="{{$category->id}}" data-status-text="News Category" @if($category->menu_publish) checked @endif>
-                                                        <label class="custom-control-label" for="menu_publish_{{$category->id}}"></label>
-                                                    </div>
-                                                </td>
+{{--                                                <td>--}}
+{{--                                                    <div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">--}}
+{{--                                                        <input type="checkbox" class="custom-control-input status-item" name="menu_publish_{{$category->id}}" id="menu_publish_{{$category->id}}" data-id ="{{$category->id}}" data-status-text="News Category" @if($category->menu_publish) checked @endif>--}}
+{{--                                                        <label class="custom-control-label" for="menu_publish_{{$category->id}}"></label>--}}
+{{--                                                    </div>--}}
+{{--                                                </td>--}}
                                                 <td class="maanaction">
                                                     <div class="row" id="maanaction-in">
 

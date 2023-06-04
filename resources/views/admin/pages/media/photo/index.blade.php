@@ -66,7 +66,7 @@
                                             <th>{{ __('#') }}</th>
                                             <th>{{ __('Photo') }}</th>
                                             <th>{{ __('Title') }}</th>
-                                            <th>{{ __('Publish Status') }}</th>
+{{--                                            <th>{{ __('Publish Status') }}</th>--}}
                                             <th class="maanaction">{{ __('Action') }}</th>
                                         </tr>
                                         </thead>
@@ -78,11 +78,11 @@
                                                     <img src="{{ asset($photogallery->image) }}" alt="photo">
                                                 </td>
                                                 <td>{{ $photogallery->title }}</td>
-                                                <td><div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                        <input type="checkbox" class="custom-control-input status-item" name="status_{{$photogallery->id}}" id="status_{{$photogallery->id}}"data-id ="{{$photogallery->id}}" data-status-text="Photo" @if($photogallery->status) checked @endif>
-                                                        <label class="custom-control-label" for="status_{{$photogallery->id}}"></label>
-                                                    </div>
-                                                   </td>
+{{--                                                <td><div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">--}}
+{{--                                                        <input type="checkbox" class="custom-control-input status-item" name="status_{{$photogallery->id}}" id="status_{{$photogallery->id}}"data-id ="{{$photogallery->id}}" data-status-text="Photo" @if($photogallery->status) checked @endif>--}}
+{{--                                                        <label class="custom-control-label" for="status_{{$photogallery->id}}"></label>--}}
+{{--                                                    </div>--}}
+{{--                                                   </td>--}}
 
                                                 <td class="maanaction">
                                                     <div class="row" id="maanaction-in">

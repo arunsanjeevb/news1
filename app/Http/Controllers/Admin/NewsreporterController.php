@@ -60,18 +60,18 @@ class NewsreporterController extends Controller
     public function maanReporterStore(Request $request)
     {
         $request->validate([
-            'first_name'=> 'required',
-            'last_name'=> 'required',
-            'email'=> 'required|email|unique:users',
-            'phone'=> 'required',
-            'national_id'=> 'required',
-            'father_name'=> 'required',
-            'mother_name'=> 'required',
-            'present_address'=> 'required',
-            'permanent_address'=> 'required',
-            'appointed_date'=> 'required',
-            'password'=>'required',
-            'password_confirmation'=>'required|same:password',
+            'first_name'=> '',
+            'last_name'=> '',
+            'email'=> 'email|unique:users',
+            'phone'=> '',
+            'national_id'=> '',
+            'father_name'=> '',
+            'mother_name'=> '',
+            'present_address'=> '',
+            'permanent_address'=> '',
+            'appointed_date'=> '',
+            'password'=>'',
+            'password_confirmation'=>'same:password',
         ]);
         if ($request->hasFile('image')){
             $reporter_imagename         = $request->file('image')->getClientOriginalName();
@@ -145,16 +145,16 @@ class NewsreporterController extends Controller
     public function maanReporterUpdate(Request $request,$reporter)
     {
         $request->validate([
-            'first_name'=> 'required',
-            'last_name'=> 'required',
-            'email'=> 'required|email|unique:users,email,'.$reporter,
-            'phone'=> 'required',
-            'national_id'=> 'required',
-            'father_name'=> 'required',
-            'mother_name'=> 'required',
-            'present_address'=> 'required',
-            'permanent_address'=> 'required',
-            'appointed_date'=> 'required',
+            'first_name'=> '',
+            'last_name'=> '',
+            'email'=> 'email|unique:users,email,'.$reporter,
+            'phone'=> '',
+            'national_id'=> '',
+            'father_name'=> '',
+            'mother_name'=> '',
+            'present_address'=> '',
+            'permanent_address'=> '',
+            'appointed_date'=> '',
 
         ]);
 

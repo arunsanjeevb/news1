@@ -60,8 +60,9 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputImage" >{{ __('Image') }}</label>
                                                 <div class="col-sm-8 col-md-8">
+                                                    @if(($reporter->image))
                                                     <img id="previewImg" src="{{ asset($reporter->image) }}" alt="image" >
-
+                                                    @endif
                                                     <p>
                                                         <input type="file" class="form-control" name="image" onchange="previewFile(this);" >
                                                     </p>
@@ -70,7 +71,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputTitle">{{ __('First Name') }}</label>
                                                 <div class="col-sm-8 col-md-8">
-                                                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name" value="{{ $reporter->first_name }}" required>
+                                                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name" value="{{ $reporter->first_name }}" >
                                                     @error('first_name')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -81,7 +82,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputTitle">{{ __('Last Name') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name" value="{{ $reporter->last_name }}" required>
+                                                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name" value="{{ $reporter->last_name }}" >
                                                     @error('last_name')
                                                     <span class="text-danger">
                                                     {{$message}}
@@ -92,7 +93,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputEmail">{{ __('Email') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="email" class="form-control" name="email" id="email" placeholder="email" value="{{ $reporter->email }}" required>
+                                                    <input type="email" class="form-control" name="email" id="email" placeholder="email" value="{{ $reporter->email }}" >
                                                     @error('email')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -104,7 +105,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputPhone">{{ __('Phone') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="phone" value="{{ $reporter->phone }}" required>
+                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="phone" value="{{ $reporter->phone }}" >
                                                     @error('phone')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -116,7 +117,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputNationalId">{{ __('National ID') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="national_id" id="national_id" placeholder="national id" value="{{ $reporter->national_id }}" required>
+                                                    <input type="text" class="form-control" name="national_id" id="national_id" placeholder="national id" value="{{ $reporter->national_id }}" >
                                                     @error('national_id')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -128,7 +129,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputFatherName">{{ __('Father Name') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="father_name" id="father_name" placeholder="Father name" value="{{ $reporter->father_name }}" required>
+                                                    <input type="text" class="form-control" name="father_name" id="father_name" placeholder="Father name" value="{{ $reporter->father_name }}" >
                                                     @error('father_name')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -140,7 +141,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputMotherName">{{ __('Mother Name') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="mother_name" id="mother_name" placeholder="Mother name" value="{{ $reporter->mother_name }}" required>
+                                                    <input type="text" class="form-control" name="mother_name" id="mother_name" placeholder="Mother name" value="{{ $reporter->mother_name }}" >
                                                     @error('mother_name')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -222,7 +223,7 @@
                                             <div class="form-group row">
                                                 <label  class="col-sm-3 col-md-3 col-form-label"  for="role">{{ __('Role') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <select  class="form-control" name="role" id="roleedit" required>
+                                                    <select  class="form-control" name="role" id="roleedit" >
                                                         @foreach($roles as $role)
                                                             <option data-role-id="{{$role->id}}" data-role-slug="{{$role->slug}}" value="{{$role->id}}"{{ $reporter->roles->isEmpty() || $role->name !=$reporterRole->name ? "" : "selected" }}>{{ $role->name }}</option>
                                                         @endforeach

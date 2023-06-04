@@ -63,7 +63,7 @@
                                                     <img id="previewImg" src="{{ asset('public/maan/images/user-icon.png')}}" alt="image">
 
                                                 <p>
-                                                    <input type="file" class="form-control" name="image" onchange="previewFile(this);" required>
+                                                    <input type="file" class="form-control" name="image" onchange="previewFile(this);">
                                                 </p>
                                                 </div>
 
@@ -72,7 +72,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputTitle">{{ __('First Name') }}</label>
                                                 <div class="col-sm-8 col-md-8">
-                                                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name" value="{{old('first_name')}}" required>
+                                                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First name" value="{{old('first_name')}}">
                                                     @error('first_name')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -84,7 +84,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputTitle">{{ __('Last Name') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name" value="{{old('last_name')}}" required>
+                                                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name" value="{{old('last_name')}}">
                                                     @error('last_name')
                                                     <span class="text-danger">
                                                     {{$message}}
@@ -97,7 +97,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputEmail">{{ __('Email') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="email" class="form-control" name="email" id="email" placeholder="email" value="{{old('email')}}" required>
+                                                    <input type="email" class="form-control" name="email" id="email" placeholder="email" value="{{old('email')}}">
                                                     @error('email')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -109,7 +109,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputPhone">{{ __('Phone') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="phone" value="{{old('phone')}}" required>
+                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="phone" value="{{old('phone')}}">
                                                     @error('phone')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -121,7 +121,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputNationalId">{{ __('National ID') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="national_id" id="national_id" placeholder="national id" value="{{old('national_id')}}" required>
+                                                    <input type="text" class="form-control" name="national_id" id="national_id" placeholder="national id" value="{{old('national_id')}}">
                                                     @error('national_id')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -133,7 +133,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputFatherName">{{ __('Father Name') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="father_name" id="father_name" placeholder="Father name" value="{{old('father_name')}}" required>
+                                                    <input type="text" class="form-control" name="father_name" id="father_name" placeholder="Father name" value="{{old('father_name')}}">
                                                     @error('father_name')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -145,7 +145,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputMotherName">{{ __('Mother Name') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="text" class="form-control" name="mother_name" id="mother_name" placeholder="Mother name" value="{{old('mother_name')}}" required>
+                                                    <input type="text" class="form-control" name="mother_name" id="mother_name" placeholder="Mother name" value="{{old('mother_name')}}">
                                                     @error('mother_name')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -203,7 +203,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputPassword">{{ __('Password') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="password" class="form-control" name="password" id="password" placeholder="******" required>
+                                                    <input type="password" class="form-control" name="password" id="password" placeholder="******">
                                                     @error('password')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -215,7 +215,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="exampleInputMotherName">{{ __('Confirm Password') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="******" required>
+                                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="******">
                                                     @error('password_confirmation')
                                                     <span class="text-danger">
                                                         {{$message}}
@@ -227,7 +227,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="name">{{ __('Role') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <select  class="form-control" name="role" id="role" required>
+                                                    <select  class="form-control" name="role" id="role">
                                                         <option value="">{{ __('select type') }}</option>
                                                         @foreach($roles as $role)
                                                             <option data-role-id="{{$role->id}}"  value="{{$role->id}}">{{ $role->name }}</option>

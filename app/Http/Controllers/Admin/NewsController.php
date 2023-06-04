@@ -37,7 +37,7 @@ class NewsController extends Controller
     {
         $request->validate([
             'title'=>'required',
-            'summary'=>'required',
+            'summary'=>'',
             'description'=>'required',
             'category_id'=>'required',
             'subcategory_id'=>'required',
@@ -144,7 +144,7 @@ class NewsController extends Controller
 //        return $request->special_stories;
      $request->validate([
          'title'=>'required',
-         'summary'=>'required',
+         'summary'=>'',
          'description'=>'required',
          'category_id'=>'required',
          'subcategory_id'=>'required',

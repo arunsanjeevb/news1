@@ -8,15 +8,15 @@ use App\Models\Blogcategory;
 use App\Models\Blogsubcategory;
 use App\Models\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
     public function maanBlogIndex()
     {
-        $query = "SELECT * FROM blogs join users on blogs.user_id=users.id limit 10";
+        $query = "SELECT `blogs`.id,`blogs`.title,`blogs`.summary FROM blogs join users on blogs.user_id=users.id limit 10";
 //        $blogs = Blog::paginate(10);
         $blogs = DB::select($query);
 //        return $blogs;

@@ -38,7 +38,7 @@ class HomeController extends Controller
             ->select('news.id','news.title','news.image','news.date','news.created_at','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('news.status',1)
             ->where('news.date', '<=', DB::raw('CURRENT_TIMESTAMP()'))
-            // ->where('news.live_news',1)
+            ->where('news.breaking_news', '!=', 1) // Exclude news articles with breaking_news = 1
             ->latest()
             ->skip(1)
             ->limit(1)

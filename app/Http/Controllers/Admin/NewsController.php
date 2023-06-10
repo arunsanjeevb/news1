@@ -37,16 +37,11 @@ class NewsController extends Controller
     {
         $request->validate([
             'title'=>'required',
-            'summary'=>'',
             'description'=>'required',
             'category_id'=>'required',
             'subcategory_id'=>'required',
             'date'=>'required',
-            'tags'=>'required',
-            'speciality_id'=>'required',
-            'reporter_id'=>'required',
-            'meta_keyword'=>'required',
-            'meta_description'=>'required',
+            'speciality_id'=>'required'
         ]);
 
         if ($request->hasFile('image')){
@@ -144,16 +139,11 @@ class NewsController extends Controller
 //        return $request->special_stories;
      $request->validate([
          'title'=>'required',
-         'summary'=>'',
          'description'=>'required',
          'category_id'=>'required',
          'subcategory_id'=>'required',
          'date'=>'required',
-         'tags'=>'required',
          'speciality_id'=>'required',
-         'reporter_id'=>'required',
-         'meta_keyword'=>'required',
-         'meta_description'=>'required',
      ]);
      if ($request->hasFile('image')){
          $getimages = json_decode($news->image);
@@ -172,7 +162,7 @@ class NewsController extends Controller
              $news_success          = $image->move($news_destinationPath, $news_image);
          }
          if ($news_success){
-             $news_image_urls = json_encode($news_image_url); ;
+             $news_image_urls = json_encode($news_image_url);
 
          }
      }else{
@@ -195,9 +185,9 @@ class NewsController extends Controller
         //new col added end
 
         if($request->status){
-            $data['status']         = 1 ;
+            $data['status']= 1 ;
         }else{
-            $data->status           = 0 ;
+            $data['status']= 0 ;
         }
         if($request->breaking_news){
             $data['breaking_news'] = 1 ;

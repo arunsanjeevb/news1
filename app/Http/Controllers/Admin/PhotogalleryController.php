@@ -30,28 +30,28 @@ class PhotogalleryController extends Controller
                 if ($image !=''){
                     $picture            = 'maanphotogallery'.date('dmY_His').'_'.$image->getClientOriginalName();
                     // image path
-                    $image_url          = 'public/uploads/images/photogallery/' . $picture;
+                    $image_url[]          = 'public/uploads/images/photogallery/' . $picture;
                     //image base path
                     $destinationPath    = base_path() . '/public/uploads/images/photogallery/';
                     $success            = $image->move($destinationPath, $picture);
                     if ($success){
-                        $image_urls     = $image_url ;
+                        $image_urls     = $image_url;
                     }
                 }else{
                     $image_urls         = '' ;
                 }
-                $photogalleries                 = new Photogallery();
-                $photogalleries->title          = $request->title;
-                $photogalleries->description    = $request->description;
-                if ($request->status){
-                    $photogalleries->status     = 1 ;
-                }else{
-                    $photogalleries->status     = 0 ;
-                }
-                $photogalleries->image          = $image_urls;
-                $photogalleries->user_id          = Auth::user()->id;
-                $photogalleries->save();
             }
+            $photogalleries                 = new Photogallery();
+            $photogalleries->title          = $request->title;
+            $photogalleries->description    = $request->description;
+            if ($request->status){
+                $photogalleries->status     = 1 ;
+            }else{
+                $photogalleries->status     = 0 ;
+            }
+            $photogalleries->image          = $image_urls;
+            $photogalleries->user_id          = Auth::user()->id;
+            $photogalleries->save();
         }
 
         //session message
@@ -78,15 +78,21 @@ class PhotogalleryController extends Controller
                     unlink($photogallery->image);
                 }
             }
+            foreach ($request->image as $image){
 
-            $picture            = 'maanphotogallery'.date('dmY_His').'_'.$request->image->getClientOriginalName();
-            // image path
-            $image_url          = 'public/uploads/images/photogallery/' . $picture;
-            //image base path
-            $destinationPath    = base_path() . '/public/uploads/images/photogallery/';
-            $success            = $request->image->move($destinationPath, $picture);
-            if ($success){
-                $image_urls     = $image_url ;
+                if ($image !=''){
+                    $picture            = 'maanphotogallery'.date('dmY_His').'_'.$image->getClientOriginalName();
+                    // image path
+                    $image_url[]         = 'public/uploads/images/photogallery/' . $picture;
+                    //image base path
+                    $destinationPath    = base_path() . '/public/uploads/images/photogallery/';
+                    $success            = $image->move($destinationPath, $picture);
+                    if ($success){
+                        $image_urls     = $image_url;
+                    }
+                }else{
+                    $image_urls         = '' ;
+                }
             }
         }else{
             $image_urls         = $photogallery->image ;
@@ -99,7 +105,7 @@ class PhotogalleryController extends Controller
         }else{
             $photogallery->status     = 0 ;
         }
-        $photogallery->image          = $image_urls;
+        $photogallery->image          = implode(',',$image_urls);
         $photogallery->user_id          = Auth::user()->id;
         $photogallery->save();
         //session message

@@ -75,7 +75,13 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>
-                                                    <img src="{{ asset($photogallery->image) }}" alt="photo">
+                                                    @if($photogallery->image !='')
+                                                        @foreach(explode(",", $photogallery->image) as $image)
+                                                            @if(File::exists($image))
+                                                                <img src="{{ asset($image) }}" alt="news image">
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
                                                 </td>
                                                 <td>{{ $photogallery->title }}</td>
 {{--                                                <td><div class=" custom-control custom-switch custom-switch-off-danger custom-switch-on-success">--}}

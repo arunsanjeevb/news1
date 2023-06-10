@@ -84,11 +84,13 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">{{ __('Image') }}</label>
                                                 @if ( $photogallery->image)
-                                                    <img src="{{ asset($photogallery->image) }}" class="editimage">
+                                                    @foreach(explode(",", $photogallery->image) as $image)
+                                                    <img src="{{ asset($image) }}" class="editimage" style="height: 5%;width: 5%">
+                                                    @endforeach
                                                 @else
                                                     <p>{{ __('No image found') }}</p>
                                                 @endif
-                                                <input type="file" class="form-control" name="image" id="image" value="{{ $photogallery->image }}">
+                                                <input type="file" class="form-control" name="image[]" id="image" multiple>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->

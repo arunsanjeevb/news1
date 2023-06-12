@@ -11,7 +11,7 @@ class BlogcategoryController extends Controller
 {
     public function maanBlogCategoryIndex()
     {
-        $categories = Blogcategory::paginate(10);
+        $categories = Blogcategory::latest()->paginate(10);
 
         return view('admin.pages.blog.category.index',compact('categories'));
     }

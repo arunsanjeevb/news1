@@ -100,12 +100,14 @@
                                 <p>{{ __(' News Sub-Category') }}</p>
                             </a>
                         </li>
+                        @if(1==2)
                         <li class="nav-item">
                             <a href="{{ route('admin.news.speciality') }}" class="nav-link {{ Request::routeIs('admin.news.speciality') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{ __(' News Speciality') }}</p>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a href="{{ route('admin.news') }}" class="nav-link {{ Request::routeIs('admin.news') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
@@ -133,7 +135,7 @@
                     </a>
                     <ul class="nav nav-treeview">
 
-                      
+
 
                         <li class="nav-item">
                             <a href="{{ route('admin.photogallery') }}" class="nav-link {{ Request::routeIs('admin.photogallery') ? 'active' : '' }}">

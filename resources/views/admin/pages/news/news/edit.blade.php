@@ -120,6 +120,7 @@
                                                 <input type="text" class="form-control" name="tags" id="tags" placeholder="tags" value="{{$news->tags}}">
 
                                             </div>
+                                            @if(1==2)
                                             <div class="form-group">
                                                 <label for="exampleInputDescription">{{ __('News Speciality') }}</label>
 
@@ -130,6 +131,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            @endif
                                             <div class="form-group">
                                                 <label for="exampleInputDescription">{{ __('News Reporter') }}</label>
 

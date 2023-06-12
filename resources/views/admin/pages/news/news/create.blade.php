@@ -167,6 +167,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
+                                            @if(1==2)
                                             <div class="form-group">
                                                 <label for="exampleInputDescription">{{ __('News Speciality') }}</label>
 
@@ -184,6 +185,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
+                                            @endif
                                             <div class="form-group">
                                                 <label for="exampleInputDescription">{{ __('News Reporter') }}</label>
 
@@ -207,7 +209,7 @@
                                                 <div
                                                     class="col-md-6 custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                                     <input type="checkbox" class="custom-control-input" name="status"
-                                                           id="status">
+                                                           id="status" checked>
                                                     <label class="custom-control-label" for="status"></label>
                                                 </div>
 
@@ -229,7 +231,7 @@
                                                 <div
                                                     class="col-md-6 custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                                     <input type="checkbox" class="custom-control-input"
-                                                           name="hide_commends" id="hide_commends">
+                                                           name="hide_commends" id="hide_commends" checked>
                                                     <label class="custom-control-label" for="hide_commends"></label>
                                                 </div>
                                             </div>

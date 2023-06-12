@@ -72,11 +72,14 @@
                                         </thead>
                                         <tbody>
                                         @foreach($photogalleries as $key=>$photogallery)
+                                            @php
+                                                $images = json_decode($photogallery->image, true);
+                                            @endphp
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>
                                                     @if($photogallery->image !='')
-                                                        @foreach(explode(",", $photogallery->image) as $image)
+                                                        @foreach($images as $image)
                                                             @if(File::exists($image))
                                                                 <img src="{{ asset($image) }}" alt="news image">
                                                             @endif

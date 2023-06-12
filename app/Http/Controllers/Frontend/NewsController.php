@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Newscategory;
 use App\Models\Newscomment;
+use App\Models\Photogallery;
 use App\Models\Socialshare;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -75,8 +76,31 @@ class NewsController extends Controller
             ->limit(4)
             ->get();
 
-        if ($newscategory!='columns'){
+
+        $photogalleries = Photogallery::join('users','photogalleries.user_id','=','users.id')
+            ->select('photogalleries.id','photogalleries.title','photogalleries.description','photogalleries.image','photogalleries.created_at',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+            ->where('photogalleries.status',1)
+            ->orderByDesc('photogalleries.id')
+            ->paginate(10);
+        $popularphotogalleries = Photogallery::where('status',1)
+            ->orderByDesc('viewers')
+            ->limit(4)
+            ->get();
+        $recentphotogalleries = Photogallery::where('status',1)
+            ->orderByDesc('id')
+            ->limit(5)
+            ->get();
+
+        $query = "SELECT `blogs`.id,`blogs`.title,`blogs`.summary FROM blogs join users on blogs.user_id=users.id order by blogs.id desc limit 10";
+//        $blogs = Blog::paginate(10);
+        $blogs = DB::select($query);
+//        return $blogs;
+        return view('admin.pages.blog.blog.index',compact('blogs'));
+
+        if ($newscategory!='columns' && $newscategory!='salar-360'){
             return view('frontend.pages.news',compact('allnews','popularallnews','recentallnews','newscategorysingle','relatedgetsnews'));
+        }elseif ($newscategory=='salar-360'){
+            return view('frontend.pages.salar_360',compact('photogalleries','popularphotogalleries','recentphotogalleries','blogs'));
         }else{
             return view('frontend.pages.livenews',compact('allnews','popularallnews','recentallnews','newscategorysingle','relatedgetsnews'));
         }

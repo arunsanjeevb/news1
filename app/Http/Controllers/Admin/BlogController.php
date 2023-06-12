@@ -16,7 +16,7 @@ class BlogController extends Controller
 {
     public function maanBlogIndex()
     {
-        $query = "SELECT `blogs`.id,`blogs`.title,`blogs`.summary FROM blogs join users on blogs.user_id=users.id limit 10";
+        $query = "SELECT `blogs`.id,`blogs`.title,`blogs`.summary FROM blogs join users on blogs.user_id=users.id order by blogs.id desc limit 10";
 //        $blogs = Blog::paginate(10);
         $blogs = DB::select($query);
 //        return $blogs;
@@ -43,7 +43,6 @@ class BlogController extends Controller
             'subcategory_id'=>'required',
             'date'=>'required',
             'tags'=>'required',
-
         ]);
         if ($request->hasFile('image')){
             foreach ($request->file('image') as $image) {
@@ -60,6 +59,30 @@ class BlogController extends Controller
         }else{
             $blog_image_urls = '' ;
         }
+
+
+        //pdf added
+        if ($request->hasFile('pdf')){
+            $getpdf = $request->file('pdf');
+            if ($getpdf){
+                $blog_pdf = $getpdf->getClientOriginalName();
+                $blog_pdf = 'maanblogpdf' . date('dmY_His') . '_' . $blog_pdf;
+                $blog_pdf_url[] = 'public/uploads/images/blogimages/' . $blog_pdf;
+                $blog_destinationPath = base_path() . '/public/uploads/images/blogimages/';
+                $blog_success1 = $getpdf->move($blog_destinationPath, $blog_pdf);
+            }
+            if ($blog_success1){
+                $blog_pdf_urls = json_encode($blog_pdf_url);
+
+            }
+            $data['pdf']          = $blog_pdf_urls;
+        }else{
+            $blog_pdf_urls = $request->pdf;
+        }
+
+        //pdf end
+
+
         $data['title']          = $request->title;
         $data['summary']        = $request->summary;
         $data['description']    = $request->description;
@@ -92,6 +115,7 @@ class BlogController extends Controller
     }
     public function maanBlogUpdate(Request $request, Blog $blog)
     {
+//        return $request;
         $request->validate([
             'title'=>'required',
             'summary'=>'required',
@@ -124,6 +148,30 @@ class BlogController extends Controller
         }else{
             $blog_image_urls = $blog->image ;
         }
+
+        //pdf added
+        if ($request->hasFile('pdf')){
+            $getpdf = $request->file('pdf');
+            if ($getpdf){
+                $blog_pdf = $getpdf->getClientOriginalName();
+                $blog_pdf = 'maanblogpdf' . date('dmY_His') . '_' . $blog_pdf;
+                $blog_pdf_url[] = 'public/uploads/images/blogimages/' . $blog_pdf;
+                $blog_destinationPath = base_path() . '/public/uploads/images/blogimages/';
+                $blog_success1 = $getpdf->move($blog_destinationPath, $blog_pdf);
+            }
+            if ($blog_success1){
+                $blog_pdf_urls = json_encode($blog_pdf_url);
+
+            }
+            $data['pdf']          = $blog_pdf_urls;
+        }else{
+            $blog_pdf_urls = $blog->pdf;
+        }
+
+        //pdf end
+
+//        return $blog_pdf_urls;
+
         $data['title']          = $request->title;
         $data['summary']        = $request->summary;
         $data['description']    = $request->description;

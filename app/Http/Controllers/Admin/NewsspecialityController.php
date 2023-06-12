@@ -10,7 +10,7 @@ class NewsspecialityController extends Controller
 {
     public function maanNewsSpecialityIndex()
     {
-        $specialities = Newsspeciality::paginate(10);
+        $specialities = Newsspeciality::latest()->paginate(10);
         return view('admin.pages.news.speciality.index',compact('specialities'));
     }
 

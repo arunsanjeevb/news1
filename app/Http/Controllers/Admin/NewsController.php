@@ -40,8 +40,7 @@ class NewsController extends Controller
             'description'=>'required',
             'category_id'=>'required',
             'subcategory_id'=>'required',
-            'date'=>'required',
-            'speciality_id'=>'required'
+            'date'=>'required'
         ]);
 
         if ($request->hasFile('image')){
@@ -66,7 +65,7 @@ class NewsController extends Controller
         $data['subcategory_id'] = $request->subcategory_id;
         $data['date']           = date('Y-m-d h:i:s', strtotime($request->date));
         $data['tags']           = $request->tags;
-        $data['speciality_id']  = $request->speciality_id;
+//        $data['speciality_id']  = $request->speciality_id;
         $data['reporter_id']    = $request->reporter_id;
         $data['meta_keyword']    = $request->meta_keyword;
         $data['meta_description']    = $request->meta_description;
@@ -142,8 +141,7 @@ class NewsController extends Controller
          'description'=>'required',
          'category_id'=>'required',
          'subcategory_id'=>'required',
-         'date'=>'required',
-         'speciality_id'=>'required',
+         'date'=>'required'
      ]);
      if ($request->hasFile('image')){
          $getimages = json_decode($news->image);
@@ -174,7 +172,7 @@ class NewsController extends Controller
         $data['subcategory_id']     = $request->subcategory_id;
         $data['date']               = date('Y-m-d h:i:s', strtotime($request->date));
         $data['tags']               = $request->tags;
-        $data['speciality_id']      = $request->speciality_id;
+//        $data['speciality_id']      = $request->speciality_id;
         $data['reporter_id']        = $request->reporter_id;
         $data['meta_keyword']       = $request->meta_keyword;
         $data['meta_description']   = $request->meta_description;

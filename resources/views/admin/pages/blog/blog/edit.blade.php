@@ -114,7 +114,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                                   
+
                                             <div class="form-group">
                                                 <label for="exampleInputDescription">{{ __('Tags') }}</label>
 
@@ -155,6 +155,10 @@
                                                 <input type="file" name="image[]" id="image" multiple>
                                             </div>
 
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputImage">{{ __('PDF') }}</label>
+                                            <input type="file" name="pdf" id="pdf">
                                         </div>
                                         <!-- /.card-body -->
 

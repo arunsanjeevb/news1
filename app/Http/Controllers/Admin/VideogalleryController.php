@@ -13,7 +13,7 @@ class VideogalleryController extends Controller
 {
     public function maanVideogalleryIndex()
     {
-        $videogalleries = Videogallery::paginate(10);
+        $videogalleries = Videogallery::latest()->paginate(10);
         return view('admin.pages.media.video.index',compact('videogalleries'));
     }
 

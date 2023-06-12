@@ -12,7 +12,7 @@ class PhotogalleryController extends Controller
 {
     public function maanPhotogalleryIndex()
     {
-        $photogalleries = Photogallery::paginate(10);
+        $photogalleries = Photogallery::latest()->paginate(10);
         return view('admin.pages.media.photo.index',compact('photogalleries'));
     }
 
@@ -23,6 +23,7 @@ class PhotogalleryController extends Controller
             'description'=>'required',
             'image'=>'required'
         ]);
+        $photogalleries  = new Photogallery();
         if ($request->hasFile('image')){
 
             foreach ($request->image as $image){
@@ -34,25 +35,26 @@ class PhotogalleryController extends Controller
                     //image base path
                     $destinationPath    = base_path() . '/public/uploads/images/photogallery/';
                     $success            = $image->move($destinationPath, $picture);
-                    if ($success){
-                        $image_urls     = $image_url;
-                    }
-                }else{
-                    $image_urls         = '' ;
+//                    if ($success){
+//                        $image_urls[]     =json_encode($image_url);
+//                    }
                 }
             }
-            $photogalleries                 = new Photogallery();
-            $photogalleries->title          = $request->title;
-            $photogalleries->description    = $request->description;
-            if ($request->status){
-                $photogalleries->status     = 1 ;
-            }else{
-                $photogalleries->status     = 0 ;
-            }
-            $photogalleries->image          = $image_urls;
-            $photogalleries->user_id          = Auth::user()->id;
-            $photogalleries->save();
+            $photogalleries->image          = json_encode($image_url);
+        }else{
+            $photogalleries->image          = "";
         }
+//        return $photogalleries->image;
+
+        $photogalleries->title          = $request->title;
+        $photogalleries->description    = $request->description;
+        if ($request->status){
+            $photogalleries->status     = 1 ;
+        }else{
+            $photogalleries->status     = 0 ;
+        }
+        $photogalleries->user_id          = Auth::user()->id;
+        $photogalleries->save();
 
         //session message
         $this->setSuccess('Inserted');
@@ -87,15 +89,14 @@ class PhotogalleryController extends Controller
                     //image base path
                     $destinationPath    = base_path() . '/public/uploads/images/photogallery/';
                     $success            = $image->move($destinationPath, $picture);
-                    if ($success){
-                        $image_urls     = $image_url;
-                    }
-                }else{
-                    $image_urls         = '' ;
+//                    if ($success){
+//                        $image_urls[]     =$image_url;
+//                    }
                 }
             }
+            $photogallery->image          = json_encode($image_url);
         }else{
-            $image_urls         = $photogallery->image ;
+            $photogallery->image="";
         }
 
         $photogallery->title          = $request->title;
@@ -105,7 +106,6 @@ class PhotogalleryController extends Controller
         }else{
             $photogallery->status     = 0 ;
         }
-        $photogallery->image          = implode(',',$image_urls);
         $photogallery->user_id          = Auth::user()->id;
         $photogallery->save();
         //session message

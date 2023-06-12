@@ -227,7 +227,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-md-3 col-form-label" for="name">{{ __('Role') }}</label>
                                                 <div class="col-sm-8 co-md-8">
-                                                    <select  class="form-control" name="role" id="role">
+                                                    <select  class="form-control" name="role" id="role" required>
                                                         <option value="">{{ __('select type') }}</option>
                                                         @foreach($roles as $role)
                                                             <option data-role-id="{{$role->id}}"  value="{{$role->id}}">{{ $role->name }}</option>

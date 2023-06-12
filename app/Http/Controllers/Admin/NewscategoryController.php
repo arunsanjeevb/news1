@@ -18,7 +18,7 @@ class NewscategoryController extends Controller
      */
     public function maanNewsCategoryIndex()
     {
-        $categories = Newscategory::paginate(10);
+        $categories = Newscategory::latest()->paginate(10);
 
         return view('admin.pages.news.category.index',compact('categories'));
     }

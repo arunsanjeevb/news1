@@ -35,6 +35,11 @@
             </div><!-- /.container-fluid -->
         </section>
         <!-- Main content -->
+        @php
+//        echo '<pre>';
+//        print_r($photogallery->image);
+//        exit;
+        @endphp
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -83,10 +88,15 @@
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">{{ __('Image') }}</label>
-                                                @if ( $photogallery->image)
-                                                    @foreach(explode(",", $photogallery->image) as $image)
-                                                    <img src="{{ asset($image) }}" class="editimage" style="height: 5%;width: 5%">
-                                                    @endforeach
+                                                @if ($photogallery->image)
+                                                        @php
+                                                            $images = json_decode($photogallery->image, true);
+                                                        @endphp
+                                                        @foreach($images as $image)
+                                                            @if(File::exists($image))
+                                                                <img src="{{ asset($image) }}" class="editimage" style="height: 5%;width: 5%">
+                                                            @endif
+                                                        @endforeach
                                                 @else
                                                     <p>{{ __('No image found') }}</p>
                                                 @endif

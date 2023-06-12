@@ -13,7 +13,7 @@ class BlogsubcategoryController extends Controller
     public function maanBlogSubcategoryIndex()
     {
         $categories = Blogcategory::all();
-        $subcategories = Blogsubcategory::paginate(10);
+        $subcategories = Blogsubcategory::latest()->paginate(10);
 
         return view('admin.pages.blog.subcategory.index',compact('subcategories','categories'));
     }

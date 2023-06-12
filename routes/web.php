@@ -78,6 +78,13 @@ Route::get('/videogallerylist/details/{id}/{slug?}',[\App\Http\Controllers\Front
 //video gallery end
 
 
+//360 page
+//Route::get('/salar-360',[\App\Http\Controllers\Frontend\PhotogalleryController::class,'maanSalarIndex'])->name('salar');
+//Route::get('/salar-360/details/{id}/{slug?}',[\App\Http\Controllers\Frontend\PhotogalleryController::class,'maanVideogalleryDetails'])->name('salar.details');
+//360 page
+
+
+
 
 // route news comments
 Route::post('news/comment/{id?}',[\App\Http\Controllers\Frontend\NewsController::class,'maanNewsComment'])->name('news.comment');

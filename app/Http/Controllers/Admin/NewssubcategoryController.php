@@ -13,8 +13,7 @@ class NewssubcategoryController extends Controller
     public function maanNewsSubcategoryIndex()
     {
         $categories = Newscategory::all();
-        $subcategories = Newssubcategory::paginate(10);
-
+        $subcategories = Newssubcategory::latest()->paginate(10);
         return view('admin.pages.news.subcategory.index',compact('subcategories','categories'));
     }
 

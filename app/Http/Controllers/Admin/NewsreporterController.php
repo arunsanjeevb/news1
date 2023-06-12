@@ -22,7 +22,7 @@ class NewsreporterController extends Controller
      */
     public function maanReporterIndex()
     {
-        $reporters = User::where('user_type','0')->paginate(10);
+        $reporters = User::where('user_type','0')->latest()->paginate(10);
 
         return view('admin.pages.reporter.index',compact('reporters'));
     }
@@ -60,8 +60,8 @@ class NewsreporterController extends Controller
     public function maanReporterStore(Request $request)
     {
         $request->validate([
-            'first_name'=> '',
-            'last_name'=> '',
+            'first_name'=> 'required',
+            'last_name'=> 'required',
             'email'=> 'email|unique:users',
             'phone'=> '',
             'national_id'=> '',
@@ -145,8 +145,8 @@ class NewsreporterController extends Controller
     public function maanReporterUpdate(Request $request,$reporter)
     {
         $request->validate([
-            'first_name'=> '',
-            'last_name'=> '',
+            'first_name'=> 'required',
+            'last_name'=> 'required',
             'email'=> 'email|unique:users,email,'.$reporter,
             'phone'=> '',
             'national_id'=> '',

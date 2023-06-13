@@ -15,12 +15,12 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <!-- Content Header  Title -->
-                        <h1>{{ __('Blog') }}</h1>
+                        <h1>{{ __('Salar 360') }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">{{ __('Blog Manage') }}</a></li>
-                            <li class="breadcrumb-item active">{{ __('Blog') }}</li>
+                            <li class="breadcrumb-item"><a href="#">{{ __('Salar 360 Manage') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('Salar 360') }}</li>
                         </ol>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                             <div class="card-header col-12 row ">
 
                                 <div class="col-10">
-                                    <h3 class="card-title">{{ __('Add Blog') }}</h3>
+                                    <h3 class="card-title">{{ __('Add Salar 360') }}</h3>
                                 </div>
                                 <div class="col-2 ">
 
@@ -84,7 +84,7 @@
 
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputDescription">{{ __('Blog Category') }}</label>
+                                                <label for="exampleInputDescription">{{ __('Salar 360 Category') }}</label>
 
                                                 <select class="form-control select2bs4" name="categgory_id" id="blogcategory_id">
                                                     <option value="">{{ __('select') }}</option>
@@ -96,7 +96,7 @@
 
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputDescription">{{ __('Blog Sub-category') }}</label>
+                                                <label for="exampleInputDescription">{{ __('Salar 360 Sub-category') }}</label>
 
                                                 <select class="form-control select2bs4" name="subcategory_id" id="blogsubcategory_id">
                                                     @foreach($blogsubcategories as $blogsubcategory)
@@ -158,6 +158,21 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputImage">{{ __('PDF') }}</label>
+                                            @if ($blog->pdf)
+                                                    @php
+                                                        $pdfs = json_decode($blog->pdf);
+                                                    @endphp
+                                                    @if($pdfs!='')
+                                                        @foreach ($pdfs as $pdf)
+                                                            @if (File::exists($pdf))
+                                                            <a href="{{ asset($pdf) }}" download=""><i class="fa fa-download"></i> Salar News</a>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+
+                                                @else
+                                                    <p>{{ __('No pdf found') }}</p>
+                                                @endif
                                             <input type="file" name="pdf" id="pdf">
                                         </div>
                                         <!-- /.card-body -->

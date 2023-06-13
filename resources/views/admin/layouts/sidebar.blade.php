@@ -159,7 +159,7 @@
                     <a href="#" class="nav-link {{ Request::routeIs('admin.blog.category')||Request::routeIs('admin.blog.subcategory')||Request::routeIs('admin.blog')||Request::routeIs('admin.blog.create')||Request::routeIs('admin.blog.edit') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-blog"></i>
                         <p>
-                            {{ __('Blog Manage') }}
+                            {{ __('Salar 360 Manage') }}
                             <i class="fas fa-angle-left right"></i>
 
                         </p>
@@ -168,19 +168,19 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.blog.category') }}" class="nav-link {{ Request::routeIs('admin.blog.category') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __(' Blog Category') }}</p>
+                                <p>{{ __(' Salar 360 Category') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.blog.subcategory') }}" class="nav-link {{ Request::routeIs('admin.blog.subcategory') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __(' Blog Sub-Category') }}</p>
+                                <p>{{ __(' Salar 360 Sub-Category') }}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.blog') }}" class="nav-link {{ Request::routeIs('admin.blog') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{ __(' Blog List') }}</p>
+                                <p>{{ __(' Salar 360 List') }}</p>
                             </a>
                         </li>
 

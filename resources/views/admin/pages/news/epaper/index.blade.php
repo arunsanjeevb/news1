@@ -149,7 +149,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">{{ __('Title') }}</label>
-                                <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{old('title')}}">
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{old('title')}}" required>
                                 @error('title')
                                 <span class="text-danger">
                             {{$message}}
@@ -158,7 +158,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="image">{{ __('PDF File') }}</label> <span class="image-size-alert">{{ __('') }}</span>
-                                <input type="file" class="form-control" name="epaper" id="epaper"  value="{{old('epaper')}}" >
+                                <input type="file" class="form-control" name="epaper" id="epaper"  value="{{old('epaper')}}" required>
                             </div>
                         </div>
                         <!-- /.card-body -->

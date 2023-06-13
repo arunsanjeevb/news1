@@ -11,12 +11,12 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <!-- Content Header  Title -->
-                        <h1>{{ __('Blog') }}</h1>
+                        <h1>{{ __('Salar 360') }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">{{ __('Blog Manage') }}</a></li>
-                            <li class="breadcrumb-item active">{{ __('Blog') }}</li>
+                            <li class="breadcrumb-item"><a href="#">{{ __('Salar 360 Manage') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('Salar 360') }}</li>
                         </ol>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                             <div class="card-header col-12 row ">
 
                                 <div class="col-10">
-                                    <h3 class="card-title">{{ __('Blog List') }}</h3>
+                                    <h3 class="card-title">{{ __('Salar 360 List') }}</h3>
                                 </div>
                                 <div class="col-2 ">
 

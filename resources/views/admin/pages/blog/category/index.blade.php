@@ -11,12 +11,12 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <!-- Content Header  Title -->
-                        <h1>{{ __('Blog Category') }}</h1>
+                        <h1>{{ __('Salar 360 Category') }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">{{ __('Blog Manage') }}</a></li>
-                            <li class="breadcrumb-item active">{{ __('Blog Category') }}</li>
+                            <li class="breadcrumb-item"><a href="#">{{ __('Salar 360 Manage') }}</a></li>
+                            <li class="breadcrumb-item active">{{ __('Salar 360 Category') }}</li>
                         </ol>
                     </div>
                 </div>

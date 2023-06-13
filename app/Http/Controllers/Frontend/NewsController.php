@@ -95,7 +95,7 @@ class NewsController extends Controller
 //        $blogs = Blog::paginate(10);
         $blogs = DB::select($query);
 //        return $blogs;
-        return view('admin.pages.blog.blog.index',compact('blogs'));
+//        return view('admin.pages.blog.blog.index',compact('blogs'));
 
         if ($newscategory!='columns' && $newscategory!='salar-360'){
             return view('frontend.pages.news',compact('allnews','popularallnews','recentallnews','newscategorysingle','relatedgetsnews'));

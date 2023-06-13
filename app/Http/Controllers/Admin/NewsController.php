@@ -74,6 +74,7 @@ class NewsController extends Controller
         $data['caption']    = $request->caption;
         $data['video_link']    = $request->video_link;
         //new col added end
+        $data['position']    = $request->position;
 
         if($request->status){
             $data['status']     = 1 ;
@@ -135,7 +136,6 @@ class NewsController extends Controller
 
     public function maanNewsUpdate(Request $request, News $news)
     {
-//        return $request->special_stories;
      $request->validate([
          'title'=>'required',
          'description'=>'required',
@@ -181,7 +181,7 @@ class NewsController extends Controller
         $data['caption']    = $request->caption;
         $data['video_link']    = $request->video_link;
         //new col added end
-
+        $data['position']    = $request->position;
         if($request->status){
             $data['status']= 1 ;
         }else{

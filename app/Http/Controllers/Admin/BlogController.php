@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Blogcategory;
 use App\Models\Blogsubcategory;
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -30,14 +31,14 @@ class BlogController extends Controller
             return response()->json($blogsubcategory);
         }
         $blogcategories = Blogcategory::all();
+        $newsreporters      = User::where('user_type','0')->get();
 
-        return view('admin.pages.blog.blog.create',compact('blogcategories'));
+        return view('admin.pages.blog.blog.create',compact('blogcategories','newsreporters'));
     }
     public function maanBlogStore(Request $request)
     {
         $request->validate([
             'title'=>'required',
-            'summary'=>'required',
             'description'=>'required',
             'category_id'=>'required',
             'subcategory_id'=>'required',
@@ -89,6 +90,7 @@ class BlogController extends Controller
         $data['blogsubcategory_id'] = $request->subcategory_id;
         $data['date']           = date('Y-m-d', strtotime($request->date));
         $data['tags']           = $request->tags;
+        $data['reporter_id']           = $request->reporter_id;
 
         if($request->status){
             $data['status']     = 1 ;
@@ -110,15 +112,15 @@ class BlogController extends Controller
             $blogsubcategory = Blogsubcategory::where('category_id',$request->blogcategory_id)->get();
             return response()->json($blogsubcategory);
         }
+        $newsreporters      = User::where('user_type','0')->get();
 
-        return view('admin.pages.blog.blog.edit',compact('blog','blogcategories','blogsubcategories','blogcategoryid'));
+        return view('admin.pages.blog.blog.edit',compact('blog','blogcategories','blogsubcategories','blogcategoryid','newsreporters'));
     }
     public function maanBlogUpdate(Request $request, Blog $blog)
     {
 //        return $request;
         $request->validate([
             'title'=>'required',
-            'summary'=>'required',
             'description'=>'required',
             'subcategory_id'=>'required',
             'date'=>'required',
@@ -178,6 +180,7 @@ class BlogController extends Controller
         $data['blogsubcategory_id'] = $request->subcategory_id;
         $data['date']           = date('Y-m-d', strtotime($request->date));
         $data['tags']           = $request->tags;
+        $data['reporter_id']           = $request->reporter_id;
         if($request->status){
             $data['status']     = 1 ;
         }else{

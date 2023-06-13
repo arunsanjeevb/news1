@@ -192,6 +192,7 @@
                                                 <select class="form-control select2bs4" name="reporter_id"
                                                         id="reporter_id">
                                                     <option value="">{{ __('select') }}</option>
+                                                    <option value="">None</option>
                                                     @foreach($newsreporters as $newsreporter)
                                                         <option
                                                             value="{{ $newsreporter->id }}">{{ $newsreporter->first_name }} {{ $newsreporter->last_name }}</option>
@@ -203,6 +204,22 @@
                                                     </span>
                                                 @enderror
                                             </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputDescription">{{ __('News Position') }}</label>
+
+                                                <select class="form-control select2bs4" name="position"
+                                                        id="position">
+                                                    <option value="">{{ __('select') }}</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="5">6</option>
+                                                </select>
+                                            </div>
+
+
                                             <div class="form-group row">
                                                 <label class="col-md-3"
                                                        for="publish">{{ __('Publish / Unpublish') }}</label>

@@ -137,9 +137,24 @@
 
                                                 <select class="form-control select2bs4" name="reporter_id" id="reporter_id">
                                                     <option value="">{{ __('select') }}</option>
+                                                    <option value="" @if(''==$news->reporter_id) selected @endif>{{ __('None') }}</option>
                                                     @foreach($newsreporters as $newsreporter)
                                                         <option value="{{ $newsreporter->id }}"@if($newsreporter->id==$news->reporter_id) selected @endif>{{ $newsreporter->first_name }} {{ $newsreporter->last_name }}</option>
                                                     @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputDescription">{{ __('News Position') }}</label>
+
+                                                <select class="form-control select2bs4" name="position"
+                                                        id="position">
+                                                    <option value="">{{ __('select') }}</option>
+                                                    <option value="1" @if(1==$news->position) selected @endif>1</option>
+                                                    <option value="2" @if(2==$news->position) selected @endif>2</option>
+                                                    <option value="3" @if(3==$news->position) selected @endif>3</option>
+                                                    <option value="4" @if(4==$news->position) selected @endif>4</option>
+                                                    <option value="5" @if(5==$news->position) selected @endif>5</option>
+                                                    <option value="5" @if(6==$news->position) selected @endif>6</option>
                                                 </select>
                                             </div>
                                             <div class="form-group row">

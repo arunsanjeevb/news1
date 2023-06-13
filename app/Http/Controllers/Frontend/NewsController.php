@@ -91,7 +91,7 @@ class NewsController extends Controller
             ->limit(5)
             ->get();
 
-        $query = "SELECT `blogs`.id,`blogs`.title,`blogs`.summary FROM blogs join users on blogs.user_id=users.id order by blogs.id desc limit 10";
+        $query = "SELECT `blogs`.id,`blogs`.title,`blogs`.summary FROM blogs join users on blogs.user_id=users.id WHERE blogs.status=1 order by blogs.id desc limit 10";
 //        $blogs = Blog::paginate(10);
         $blogs = DB::select($query);
 //        return $blogs;

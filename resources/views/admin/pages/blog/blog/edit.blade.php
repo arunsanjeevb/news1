@@ -122,6 +122,18 @@
 
                                             </div>
 
+                                            <div class="form-group">
+                                                <label for="exampleInputDescription">{{ __('News Reporter') }}</label>
+
+                                                <select class="form-control select2bs4" name="reporter_id" id="reporter_id">
+                                                    <option value="">{{ __('select') }}</option>
+                                                    <option value="0" @if(0==$blog->reporter_id) selected @endif>{{ __('None') }}</option>
+                                                    @foreach($newsreporters as $newsreporter)
+                                                        <option value="{{ $newsreporter->id }}"@if($newsreporter->id==$blog->reporter_id) selected @endif>{{ $newsreporter->first_name }} {{ $newsreporter->last_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
 
                                             <div class="form-group row">
                                                 <label  class="col-md-3" for="publish">{{ __('Publish / Unpublish') }}</label>

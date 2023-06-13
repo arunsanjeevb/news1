@@ -132,6 +132,24 @@
                                                 <input type="text" class="form-control" name="tags" id="tags" placeholder="tags">
 
                                             </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputDescription">{{ __('News Reporter') }}</label>
+
+                                                <select class="form-control select2bs4" name="reporter_id"
+                                                        id="reporter_id">
+                                                    <option value="">{{ __('select') }}</option>
+                                                    <option value="0">None</option>
+                                                    @foreach($newsreporters as $newsreporter)
+                                                        <option
+                                                            value="{{ $newsreporter->id }}">{{ $newsreporter->first_name }} {{ $newsreporter->last_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('reporter_id')
+                                                <span class="text-danger">
+                                                        {{$message}}
+                                                    </span>
+                                                @enderror
+                                            </div>
 
 
                                             <div class="form-group row">

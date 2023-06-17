@@ -348,7 +348,9 @@ Route::get('/clear-all', function () {
 });
 
 // reporter call
-//Route::get('/reporter/{id}',[NewsController::class,'maanReporterNews'])->name('reporter');
 Route::get('/reporter/{id}',[\App\Http\Controllers\Frontend\NewsController::class,'maanReporterNews'])->name('reporter');
+
+//live_news-1 call
+Route::get('/livenews',[\App\Http\Controllers\Frontend\NewsController::class,'maanLiveNews']);
 
 

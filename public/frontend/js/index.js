@@ -390,6 +390,8 @@ Tags:
         subscribe show message frontend
         =======================*/
     $('.subscribe').click(function() {
+        alert(window.location.origin)
+        return true;
         var email = $('#maanEmail').val();
 
         if(email== ''){
@@ -402,7 +404,7 @@ Tags:
             return false;
         }
         $.ajax({
-            url:'subscribe/ajax',
+            url:'/subscribe/ajax',
             method:"get",
             dataType:"json",
             data:{

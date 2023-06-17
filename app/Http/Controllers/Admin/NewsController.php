@@ -108,6 +108,8 @@ class NewsController extends Controller
 
         $data['image']          = json_encode($news_image_urls);
         $data['user_id']        = Auth::user()->id;
+        $position['position']=0;
+        News::where('position',$request->position)->update($position);
         News::create($data);
 
         //post count
@@ -215,6 +217,8 @@ class NewsController extends Controller
 //        return $request->live_news;
         $data['image']          = $news_image_urls;
         $data['user_id']        = Auth::user()->id;
+        $position['position']=0;
+        News::where('position',$request->position)->update($position);
         News::where('id',$news->id)->update($data);
         //session message
         $this->setSuccess('Updated');

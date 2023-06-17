@@ -43,7 +43,13 @@
                 <div class="col-lg-8">
                     <div class="maan-title">
                         <div class="maan-title-text">
-                            <h2>{{ 'Columns' }}</h2>
+                            @if($reporter_list!='')
+                            @foreach($reporter_list as $reporter_lists )
+                            <h2>{{ $reporter_lists->first_name.' ' }}{{$reporter_lists->last_name}}</h2>
+                            @endforeach
+                            @else
+                                <h2>{{ 'Column News' }}</h2>
+                            @endif
                         </div>
                     </div>
                     <div class="maan-news-post">
@@ -216,8 +222,8 @@ text-overflow: ellipsis;">{{ $allnewsall->title }}</a></h2>
                     </div>
 
                     <!-- ss -->
-                    
-                  
+
+
                 </div>
             </div>
         </div>

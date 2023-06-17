@@ -390,42 +390,50 @@ Tags:
         subscribe show message frontend
         =======================*/
     $('.subscribe').click(function() {
-        alert(window.location.origin)
-        return true;
+        subscribe();
+    });
+
+    $('#maanEmail').keydown(function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            subscribe();
+        }
+    });
+
+    function subscribe() {
         var email = $('#maanEmail').val();
 
-        if(email== ''){
+        if (email == '') {
             $('#email').next().show();
             toastr.warning('Must Be A Valid Email Address.');
             return false;
         }
-        if(IsEmail(email)==false){
+
+        if (IsEmail(email) == false) {
             toastr.warning('Must Be A Valid Email Address.');
             return false;
         }
+
         $.ajax({
-            url:'/subscribe/ajax',
-            method:"get",
-            dataType:"json",
-            data:{
-                'email':email
+            url: './subscribe/ajax',
+            method: "get",
+            dataType: "json",
+            data: {
+                'email': email
             },
-            success: function(data){
-            if (data>0){
-                toastr.warning('You email already exists!')
-            }else{
-                toastr.success('You Subscribed Successfully.')
-            }
-
-
+            success: function(data) {
+                if (data > 0) {
+                    toastr.warning('Your email already exists!');
+                } else {
+                    toastr.success('You Subscribed Successfully.');
+                }
             },
-            error: function (data) {
-                console.log(data)
-                alert('Error occur fetch subcategory action.....!!');
+            error: function(data) {
+                alert('Error occurred while fetching subcategory action!');
             }
-        })
-        //toastr.success('You Subscribed Successfully.')
-    });
+        });
+    }
+
 
 
 })(jQuery);

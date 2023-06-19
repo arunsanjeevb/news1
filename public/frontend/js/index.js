@@ -393,7 +393,7 @@ Tags:
         subscribe();
     });
 
-    $('#maanEmail').keydown(function(event) {
+    $('#maanEmail,#maanEmail1').keydown(function(event) {
         if (event.keyCode === 13) {
             event.preventDefault();
             subscribe();
@@ -402,7 +402,10 @@ Tags:
 
     function subscribe() {
         var email = $('#maanEmail').val();
-
+        // alert(email);
+        if(email==undefined || email==''){
+            email=$('#maanEmail1').val();
+        }
         if (email == '') {
             $('#email').next().show();
             toastr.warning('Must Be A Valid Email Address.');
@@ -426,6 +429,8 @@ Tags:
                     toastr.warning('Your email already exists!');
                 } else {
                     toastr.success('You Subscribed Successfully.');
+                    $('#maanEmail').val('');
+                    $('#maanEmail1').val('');
                 }
             },
             error: function(data) {

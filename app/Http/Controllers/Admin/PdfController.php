@@ -81,13 +81,8 @@ class PdfController extends Controller
         }
         $data['title']=$request->title;
         $data['image']=$image_urls;
+        $data['paper_date']=$request->paper_date;
         DB::table('pdfs')->insert($data);
-//        return $image_urls;
-//        $pdfs->image ='';
-//        $pdfs->image    = $image_urls ;
-//        $pdfs->save();
-        //session message
-//        return "fds";
         $this->setSuccess('Inserted');
         //redirect route
         return redirect()->route('admin.news.epaper');
@@ -129,6 +124,7 @@ class PdfController extends Controller
 //        }
         }
         $data['title']=$request->title;
+        $data['paper_date']=$request->paper_date;
         DB::table('pdfs')->where('id', $epaperid)->update($data);
         $this->setSuccess('Updated');
         //redirect route

@@ -353,4 +353,8 @@ Route::get('/reporter/{id}',[\App\Http\Controllers\Frontend\NewsController::clas
 //live_news-1 call
 Route::get('/livenews',[\App\Http\Controllers\Frontend\NewsController::class,'maanLiveNews']);
 
+//live_news-1 call
+Route::get('/archive',[\App\Http\Controllers\Frontend\ArchiveController::class,'Archive']);
+Route::post('/archive/date',[\App\Http\Controllers\Frontend\ArchiveController::class,'GetPDF']);
+
 

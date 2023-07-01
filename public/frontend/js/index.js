@@ -439,6 +439,36 @@ Tags:
         });
     }
 
+    $('#get_pdf').click(function() {
+        var pdf_date=$('#get_date').val();
+        alert(pdf_date);
+        $.ajax({
+            url: './archive/date',
+            type: "post",
+            dataType: "json",
+            data: {
+                'pdf_date': pdf_date
+            },
+            success: function(data) {
+                // var data=JSON.parse(data)
+                // console.log(data[0]);
+                var parts = pdf_date.split('-');
+                var year = parts[0];
+                var month = parts[1];
+                var day = parts[2];
+                var formattedDate = day + '-' + month + '-' + year;
+                $('#show_date').html(formattedDate);
+                if(data!=''){
+                    $('#show_pdf').html('<embed id="show_pdf" class="thumbnails-x" src="' + data[0].image + '#page=1&view=FitH#toolbar=0" width="100%" height="100%" />');
+                }else{
+                    $('#show_pdf').html('No PDF');
+                }
+            },
+            error: function(data) {
+                alert('Error occurred while fetching subcategory action!');
+            }
+        });
+    })
 
 
 })(jQuery);

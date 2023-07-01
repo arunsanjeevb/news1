@@ -86,7 +86,7 @@
 
 {{--                                                        edit opiton--}}
                                                         @if(Auth::user()->permissions->contains('slug','edit'))
-                                                            <a class="edit-item" id="edit-item_{{$category->id}}" data-toggle="modal" data-target="#modal-edit" data-id="{{$category->id}}"  data-title="{{$category->title}}">
+                                                            <a class="edit-item" id="edit-item_{{$category->id}}" data-toggle="modal" data-target="#modal-edit" data-id="{{$category->id}}"  data-title="{{$category->title}}" data-paper_date="{{$category->paper_date}}">
                                                                 <i class="fa fa-edit text-info"></i>
                                                             </a>
 
@@ -151,9 +151,14 @@
                                 <label for="name">{{ __('Title') }}</label>
                                 <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{old('title')}}" required>
                                 @error('title')
-                                <span class="text-danger">
-                            {{$message}}
-                        </span>
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="name">{{ __('News Date') }}</label>
+                                <input type="date" class="form-control" name="paper_date" id="paper_date" value="{{old('paper_date')}}" required>
+                                @error('paper_date')
+                                <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
@@ -201,6 +206,16 @@
                         </span>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label for="name">{{ __('News Date') }}</label>
+                                <input type="date" class="form-control" name="paper_date" id="edit_paper_date" value="{{old('paper_date')}}" required>
+                                @error('paper_date')
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+
+
                             <div class="form-group">
                                 <label for="image">{{ __('PDF File') }}</label> <span class="image-size-alert">{{ __('') }}</span>
                                 <input type="file" class="form-control" name="epaper" id="epaper"  value="{{old('epaper')}}" >
@@ -231,9 +246,11 @@
                 $('#edit-item_'+service).on('click',function () {
                     var epaperid = $('#edit-item_'+service).data('id');
                     var title = $('#edit-item_'+service).data('title');
+                    var paper_date = $('#edit-item_'+service).data('paper_date');
                     // var categoryslug = $('#edit-item_'+service).data('slug');
                     // var categorytype = $('#edit-item_'+service).data('type');
                     $('#edit_name').val(title);
+                    $('#edit_paper_date').val(paper_date);
                     // $('#edit_slug').val(categoryslug);
                     // $('#edit_type').val(categorytype);
 
